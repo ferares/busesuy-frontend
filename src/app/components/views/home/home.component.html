@@ -23,9 +23,20 @@
           </div>
           <div class="col-4">
             <label for="date" class="form-label">
-              Fecha
+              Día
             </label>
-            <input type="text" class="form-control" id="date" name="date" autocomplete="off" [(ngModel)]="date" [bsConfig]="{ containerClass: 'theme-blue' }" bsDatepicker>
+            <div class="btn-group d-flex" dropdown>
+              <button id="button-basic" dropdownToggle type="button" class="form-select" aria-controls="dropdown-basic">
+                {{ getSelectedDaysString() }}
+              </button>
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu w-100" role="menu" aria-labelledby="button-basic">
+                <li *ngFor="let day of days" role="menuitem" [ngClass]="{ 'bg-light': selectedDays.includes(day.value) }">
+                  <span class="dropdown-item" (click)="toggleDay($event, day.value)">
+                    {{ day.label }}
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="col-4 offset-4">
             <button class="btn btn-primary w-100" type="submit" (click)="search()">
@@ -58,6 +69,12 @@
                 Duración
               </th>
               <th scope="col">
+                Frecuencia
+              </th>
+              <th scope="col">
+                Recorrido
+              </th>
+              <th scope="col">
                 Línea
               </th>
             </tr>
@@ -77,6 +94,12 @@
               </td>
               <td>
                 {{ result.duration }}
+              </td>
+              <td>
+                {{ result.line.frequency }}
+              </td>
+              <td>
+                {{ result.line.route }}
               </td>
               <td>
                 {{ result.line.name }}

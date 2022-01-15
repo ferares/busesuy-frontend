@@ -5,11 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import localeEs from '@angular/common/locales/es-UY';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { defineLocale } from 'ngx-bootstrap/chronos';
-import { esLocale } from 'ngx-bootstrap/locale';
-import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,8 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    BsDatepickerModule.forRoot(),
     TypeaheadModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
   providers: [
     ApiService,
@@ -45,9 +42,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private localeService: BsLocaleService) {
+  constructor() {
     registerLocaleData(localeEs, 'es-uy');
-    defineLocale('es', esLocale);
-    this.localeService.use('es');
   }
 }

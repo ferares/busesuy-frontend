@@ -13,7 +13,41 @@ export class HomeComponent {
   results: Array<any> = [];
   origin = '';
   destination = '';
-  date='';
+  selectedDays: Array<String> = [];
+  days = [
+    {
+      label: 'Lunes',
+      value: 'lu',
+    },
+    {
+      label: 'Martes',
+      value: 'ma',
+    },
+    {
+      label: 'Miércoles',
+      value: 'mi',
+    },
+    {
+      label: 'Jueves',
+      value: 'ju',
+    },
+    {
+      label: 'Viernes',
+      value: 'vi',
+    },
+    {
+      label: 'Sábado',
+      value: 'sa',
+    },
+    {
+      label: 'Domingo',
+      value: 'do',
+    },
+    {
+      label: 'Feriados',
+      value: 'fe',
+    },
+  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +56,24 @@ export class HomeComponent {
     this.locations = route.snapshot.data['locations'].map(
       (location: any) => `${location.name}, ${location.department}`
     );
+  }
+
+  getSelectedDaysString(): String {
+    if (!this.selectedDays.length) return 'Cualquier día'
+    let selectedDaysLabels = []
+    for (const dayValue of this.selectedDays) {
+      const day = this.days.find(day => day.value === dayValue)
+      selectedDaysLabels.push(day?.label)
+    }
+    return selectedDaysLabels.join(', ')
+  }
+
+  toggleDay(event: Event, day: String): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const index = this.selectedDays.indexOf(day);
+    if (index > -1) this.selectedDays.splice(index, 1);
+    else this.selectedDays.push(day);
   }
 
   search(): void {
@@ -36,7 +88,7 @@ export class HomeComponent {
       originDepartment,
       destination,
       destinationDepartment,
-      this.date,
+      this.selectedDays.join(','),
     ).subscribe(
       (results: Array<any>) => {
         this.results = results;

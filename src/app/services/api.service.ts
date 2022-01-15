@@ -20,14 +20,14 @@ export class ApiService {
     originDepartment: String,
     destination: String,
     destinationDepartment: String,
-    date: String,
+    days: String,
   ) {
     const params: any = {
       origin,
       originDepartment,
       destination,
       destinationDepartment,
-      date,
+      days,
     };
     return this.http.get<any>(`${API_URL}/lines/search`, { params });
   }
