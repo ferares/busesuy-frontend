@@ -10,7 +10,7 @@ import { ApiService } from '../../../services/api.service';
 })
 export class HomeComponent {
   locations: Array<any>;
-  results: Array<any> = [];
+  results: Array<any> = undefined as any;
   origin = '';
   destination = '';
   selectedDays: Array<String> = [];
