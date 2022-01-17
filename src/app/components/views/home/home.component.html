@@ -1,4 +1,3 @@
-
 <div class="row">
   <div class="col-12">
     <h1 class="display-1 mb-4">
@@ -13,13 +12,31 @@
             <label for="origin" class="form-label">
               Origen
             </label>
-            <input type="text" class="form-control text-capitalize" id="origin" [typeahead]="locations" [(ngModel)]="origin" name="origin" autocomplete="off">
+            <input
+              type="text"
+              class="form-control text-capitalize"
+              id="origin"
+              [typeahead]="locations"
+              [typeaheadScrollable]="true"
+              [(ngModel)]="origin"
+              name="origin"
+              autocomplete="off"
+            >
           </div>
           <div class="col-4">
             <label for="destination" class="form-label">
               Destino
             </label>
-            <input type="text" class="form-control text-capitalize" id="destination" [typeahead]="locations" [(ngModel)]="destination" name="destination" autocomplete="off">
+            <input
+              type="text"
+              class="form-control text-capitalize"
+              id="destination"
+              [typeahead]="locations"
+              [typeaheadScrollable]="true"
+              [(ngModel)]="destination"
+              name="destination"
+              autocomplete="off"
+            >
           </div>
           <div class="col-4">
             <label for="date" class="form-label">
@@ -48,7 +65,7 @@
     </div>
   </div>
   <div *ngIf="results" class="col-12 mt-4">
-    <div class="card">
+    <div class="card mb-4">
       <div class="card-body">
         <p *ngIf="!results.length" class="lead">
           No hay resultados
