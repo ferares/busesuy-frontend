@@ -11,6 +11,8 @@ import { ApiService } from '../../../services/api.service';
 export class HomeComponent {
   locations: Array<any>;
   results: Array<any> = undefined as any;
+  resultsOrigin = '';
+  resultsDestination = '';
   origin = '';
   destination = '';
   selectedDays: Array<String> = [];
@@ -92,6 +94,8 @@ export class HomeComponent {
     ).subscribe(
       (results: Array<any>) => {
         this.results = results;
+        this.resultsOrigin = this.origin;
+        this.resultsDestination = this.destination;
       }
     )
   }
