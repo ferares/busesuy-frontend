@@ -7,7 +7,7 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <form class="row g-3">
+        <form class="row g-3" [ngClass]="{ 'was-validated': validated }" novalidate>
           <div class="col-md-4">
             <label for="origin" class="form-label">
               Origen
@@ -18,10 +18,15 @@
               id="origin"
               [typeahead]="locations"
               [typeaheadScrollable]="true"
+              [typeaheadLatinize]="true"
               [(ngModel)]="origin"
               name="origin"
               autocomplete="off"
+              required
             >
+            <div class="invalid-feedback">
+              Ingrese un origen.
+            </div>
           </div>
           <div class="col-md-4">
             <label for="destination" class="form-label">
@@ -33,10 +38,15 @@
               id="destination"
               [typeahead]="locations"
               [typeaheadScrollable]="true"
+              [typeaheadLatinize]="true"
               [(ngModel)]="destination"
               name="destination"
               autocomplete="off"
+              required
             >
+            <div class="invalid-feedback">
+              Ingrese un destino.
+            </div>
           </div>
           <div class="col-md-4">
             <label for="date" class="form-label">

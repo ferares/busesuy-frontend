@@ -9,6 +9,7 @@ import { ApiService } from '../../../services/api.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  validated = false;
   locations: Array<any>;
   results: Array<any> = undefined as any;
   resultsOrigin = '';
@@ -78,26 +79,33 @@ export class HomeComponent {
     else this.selectedDays.push(day);
   }
 
+  validate(): boolean {
+    this.validated = true;
+    return ((!!this.origin) && (!!this.destination));
+  }
+
   search(): void {
-    const originArray = this.origin.split(', ')
-    const originDepartment = originArray[1]
-    const origin = originArray[0]
-    const destinationArray = this.destination.split(', ')
-    const destinationDepartment = destinationArray[1]
-    const destination = destinationArray[0]
-    this.apiService.findRoutes(
-      origin,
-      originDepartment,
-      destination,
-      destinationDepartment,
-      this.selectedDays.join(','),
-    ).subscribe(
-      (results: Array<any>) => {
-        this.results = results;
-        this.resultsOrigin = this.origin;
-        this.resultsDestination = this.destination;
-      }
-    )
+    if (this.validate()) {
+      const originArray = this.origin.split(', ')
+      const originDepartment = originArray[1]
+      const origin = originArray[0]
+      const destinationArray = this.destination.split(', ')
+      const destinationDepartment = destinationArray[1]
+      const destination = destinationArray[0]
+      this.apiService.findRoutes(
+        origin,
+        originDepartment,
+        destination,
+        destinationDepartment,
+        this.selectedDays.join(','),
+      ).subscribe(
+        (results: Array<any>) => {
+          this.results = results;
+          this.resultsOrigin = this.origin;
+          this.resultsDestination = this.destination;
+        }
+      )
+    }
   }
 
 }
