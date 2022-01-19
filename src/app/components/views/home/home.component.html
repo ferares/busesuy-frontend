@@ -8,7 +8,7 @@
     <div class="card">
       <div class="card-body">
         <form class="row g-3">
-          <div class="col-4">
+          <div class="col-md-4">
             <label for="origin" class="form-label">
               Origen
             </label>
@@ -23,7 +23,7 @@
               autocomplete="off"
             >
           </div>
-          <div class="col-4">
+          <div class="col-md-4">
             <label for="destination" class="form-label">
               Destino
             </label>
@@ -38,7 +38,7 @@
               autocomplete="off"
             >
           </div>
-          <div class="col-4">
+          <div class="col-md-4">
             <label for="date" class="form-label">
               Día
             </label>
@@ -55,7 +55,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-4 offset-4">
+          <div class="col-md-4 offset-md-4">
             <button class="btn btn-primary w-100" type="submit" (click)="search()">
               Buscar
             </button>
@@ -70,60 +70,62 @@
         <p *ngIf="!results.length" class="lead">
           No hay resultados
         </p>
-        <table *ngIf="results.length" class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">
-                Empresa
-              </th>
-              <th scope="col">
-                Origen
-              </th>
-              <th scope="col">
-                Destino
-              </th>
-              <th scope="col">
-                Duración
-              </th>
-              <th scope="col">
-                Frecuencia
-              </th>
-              <th scope="col">
-                Recorrido
-              </th>
-              <th scope="col">
-                Línea
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let result of results">
-              <td class="text-capitalize">
-                {{ result.line.company }}
-              </td>
-              <td class="text-capitalize">
-                {{ resultsOrigin }}
-                {{ result.originStop.time }}
-              </td>
-              <td class="text-capitalize">
-                {{ resultsDestination }}
-                {{ result.destinationStop.time }}
-              </td>
-              <td>
-                {{ result.duration }}
-              </td>
-              <td>
-                {{ result.line.frequency }}
-              </td>
-              <td>
-                {{ result.line.route }}
-              </td>
-              <td>
-                {{ result.line.name }}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table *ngIf="results.length" class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">
+                  Empresa
+                </th>
+                <th scope="col">
+                  Origen
+                </th>
+                <th scope="col">
+                  Destino
+                </th>
+                <th scope="col">
+                  Duración
+                </th>
+                <th scope="col">
+                  Frecuencia
+                </th>
+                <th scope="col">
+                  Recorrido
+                </th>
+                <th scope="col">
+                  Línea
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let result of results">
+                <td class="text-capitalize">
+                  {{ result.line.company }}
+                </td>
+                <td class="text-capitalize">
+                  {{ resultsOrigin }}
+                  {{ result.originStop.time }}
+                </td>
+                <td class="text-capitalize">
+                  {{ resultsDestination }}
+                  {{ result.destinationStop.time }}
+                </td>
+                <td>
+                  {{ result.duration }}
+                </td>
+                <td>
+                  {{ result.line.frequency }}
+                </td>
+                <td>
+                  {{ result.line.route }}
+                </td>
+                <td>
+                  {{ result.line.name }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
