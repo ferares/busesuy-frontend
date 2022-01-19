@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiService } from '../../../services/api.service';
@@ -8,7 +8,7 @@ import { ApiService } from '../../../services/api.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   validated = false;
   locations: Array<any>;
   results: Array<any> = undefined as any;
@@ -16,7 +16,7 @@ export class HomeComponent {
   resultsDestination = '';
   origin = '';
   destination = '';
-  selectedDays: Array<String> = [];
+  selectedDays: Array<string> = [];
   days = [
     {
       label: 'Lunes',
@@ -53,15 +53,40 @@ export class HomeComponent {
   ];
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private apiService: ApiService,
   ) {
     this.locations = route.snapshot.data['locations'].map(
-      (location: any) => `${location.name}, ${location.department}`
+      (location: any) => this.getLocationString(location.name, location.department)
     );
   }
 
-  getSelectedDaysString(): String {
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const origin = decodeURIComponent(params['origin'] || '');
+      const originDepartment = decodeURIComponent(params['originDepartment'] || '');
+      const destination = decodeURIComponent(params['destination'] || '');
+      const destinationDepartment = decodeURIComponent(params['destinationDepartment'] || '');
+      const days = decodeURIComponent(params['days'] || '');
+
+      this.origin = this.getLocationString(origin, originDepartment);
+      this.destination = this.getLocationString(destination, destinationDepartment);
+
+      if (days) {
+        this.selectedDays = days.split(',');
+      }
+
+      if ((this.origin) && (this.destination)) this.search();
+    });
+  }
+
+  getLocationString(locationName: string, departmentName: string): string {
+    if ((!locationName) || (!departmentName)) return '';
+    return `${locationName}, ${departmentName}`;
+  }
+
+  getSelectedDaysString(): string {
     if (!this.selectedDays.length) return 'Cualquier día'
     let selectedDaysLabels = []
     for (const dayValue of this.selectedDays) {
@@ -71,7 +96,7 @@ export class HomeComponent {
     return selectedDaysLabels.join(', ')
   }
 
-  toggleDay(event: Event, day: String): void {
+  toggleDay(event: Event, day: string): void {
     event.preventDefault();
     event.stopPropagation();
     const index = this.selectedDays.indexOf(day);
@@ -92,6 +117,23 @@ export class HomeComponent {
       const destinationArray = this.destination.split(', ')
       const destinationDepartment = destinationArray[1]
       const destination = destinationArray[0]
+
+      const queryParams = {
+        origin: encodeURIComponent(origin),
+        originDepartment: encodeURIComponent(originDepartment),
+        destination: encodeURIComponent(destination),
+        destinationDepartment: encodeURIComponent(destinationDepartment),
+        days: encodeURIComponent(this.selectedDays.join(',')),
+      };
+
+      this.router.navigate(
+        ['.'],
+        {
+          queryParams: queryParams,
+          queryParamsHandling: 'merge',
+        },
+      );
+
       this.apiService.findRoutes(
         origin,
         originDepartment,
