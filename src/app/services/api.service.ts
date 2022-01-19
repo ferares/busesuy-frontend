@@ -28,7 +28,10 @@ export class ApiService {
   }
 
   getLocations() {
-    return this.http.get<any>(`${API_URL}/locations`);
+    this.setLoading(true);
+    return this.http.get<any>(`${API_URL}/locations`).pipe(
+      finalize(() => this.setLoading(false)),
+    );
   }
 
   findRoutes(
