@@ -64,11 +64,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      const origin = decodeURIComponent(params['origin'] || '');
-      const originDepartment = decodeURIComponent(params['originDepartment'] || '');
-      const destination = decodeURIComponent(params['destination'] || '');
-      const destinationDepartment = decodeURIComponent(params['destinationDepartment'] || '');
-      const days = decodeURIComponent(params['days'] || '');
+      const origin = decodeURIComponent(params['origen'] || '');
+      const originDepartment = decodeURIComponent(params['departmentoOrigen'] || '');
+      const destination = decodeURIComponent(params['destino'] || '');
+      const destinationDepartment = decodeURIComponent(params['departmentoDestino'] || '');
+      const days = decodeURIComponent(params['dias'] || '');
 
       this.origin = this.getLocationString(origin, originDepartment);
       this.destination = this.getLocationString(destination, destinationDepartment);
@@ -119,11 +119,11 @@ export class HomeComponent implements OnInit {
       const destination = destinationArray[0]
 
       const queryParams = {
-        origin: encodeURIComponent(origin),
-        originDepartment: encodeURIComponent(originDepartment),
-        destination: encodeURIComponent(destination),
-        destinationDepartment: encodeURIComponent(destinationDepartment),
-        days: encodeURIComponent(this.selectedDays.join(',')),
+        origen: encodeURIComponent(origin),
+        departmentoOrigen: encodeURIComponent(originDepartment),
+        destino: encodeURIComponent(destination),
+        departmentoDestino: encodeURIComponent(destinationDepartment),
+        dias: encodeURIComponent(this.selectedDays.join(',')),
       };
 
       this.router.navigate(

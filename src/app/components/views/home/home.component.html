@@ -1,10 +1,5 @@
 <div class="row">
   <div class="col-12">
-    <h1 class="display-1 mb-4">
-      BusesUY
-    </h1>
-  </div>
-  <div class="col-12">
     <div class="card">
       <div class="card-body">
         <form class="row g-3" [ngClass]="{ 'was-validated': validated }" novalidate>
@@ -80,8 +75,8 @@
         <p *ngIf="!results.length" class="lead">
           No hay resultados
         </p>
-        <div class="table-responsive">
-          <table *ngIf="results.length" class="table table-hover">
+        <div *ngIf="results.length" class="table-responsive">
+          <table class="table table-hover">
             <thead>
               <tr>
                 <th scope="col">
