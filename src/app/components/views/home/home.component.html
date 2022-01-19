@@ -125,7 +125,9 @@
                   {{ result.line.route }}
                 </td>
                 <td>
-                  {{ result.line.name }}
+                  <a [routerLink]="['/linea', result.line.name]">
+                    {{ result.line.name }}
+                  </a>
                 </td>
               </tr>
             </tbody>

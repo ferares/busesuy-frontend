@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="display-1 mb-4">
+      Linea {{line.name}}
+    </h1>
+  </div>
+  <div class="col-12 mt-4">
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">
+                  Empresa
+                </th>
+                <th scope="col">
+                  Número
+                </th>
+                <th scope="col">
+                  Origen
+                </th>
+                <th scope="col">
+                  Destino
+                </th>
+                <th scope="col">
+                  Hora salida
+                </th>
+                <th scope="col">
+                  Hora llegada
+                </th>
+                <th scope="col">
+                  Ruta
+                </th>
+                <th scope="col">
+                  Frecuencia
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-capitalize">
+                  {{ line.company }}
+                </td>
+                <td>
+                  {{ line.name }}
+                </td>
+                <td class="text-capitalize">
+                  {{ line.origin }}
+                </td>
+                <td class="text-capitalize">
+                  {{ line.destination }}
+                </td>
+                <td>
+                  {{ line.startTime }}
+                </td>
+                <td>
+                  {{ line.endTime }}
+                </td>
+                <td>
+                  {{ line.route }}
+                </td>
+                <td>
+                  {{ line.frequency }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

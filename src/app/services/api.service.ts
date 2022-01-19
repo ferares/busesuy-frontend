@@ -34,6 +34,20 @@ export class ApiService {
     );
   }
 
+  getLineByName(name: string) {
+    this.setLoading(true);
+    return this.http.get<any>(`${API_URL}/lines/${name}`).pipe(
+      finalize(() => this.setLoading(false)),
+    );
+  }
+
+  getLocationById(id: number) {
+    this.setLoading(true);
+    return this.http.get<any>(`${API_URL}/locations/id/${id}`).pipe(
+      finalize(() => this.setLoading(false)),
+    );
+  }
+
   findRoutes(
     origin: String,
     originDepartment: String,

@@ -15,8 +15,10 @@ import { AppComponent } from './app.component';
 import { ApiService } from './services/api.service'
 
 import { HomeResolver } from './components/views/home/home.resolver';
+import { LineResolver } from './components/views/line/line.resolver';
 
 import { HomeComponent } from './components/views/home/home.component';
+import { LineComponent } from './components/views/line/line.component';
 import { HeaderComponent } from './components/partials/header/header.component';
 import { LoaderComponent } from './components/partials/loader/loader.component';
 
@@ -24,6 +26,7 @@ import { LoaderComponent } from './components/partials/loader/loader.component';
   declarations: [
     AppComponent,
     HomeComponent,
+    LineComponent,
     HeaderComponent,
     LoaderComponent,
   ],
@@ -40,6 +43,7 @@ import { LoaderComponent } from './components/partials/loader/loader.component';
   providers: [
     ApiService,
     HomeResolver,
+    LineResolver,
   ],
   bootstrap: [AppComponent]
 })
