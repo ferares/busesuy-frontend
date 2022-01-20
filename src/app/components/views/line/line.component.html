@@ -4,80 +4,44 @@
       Linea {{line.name}}
     </h1>
   </div>
-  <div class="col-12 mt-4">
-    <div class="card mb-4">
+  <div class="col-md-4">
+    <div class="card">
       <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">
-                  Empresa
-                </th>
-                <th scope="col">
-                  Número
-                </th>
-                <th scope="col">
-                  Origen
-                </th>
-                <th scope="col">
-                  Destino
-                </th>
-                <th scope="col">
-                  Hora salida
-                </th>
-                <th scope="col">
-                  Hora llegada
-                </th>
-                <th scope="col">
-                  Ruta
-                </th>
-                <th scope="col">
-                  Frecuencia
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-capitalize">
-                  {{ line.company }}
-                </td>
-                <td>
-                  {{ line.name }}
-                </td>
-                <td class="text-capitalize">
-                  {{ line.origin }}
-                </td>
-                <td class="text-capitalize">
-                  {{ line.destination }}
-                </td>
-                <td>
-                  {{ line.startTime }}
-                </td>
-                <td>
-                  {{ line.endTime }}
-                </td>
-                <td>
-                  {{ line.route }}
-                </td>
-                <td>
-                  {{ line.frequency }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <h3 class="card-title h5">
+          <b>Empresa:</b> {{ line.company }}
+        </h3>
+        <h4 class="card-subtitle mb-2 text-muted h6">
+          <b>Número de línea:</b> {{ line.name }}
+        </h4>
       </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <b>Origen:</b> {{ line.origin }}
+        </li>
+        <li class="list-group-item">
+          <b>Destino:</b> {{ line.destination }}
+        </li>
+        <li class="list-group-item">
+          <b>Hora salida:</b> {{ line.startTime }} hs
+        </li>
+        <li class="list-group-item">
+          <b>Hora llegada:</b> {{ line.endTime }} hs
+        </li>
+        <li class="list-group-item">
+          <b>Ruta:</b> {{ line.route }}
+        </li>
+        <li class="list-group-item">
+          <b>Frecuencia:</b> {{ line.frequency }}
+        </li>
+      </ul>
     </div>
   </div>
-  <div class="col-12">
-    <h2>
-      Paradas
-    </h2>
-  </div>
-  <div class="col-12">
-    <div class="card mb-4">
+  <div class="col-md-8">
+    <div class="card">
       <div class="card-body">
+        <h2 class="card-title h3">
+          <b>Paradas</b>
+        </h2>
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
@@ -96,7 +60,7 @@
                   {{ stop.nameLocation }}, {{ stop.nameDepartment }}
                 </td>
                 <td>
-                  {{ stop.time }}
+                  {{ stop.time }} hs
                 </td>
               </tr>
             </tbody>
