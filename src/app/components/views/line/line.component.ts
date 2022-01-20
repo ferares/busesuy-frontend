@@ -11,8 +11,9 @@ export class LineComponent {
 
   constructor(private route: ActivatedRoute) {
     this.line = route.snapshot.data['data'].line;
-    this.line.origin = route.snapshot.data['data'].origin.nameLocation;
-    this.line.destination = route.snapshot.data['data'].destination.nameLocation;
-    console.log(this.line)
+    this.line.origin = route.snapshot.data['data'].origin;
+    this.line.originDepartment = route.snapshot.data['data'].originDepartment;
+    this.line.destination = route.snapshot.data['data'].destination;
+    this.line.destinationDepartment = route.snapshot.data['data'].destinationDepartment;
   }
 }

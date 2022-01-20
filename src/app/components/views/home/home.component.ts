@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
     private apiService: ApiService,
   ) {
     this.locations = route.snapshot.data['locations'].map(
-      (location: any) => this.getLocationString(location.name, location.department)
+      (location: any) => this.getLocationString(location.name, location.department.name)
     );
   }
 
@@ -149,7 +149,6 @@ export class HomeComponent implements OnInit {
           this.indirectResults = results.filter(
             (result: any) => Array.isArray(result)
           );
-          console.log(this.indirectResults)
           this.resultsOrigin = this.origin;
           this.resultsDestination = this.destination;
         }

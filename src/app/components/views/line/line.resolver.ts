@@ -16,14 +16,25 @@ export class LineResolver implements Resolve<any> {
       this.apiService.getLineByName(name).subscribe(line => {
         combineLatest(
           [
-            this.apiService.getLocationById(line.idOrigin),
-            this.apiService.getLocationById(line.idDestination),
+            this.apiService.getLocationById(line.origin),
+            this.apiService.getLocationById(line.destination),
           ]
         ).subscribe(locations => {
-          resolve({
-            line,
-            origin: locations[0],
-            destination: locations[1],
+          const [origin, destination] = locations
+          combineLatest(
+            [
+              this.apiService.getDepartmentById(origin.department),
+              this.apiService.getDepartmentById(destination.department),
+            ]
+          ).subscribe(departments => {
+            const [originDepartment, destinationDepartment] = departments
+            resolve({
+              line,
+              origin: origin.name,
+              originDepartment: originDepartment.name,
+              destination: destination.name,
+              destinationDepartment: destinationDepartment.name,
+            })
           })
         });
       });

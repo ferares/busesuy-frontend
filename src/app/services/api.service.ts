@@ -41,9 +41,16 @@ export class ApiService {
     );
   }
 
+  getDepartmentById(id: number) {
+    this.setLoading(true);
+    return this.http.get<any>(`${API_URL}/departments/${id}`).pipe(
+      finalize(() => this.setLoading(false)),
+    );
+  }
+
   getLocationById(id: number) {
     this.setLoading(true);
-    return this.http.get<any>(`${API_URL}/locations/id/${id}`).pipe(
+    return this.http.get<any>(`${API_URL}/locations/${id}`).pipe(
       finalize(() => this.setLoading(false)),
     );
   }

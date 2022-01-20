@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-12">
     <h1 class="display-1 mb-4">
-      Linea {{line.name}}
+      Línea {{line.name}}
     </h1>
   </div>
   <div class="col-md-4">
     <div class="card">
       <div class="card-body">
         <h3 class="card-title h5">
-          <b>Empresa:</b> {{ line.company }}
+          <b>Empresa:</b> {{ line.company.name }}
         </h3>
         <h4 class="card-subtitle mb-2 text-muted h6">
           <b>Número de línea:</b> {{ line.name }}
@@ -16,16 +16,16 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <b>Origen:</b> {{ line.origin }}
+          <b>Origen:</b> {{ line.origin }}, {{ line.originDepartment }}
         </li>
         <li class="list-group-item">
-          <b>Destino:</b> {{ line.destination }}
+          <b>Destino:</b> {{ line.destination }}, {{ line.destinationDepartment }}
         </li>
         <li class="list-group-item">
-          <b>Hora salida:</b> {{ line.startTime }} hs
+          <b>Hora salida:</b> {{ line.startTime }} h
         </li>
         <li class="list-group-item">
-          <b>Hora llegada:</b> {{ line.endTime }} hs
+          <b>Hora llegada:</b> {{ line.endTime }} h
         </li>
         <li class="list-group-item">
           <b>Ruta:</b> {{ line.route }}
@@ -60,7 +60,7 @@
                   {{ stop.nameLocation }}, {{ stop.nameDepartment }}
                 </td>
                 <td>
-                  {{ stop.time }} hs
+                  {{ stop.time }} h
                 </td>
               </tr>
             </tbody>
