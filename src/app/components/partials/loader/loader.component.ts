@@ -9,7 +9,7 @@ import { ApiService } from '../../../services/api.service';
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss']
 })
-export class LoaderComponent {
+export class LoaderComponent implements OnInit, OnDestroy {
   active = false;
   subscription: Subscription = undefined as any;
 

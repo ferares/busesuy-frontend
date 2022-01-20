@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   validated = false;
   locations: Array<any>;
   results: Array<any> = undefined as any;
+  indirectResults: Array<any> = undefined as any;
   resultsOrigin = '';
   resultsDestination = '';
   origin = '';
@@ -142,7 +143,13 @@ export class HomeComponent implements OnInit {
         this.selectedDays.join(','),
       ).subscribe(
         (results: Array<any>) => {
-          this.results = results;
+          this.results = results.filter(
+            (result: any) => !(result.origin)
+          );
+          this.indirectResults = results.filter(
+            (result: any) => result.origin
+          );
+          console.log(this.indirectResults)
           this.resultsOrigin = this.origin;
           this.resultsDestination = this.destination;
         }

@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { HomeComponent } from './components/views/home/home.component';
 import { LineComponent } from './components/views/line/line.component';
 import { HeaderComponent } from './components/partials/header/header.component';
 import { LoaderComponent } from './components/partials/loader/loader.component';
+import { ResultsTableComponent } from './components/partials/results-table/results-table.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { LoaderComponent } from './components/partials/loader/loader.component';
     LineComponent,
     HeaderComponent,
     LoaderComponent,
+    ResultsTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { LoaderComponent } from './components/partials/loader/loader.component';
     ReactiveFormsModule,
     TypeaheadModule.forRoot(),
     BsDropdownModule.forRoot(),
+    AccordionModule.forRoot(),
   ],
   providers: [
     ApiService,

@@ -1,0 +1,61 @@
+<p *ngIf="!results.length" class="lead mb-0">
+  No hay resultados
+</p>
+<div *ngIf="results.length" class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">
+          Empresa
+        </th>
+        <th scope="col">
+          Origen
+        </th>
+        <th scope="col">
+          Destino
+        </th>
+        <th scope="col">
+          Duración
+        </th>
+        <th scope="col">
+          Frecuencia
+        </th>
+        <th scope="col">
+          Recorrido
+        </th>
+        <th scope="col">
+          Línea
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let result of results">
+        <td class="text-capitalize">
+          {{ result.line.company }}
+        </td>
+        <td class="text-capitalize">
+          {{ origin }}
+          {{ result.originStop.time }}
+        </td>
+        <td class="text-capitalize">
+          {{ destination }}
+          {{ result.destinationStop.time }}
+        </td>
+        <td>
+          {{ result.duration }}
+        </td>
+        <td>
+          {{ result.line.frequency }}
+        </td>
+        <td>
+          {{ result.line.route }}
+        </td>
+        <td>
+          <a [routerLink]="['/linea', result.line.name]">
+            {{ result.line.name }}
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -72,68 +72,21 @@
   <div *ngIf="results" class="col-12 mt-4">
     <div class="card mb-4">
       <div class="card-body">
-        <p *ngIf="!results.length" class="lead">
-          No hay resultados
-        </p>
-        <div *ngIf="results.length" class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">
-                  Empresa
-                </th>
-                <th scope="col">
-                  Origen
-                </th>
-                <th scope="col">
-                  Destino
-                </th>
-                <th scope="col">
-                  Duración
-                </th>
-                <th scope="col">
-                  Frecuencia
-                </th>
-                <th scope="col">
-                  Recorrido
-                </th>
-                <th scope="col">
-                  Línea
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let result of results">
-                <td class="text-capitalize">
-                  {{ result.line.company }}
-                </td>
-                <td class="text-capitalize">
-                  {{ resultsOrigin }}
-                  {{ result.originStop.time }}
-                </td>
-                <td class="text-capitalize">
-                  {{ resultsDestination }}
-                  {{ result.destinationStop.time }}
-                </td>
-                <td>
-                  {{ result.duration }}
-                </td>
-                <td>
-                  {{ result.line.frequency }}
-                </td>
-                <td>
-                  {{ result.line.route }}
-                </td>
-                <td>
-                  <a [routerLink]="['/linea', result.line.name]">
-                    {{ result.line.name }}
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <app-results-table [results]="results" [origin]="resultsOrigin" [destination]="resultsDestination">
+        </app-results-table>
       </div>
     </div>
+  </div>
+  <div *ngIf="indirectResults" class="col-12">
+    <accordion [isAnimated]="true">
+      <ng-container *ngFor="let result of indirectResults">
+        <accordion-group heading="{{result.origin}}, {{result.originDepartment}} => {{result.destination}}, {{result.destinationDepartment}}">
+          <app-results-table [results]="result.scale1" [origin]="result.origin" [destination]="result.destination">
+          </app-results-table>
+          <app-results-table [results]="result.scale2" [origin]="result.origin" [destination]="result.destination">
+          </app-results-table>
+        </accordion-group>
+      </ng-container>
+    </accordion>
   </div>
 </div>
