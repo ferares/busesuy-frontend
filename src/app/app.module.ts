@@ -23,6 +23,8 @@ import { LineComponent } from './components/views/line/line.component';
 import { HeaderComponent } from './components/partials/header/header.component';
 import { LoaderComponent } from './components/partials/loader/loader.component';
 import { ResultsTableComponent } from './components/partials/results-table/results-table.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,12 @@ import { ResultsTableComponent } from './components/partials/results-table/resul
     TypeaheadModule.forRoot(),
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     ApiService,
