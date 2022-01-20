@@ -5,10 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import localeEs from '@angular/common/locales/es-UY';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +25,8 @@ import { LineComponent } from './components/views/line/line.component';
 import { HeaderComponent } from './components/partials/header/header.component';
 import { LoaderComponent } from './components/partials/loader/loader.component';
 import { ResultsTableComponent } from './components/partials/results-table/results-table.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { MessageComponent } from './components/partials/message/message.component';
+
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -34,6 +37,7 @@ import { environment } from '../environments/environment';
     HeaderComponent,
     LoaderComponent,
     ResultsTableComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,7 @@ import { environment } from '../environments/environment';
     TypeaheadModule.forRoot(),
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
+    AlertModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

@@ -5,3 +5,14 @@
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+
+<app-message *ngIf="updateAvailable" type="info">
+  <div class="d-flex align-items-center justify-content-center">
+    <span class="me-2">
+      Nueva versión disponible
+    </span>
+    <button type="button" (click)="update()" class="btn btn-sm btn-info ms-2">
+      Actualizar
+    </button>
+  </div>
+</app-message>
