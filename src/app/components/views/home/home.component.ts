@@ -144,10 +144,10 @@ export class HomeComponent implements OnInit {
       ).subscribe(
         (results: Array<any>) => {
           this.results = results.filter(
-            (result: any) => !(result.origin)
+            (result: any) => !(Array.isArray(result))
           );
           this.indirectResults = results.filter(
-            (result: any) => result.origin
+            (result: any) => Array.isArray(result)
           );
           console.log(this.indirectResults)
           this.resultsOrigin = this.origin;

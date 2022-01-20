@@ -80,10 +80,10 @@
   <div *ngIf="indirectResults" class="col-12">
     <accordion [isAnimated]="true">
       <ng-container *ngFor="let result of indirectResults">
-        <accordion-group heading="{{result.origin}}, {{result.originDepartment}} => {{result.destination}}, {{result.destinationDepartment}}">
-          <app-results-table [results]="result.scale1" [origin]="result.origin" [destination]="result.destination">
+        <accordion-group heading="{{result[0].origin}}, {{result[0].originDepartment}} => {{result[0].destination}}, {{result[0].destinationDepartment}} => {{result[1].destination}}, {{result[1].destinationDepartment}}">
+          <app-results-table [results]="result[0].lines" [origin]="result[0].origin" [destination]="result[0].destination">
           </app-results-table>
-          <app-results-table [results]="result.scale2" [origin]="result.origin" [destination]="result.destination">
+          <app-results-table [results]="result[1].lines" [origin]="result[1].origin" [destination]="result[1].destination">
           </app-results-table>
         </accordion-group>
       </ng-container>
