@@ -9,10 +9,14 @@
           Empresa
         </th>
         <th scope="col">
-          Origen
+          Salida de
+          <br>
+          {{ origin }}
         </th>
         <th scope="col">
-          Destino
+          Llegada a
+          <br>
+          {{ destination }}
         </th>
         <th scope="col">
           Duración
@@ -36,11 +40,9 @@
           </a>
         </td>
         <td>
-          {{ origin }}
           {{ result.originStop.time }} h
         </td>
         <td>
-          {{ destination }}
           {{ result.destinationStop.time }} h
         </td>
         <td>
