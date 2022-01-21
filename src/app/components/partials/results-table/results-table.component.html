@@ -30,21 +30,21 @@
     </thead>
     <tbody>
       <tr *ngFor="let result of results">
-        <td class="text-capitalize">
+        <td>
           <a [routerLink]="['/empresas', result.company.name]">
             {{ result.company.name }}
           </a>
         </td>
-        <td class="text-capitalize">
+        <td>
           {{ origin }}
-          {{ result.originStop.time }}
-        </td>
-        <td class="text-capitalize">
-          {{ destination }}
-          {{ result.destinationStop.time }}
+          {{ result.originStop.time }} h
         </td>
         <td>
-          {{ result.duration }}
+          {{ destination }}
+          {{ result.destinationStop.time }} h
+        </td>
+        <td>
+          {{ result.duration }} h
         </td>
         <td>
           {{ result.line.frequency }}
