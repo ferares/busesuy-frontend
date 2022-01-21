@@ -19,9 +19,11 @@ import { ApiService } from './services/api.service'
 
 import { HomeResolver } from './components/views/home/home.resolver';
 import { LineResolver } from './components/views/line/line.resolver';
+import { CompanyResolver } from './components/views/company/company.resolver';
 
 import { HomeComponent } from './components/views/home/home.component';
 import { LineComponent } from './components/views/line/line.component';
+import { CompanyComponent } from './components/views/company/company.component';
 import { HeaderComponent } from './components/partials/header/header.component';
 import { LoaderComponent } from './components/partials/loader/loader.component';
 import { ResultsTableComponent } from './components/partials/results-table/results-table.component';
@@ -34,6 +36,7 @@ import { environment } from '../environments/environment';
     AppComponent,
     HomeComponent,
     LineComponent,
+    CompanyComponent,
     HeaderComponent,
     LoaderComponent,
     ResultsTableComponent,
@@ -61,6 +64,7 @@ import { environment } from '../environments/environment';
     ApiService,
     HomeResolver,
     LineResolver,
+    CompanyResolver,
   ],
   bootstrap: [AppComponent]
 })

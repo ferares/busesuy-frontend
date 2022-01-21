@@ -7,6 +7,9 @@ import { HomeResolver } from './components/views/home/home.resolver';
 import { LineComponent } from './components/views/line/line.component';
 import { LineResolver } from './components/views/line/line.resolver';
 
+import { CompanyComponent } from './components/views/company/company.component';
+import { CompanyResolver } from './components/views/company/company.resolver';
+
 const routes: Routes = [
   {
     path: '',
@@ -15,9 +18,14 @@ const routes: Routes = [
     resolve: { locations: HomeResolver },
   },
   {
-    path: 'linea/:name',
+    path: 'lineas/:name',
     component: LineComponent,
     resolve: { data: LineResolver },
+  },
+  {
+    path: 'empresas/:name',
+    component: CompanyComponent,
+    resolve: { company: CompanyResolver },
   },
 ];
 

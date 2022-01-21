@@ -31,7 +31,9 @@
     <tbody>
       <tr *ngFor="let result of results">
         <td class="text-capitalize">
-          {{ result.company.name }}
+          <a [routerLink]="['/empresas', result.company.name]">
+            {{ result.company.name }}
+          </a>
         </td>
         <td class="text-capitalize">
           {{ origin }}
@@ -51,7 +53,7 @@
           {{ result.line.route }}
         </td>
         <td>
-          <a [routerLink]="['/linea', result.line.name]">
+          <a [routerLink]="['/lineas', result.line.name]">
             {{ result.line.name }}
           </a>
         </td>

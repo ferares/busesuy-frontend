@@ -41,6 +41,20 @@ export class ApiService {
     );
   }
 
+  getLinesByCompany(name: string) {
+    this.setLoading(true);
+    return this.http.get<any>(`${API_URL}/companies/${name}/lines`).pipe(
+      finalize(() => this.setLoading(false)),
+    );
+  }
+
+  getCompanyByName(name: string) {
+    this.setLoading(true);
+    return this.http.get<any>(`${API_URL}/companies/${name}`).pipe(
+      finalize(() => this.setLoading(false)),
+    );
+  }
+
   getDepartmentById(id: number) {
     this.setLoading(true);
     return this.http.get<any>(`${API_URL}/departments/${id}`).pipe(

@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="display-1 mb-4">
+      {{company.name}}
+    </h1>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <b>Nombre:</b> {{ company.name }}
+        </li>
+        <li *ngIf="company.phone" class="list-group-item">
+          <b>Teléfono:</b>
+          <a href="tel:{{company.phone}}" target="_blank" rel="noreferrer">
+            {{ company.phone }}
+          </a>
+        </li>
+        <li *ngIf="company.email" class="list-group-item">
+          <b>Correo electrónico:</b>
+          <a href="mailto:{{company.email}}" target="_blank" rel="noreferrer">
+            {{ company.email }}
+          </a>
+        </li>
+        <li *ngIf="company.web" class="list-group-item">
+          <b>Sitio web:</b>
+          <a href="{{company.web}}" target="_blank" rel="noreferrer">
+            {{ company.web }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title h3">
+          <b>Líneas</b>
+        </h2>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">
+                  Nombre
+                </th>
+                <th scope="col">
+                  Origen
+                </th>
+                <th scope="col">
+                  Destino
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let line of lines">
+                <td class="text-capitalize">
+                  <a [routerLink]="['/lineas', line.name]">
+                    {{ line.name }}
+                  </a>
+                </td>
+                <td>
+                  {{ line.origin }}
+                </td>
+                <td>
+                  {{ line.destination }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>
