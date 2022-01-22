@@ -11,6 +11,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,8 @@ import { CompanyResolver } from './components/views/company/company.resolver';
 import { HomeComponent } from './components/views/home/home.component';
 import { LineComponent } from './components/views/line/line.component';
 import { CompanyComponent } from './components/views/company/company.component';
+import { ContactComponent } from './components/views/contact/contact.component';
+import { AboutComponent } from './components/views/about/about.component';
 import { HeaderComponent } from './components/partials/header/header.component';
 import { LoaderComponent } from './components/partials/loader/loader.component';
 import { ResultsTableComponent } from './components/partials/results-table/results-table.component';
@@ -38,6 +41,8 @@ import { environment } from '../environments/environment';
     HomeComponent,
     LineComponent,
     CompanyComponent,
+    ContactComponent,
+    AboutComponent,
     HeaderComponent,
     LoaderComponent,
     ResultsTableComponent,
@@ -55,6 +60,7 @@ import { environment } from '../environments/environment';
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
     AlertModule.forRoot(),
+    CollapseModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

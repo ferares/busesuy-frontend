@@ -1,4 +1,21 @@
+@import '../../../../styles/variables';
 
 .container {
   max-width: 1000px;
+}
+
+.page-home {
+  background-image: url('../../../../assets/imgs/bgs/beach.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  position: relative;
+
+  &:before {
+    background-color: transparentize($color-black, .7);
+    content: '';
+    display: block;
+    inset: 0;
+    position: absolute;
+  }
 }

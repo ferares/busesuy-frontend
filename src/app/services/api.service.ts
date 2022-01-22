@@ -69,6 +69,13 @@ export class ApiService {
     );
   }
 
+  submitContact(data: any) {
+    this.setLoading(true);
+    return this.http.post<any>(`${API_URL}/contact`, data).pipe(
+      finalize(() => this.setLoading(false)),
+    );
+  }
+
   findRoutes(
     origin: String,
     originDepartment: String,

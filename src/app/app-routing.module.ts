@@ -10,6 +10,10 @@ import { LineResolver } from './components/views/line/line.resolver';
 import { CompanyComponent } from './components/views/company/company.component';
 import { CompanyResolver } from './components/views/company/company.resolver';
 
+import { ContactComponent } from './components/views/contact/contact.component';
+
+import { AboutComponent } from './components/views/about/about.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -26,6 +30,14 @@ const routes: Routes = [
     path: 'empresas/:name',
     component: CompanyComponent,
     resolve: { company: CompanyResolver },
+  },
+  {
+    path: 'contacto',
+    component: ContactComponent,
+  },
+  {
+    path: 'proyecto',
+    component: AboutComponent,
   },
 ];
 

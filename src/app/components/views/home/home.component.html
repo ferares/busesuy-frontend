@@ -1,14 +1,15 @@
-<div class="container d-flex align-items-center justify-content-center h-100">
-  <div class="row w-100">
-    <div class="col-12 mb-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <form class="row g-3" [ngClass]="{ 'was-validated': validated }" novalidate>
-            <div class="col-md-4">
-              <label for="origin" class="form-label">
-                Origen
-              </label>
-              <input
+<div class="page-home">
+  <div class="container d-flex align-items-center justify-content-center h-100">
+    <div class="row w-100">
+      <div class="col-12 mb-4">
+        <div class="card shadow">
+          <div class="card-body">
+            <form class="row g-3" [ngClass]="{ 'was-validated': validated }" novalidate (submit)="search()">
+              <div class="col-md-4">
+                <label for="origin" class="form-label">
+                  Origen
+                </label>
+                <input
                 type="text"
                 class="form-control"
                 id="origin"
@@ -19,16 +20,16 @@
                 name="origin"
                 autocomplete="off"
                 required
-              >
-              <div class="invalid-feedback">
-                Ingrese un origen.
+                >
+                <div class="invalid-feedback">
+                  Ingrese un origen.
+                </div>
               </div>
-            </div>
-            <div class="col-md-4">
-              <label for="destination" class="form-label">
-                Destino
-              </label>
-              <input
+              <div class="col-md-4">
+                <label for="destination" class="form-label">
+                  Destino
+                </label>
+                <input
                 type="text"
                 class="form-control"
                 id="destination"
@@ -39,78 +40,79 @@
                 name="destination"
                 autocomplete="off"
                 required
-              >
-              <div class="invalid-feedback">
-                Ingrese un destino.
-              </div>
-            </div>
-            <div class="col-md-4">
-              <label for="date" class="form-label">
-                Día
-              </label>
-              <div class="btn-group d-flex" dropdown>
-                <button id="button-basic" dropdownToggle type="button" class="form-select" aria-controls="dropdown-basic">
-                  {{ getSelectedDaysString() }}
-                </button>
-                <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu w-100" role="menu" aria-labelledby="button-basic">
-                  <li *ngFor="let day of days" role="menuitem" [ngClass]="{ 'bg-light': selectedDays.includes(day.value) }">
-                    <span class="dropdown-item" (click)="toggleDay($event, day.value)">
-                      {{ day.label }}
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-12">
-              <alert type="warning" [dismissible]="true" class="mb-0">
-                <div class="d-flex align-items-center">
-                  <img src="assets/imgs/danger.svg" class="flex-shrink-0 me-2" alt="">
-                  <span>
-                    Los datos son de 2019. Verifíquelos en cada caso con las
-                    compañías.
-                  </span>
+                >
+                <div class="invalid-feedback">
+                  Ingrese un destino.
                 </div>
-              </alert>
-            </div>
-            <div class="col-md-4 offset-md-4">
-              <button class="btn btn-primary w-100" type="submit" (click)="search()">
-                Buscar
-              </button>
-            </div>
-          </form>
+              </div>
+              <div class="col-md-4">
+                <label for="date" class="form-label">
+                  Día
+                </label>
+                <div class="btn-group d-flex" dropdown>
+                  <button id="button-basic" dropdownToggle type="button" class="form-select" aria-controls="dropdown-basic">
+                    {{ getSelectedDaysString() }}
+                  </button>
+                  <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu w-100" role="menu" aria-labelledby="button-basic">
+                    <li *ngFor="let day of days" role="menuitem" [ngClass]="{ 'bg-light': selectedDays.includes(day.value) }">
+                      <span class="dropdown-item" (click)="toggleDay($event, day.value)">
+                        {{ day.label }}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-12">
+                <alert type="warning" [dismissible]="true" class="mb-0">
+                  <div class="d-flex align-items-center">
+                    <img src="assets/imgs/danger.svg" class="flex-shrink-0 me-2" alt="">
+                    <span>
+                      Los datos son de 2019. Verifíquelos en cada caso con las
+                      compañías.
+                    </span>
+                  </div>
+                </alert>
+              </div>
+              <div class="col-md-4 offset-md-4 mt-0">
+                <button class="btn btn-primary w-100" type="submit">
+                  Buscar
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    <div *ngIf="results" class="col-12 mb-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <h3 class="card-title h5">
-            Lineas
-          </h3>
-          <app-results-table [results]="results" [origin]="resultsOrigin" [destination]="resultsDestination">
-          </app-results-table>
+      <div *ngIf="results" class="col-12 mb-4">
+        <div class="card shadow">
+          <div class="card-body">
+            <h3 class="card-title h5">
+              Lineas
+            </h3>
+            <app-results-table [results]="results" [origin]="resultsOrigin" [destination]="resultsDestination">
+            </app-results-table>
+          </div>
         </div>
       </div>
-    </div>
-    <div *ngIf="(!results || !results.length) && indirectResults" class="col-12 mb-4">
-      <div class="card mb-4 shadow">
-        <div class="card-body">
-          <h3 class="card-title h5">
-            Transbordos
-          </h3>
-          <p *ngIf="!indirectResults || !indirectResults.length" class="lead mb-0">
-            No hay resultados
-          </p>
-          <accordion *ngIf="indirectResults && indirectResults.length" [isAnimated]="true">
-            <ng-container *ngFor="let result of indirectResults">
-              <accordion-group heading="{{result[0].origin}}, {{result[0].originDepartment}} - {{result[0].destination}}, {{result[0].destinationDepartment}} - {{result[1].destination}}, {{result[1].destinationDepartment}}">
-                <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
-                </app-results-table>
-                <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment">
-                </app-results-table>
-              </accordion-group>
-            </ng-container>
-          </accordion>
+      <div *ngIf="(!results || !results.length) && indirectResults" class="col-12 mb-4">
+        <div class="card mb-4 shadow">
+          <div class="card-body">
+            <h3 class="card-title h5">
+              Transbordos
+            </h3>
+            <p *ngIf="!indirectResults || !indirectResults.length" class="lead mb-0">
+              No hay resultados
+            </p>
+            <accordion *ngIf="indirectResults && indirectResults.length" [isAnimated]="true">
+              <ng-container *ngFor="let result of indirectResults">
+                <accordion-group heading="{{result[0].origin}}, {{result[0].originDepartment}} - {{result[0].destination}}, {{result[0].destinationDepartment}} - {{result[1].destination}}, {{result[1].destinationDepartment}}">
+                  <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
+                  </app-results-table>
+                  <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment">
+                  </app-results-table>
+                </accordion-group>
+              </ng-container>
+            </accordion>
+          </div>
         </div>
       </div>
     </div>
