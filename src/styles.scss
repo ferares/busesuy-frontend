@@ -3,7 +3,23 @@
 @import 'styles/bootstrap';
 
 #root {
+  background-image: url('assets/imgs/bgs/beach.jpg');
+  background-position: center;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+
+  &:before {
+    background-color: transparentize($color-black, .7);
+    content: '';
+    display: block;
+    inset: 0;
+    position: absolute;
+  }
+}
+
+app-home {
+  width: 100%;
 }
