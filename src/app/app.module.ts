@@ -28,6 +28,7 @@ import { HeaderComponent } from './components/partials/header/header.component';
 import { LoaderComponent } from './components/partials/loader/loader.component';
 import { ResultsTableComponent } from './components/partials/results-table/results-table.component';
 import { MessageComponent } from './components/partials/message/message.component';
+import { FooterComponent } from './components/partials/footer/footer.component';
 
 import { environment } from '../environments/environment';
 
@@ -41,6 +42,7 @@ import { environment } from '../environments/environment';
     LoaderComponent,
     ResultsTableComponent,
     MessageComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
