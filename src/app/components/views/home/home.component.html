@@ -1,7 +1,7 @@
-<div class="page-home">
+<div class="page-home py-4">
   <div class="container d-flex align-items-center justify-content-center h-100">
     <div class="row w-100">
-      <div class="col-12 mb-4">
+      <div class="col-12">
         <div class="card shadow">
           <div class="card-body">
             <form class="row g-3" [ngClass]="{ 'was-validated': validated }" novalidate (submit)="search()">
@@ -82,7 +82,7 @@
           </div>
         </div>
       </div>
-      <div *ngIf="results" class="col-12 mb-4">
+      <div *ngIf="results" class="col-12 mt-4">
         <div class="card shadow">
           <div class="card-body">
             <h3 class="card-title h5">
@@ -93,8 +93,8 @@
           </div>
         </div>
       </div>
-      <div *ngIf="(!results || !results.length) && indirectResults" class="col-12 mb-4">
-        <div class="card mb-4 shadow">
+      <div *ngIf="(!results || !results.length) && indirectResults" class="col-12 mt-4">
+        <div class="card shadow">
           <div class="card-body">
             <h3 class="card-title h5">
               Transbordos

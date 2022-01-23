@@ -2,12 +2,18 @@
 @import 'styles/variables';
 @import 'styles/bootstrap';
 
+body {
+  height: 100vh;
+}
+
 #root {
   display: flex;
   flex-direction: column;
+  height: 100%;
   min-height: 100vh;
 }
 
 router-outlet + * {
+  height: 100%;
   width: 100%;
 }
