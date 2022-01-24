@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   isCollapsed = true;
-  constructor() {}
+  constructor(private router: Router) {
+    router.events.subscribe(_ => this.isCollapsed = true);
+  }
 }
