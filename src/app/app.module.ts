@@ -1,7 +1,7 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import localeEs from '@angular/common/locales/es-UY';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { ApiService } from './services/api.service'
+import { CacheService } from './services/cache.service'
 
 import { HomeResolver } from './components/views/home/home.resolver';
 import { LineResolver } from './components/views/line/line.resolver';
@@ -75,6 +76,8 @@ import { environment } from '../environments/environment';
     }),
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'es-uy' },
+    { provide: HTTP_INTERCEPTORS, useClass: CacheService, multi: true },
     ApiService,
     HomeResolver,
     LineResolver,
