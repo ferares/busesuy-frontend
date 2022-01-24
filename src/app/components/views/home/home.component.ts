@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiService } from '../../../services/api.service';
@@ -9,6 +9,7 @@ import { ApiService } from '../../../services/api.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('resultsElement') private resultsElement: any;
   validated = false;
   locations: Array<any>;
   results: Array<any> = undefined as any;
@@ -156,6 +157,7 @@ export class HomeComponent implements OnInit {
           );
           this.resultsOrigin = this.origin;
           this.resultsDestination = this.destination;
+          this.resultsElement.nativeElement.scrollIntoView({ behaviour: 'smooth' });
         }
       )
     }
