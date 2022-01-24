@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, Subject } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { Observable, Subject, throwError } from 'rxjs';
+import { finalize, catchError } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 
@@ -72,7 +72,7 @@ export class ApiService {
   submitContact(data: any) {
     this.setLoading(true);
     return this.http.post<any>(`${API_URL}/contact`, data).pipe(
-      finalize(() => this.setLoading(false)),
+      finalize(() => this.setLoading(false))
     );
   }
 
