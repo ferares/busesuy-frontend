@@ -79,6 +79,11 @@ export class HomeComponent implements OnInit {
       }
 
       if ((this.origin) && (this.destination)) this.search();
+      else {
+        this.results = undefined as any;
+        this.indirectResults = undefined as any;
+        this.validated = false;
+      }
     });
   }
 
