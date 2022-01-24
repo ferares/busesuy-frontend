@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, AfterContentInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiService } from '../../../services/api.service';
@@ -8,7 +8,7 @@ import { ApiService } from '../../../services/api.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements AfterContentInit {
   @ViewChild('resultsElement') private resultsElement: any;
   validated = false;
   locations: Array<any>;
@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
+  ngAfterContentInit() {
     this.route.queryParams.subscribe(params => {
       const origin = decodeURIComponent(params['origen'] || '');
       const originDepartment = decodeURIComponent(params['departmentoOrigen'] || '');
@@ -157,7 +157,10 @@ export class HomeComponent implements OnInit {
           );
           this.resultsOrigin = this.origin;
           this.resultsDestination = this.destination;
-          this.resultsElement.nativeElement.scrollIntoView({ behaviour: 'smooth' });
+          // Set timeout to allow results to render (need on first load)
+          setTimeout(() => {
+            this.resultsElement.nativeElement.scrollIntoView({ behaviour: 'smooth' });
+          }, 1);
         }
       )
     }
