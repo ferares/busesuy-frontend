@@ -1,3 +1,6 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
 @import '../../../../styles/variables';
 
 .container {
@@ -18,5 +21,35 @@
     display: block;
     inset: 0;
     position: absolute;
+  }
+}
+
+.results-indirect__accordion-heading {
+  background-color: transparent;
+  border: 0;
+  display: grid;
+  grid-column-gap: 5px;
+  grid-template-columns: repeat(3, 1fr 20px);
+  width: 100%;
+
+  @include media-breakpoint-down('md') {
+    grid-row-gap: 5px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    justify-items: center;
+
+    .results-indirect__accordion-heading__arrow {
+      margin: 0 auto;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+accordion-group {
+  &.panel-open,
+  &.panel-opening {
+    .results-indirect__accordion-heading__chevron {
+      transform: rotate(180deg);
+    }
   }
 }

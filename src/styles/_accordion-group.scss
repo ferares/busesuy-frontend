@@ -1,0 +1,38 @@
+accordion-group {
+  &.panel-open,
+  &.panel-opening {
+    .panel-heading {
+      &.card-header {
+        border-bottom: 1px solid transparentize($color-black, .875);
+      }
+    }
+  }
+
+  .panel-heading {
+    &.card-header {
+      background-color: transparent;
+      border-bottom: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &:not(:last-child) {
+    .panel {
+      &.card {
+        border-bottom: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+
+  &:last-child {
+    .panel {
+      &.card {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+  }
+}

@@ -87,7 +87,7 @@
           <div class="card shadow">
             <div class="card-body">
               <h3 class="card-title h5">
-                Lineas
+                Líneas
               </h3>
               <app-results-table [results]="results" [origin]="resultsOrigin" [destination]="resultsDestination">
               </app-results-table>
@@ -105,7 +105,19 @@
               </p>
               <accordion *ngIf="indirectResults && indirectResults.length" [isAnimated]="true">
                 <ng-container *ngFor="let result of indirectResults">
-                  <accordion-group heading="{{result[0].origin}}, {{result[0].originDepartment}} - {{result[0].destination}}, {{result[0].destinationDepartment}} - {{result[1].destination}}, {{result[1].destinationDepartment}}">
+                  <accordion-group>
+                    <button
+                      type="button"
+                      class="results-indirect__accordion-heading"
+                      accordion-heading
+                    >
+                      {{result[0].origin}}, {{result[0].originDepartment}}
+                      <img class="results-indirect__accordion-heading__arrow" src="assets/imgs/arrow-left.svg" alt="con escala en">
+                      {{result[0].destination}}, {{result[0].destinationDepartment}}
+                      <img class="results-indirect__accordion-heading__arrow" src="assets/imgs/arrow-left.svg" alt="con destino">
+                      {{result[1].destination}}, {{result[1].destinationDepartment}}
+                      <img class="results-indirect__accordion-heading__chevron" src="assets/imgs/chevron-down.svg" alt="Expandir/Colapsar">
+                    </button>
                     <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
                     </app-results-table>
                     <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment">
