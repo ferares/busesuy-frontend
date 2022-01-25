@@ -24,6 +24,40 @@
   }
 }
 
+.home__form__top {
+  align-items: flex-end;
+  display: grid;
+  grid-template-columns: 1fr 50px 1fr 1fr;
+  grid-gap: 15px;
+  justify-content: center;
+
+  @include media-breakpoint-down('md') {
+    grid-template-columns: 1fr 50px 1fr;
+
+    .home__form__block {
+      &:last-child {
+        grid-column: 1/4;
+      }
+    }
+  }
+
+  @include media-breakpoint-down('sm') {
+    grid-template-columns: 1fr;
+
+    .home__form__swap-btn {
+      img {
+        transform: rotate(90deg);
+      }
+    }
+
+    .home__form__block {
+      &:last-child {
+        grid-column: 1;
+      }
+    }
+  }
+}
+
 .results-indirect__accordion-heading {
   background-color: transparent;
   border: 0;

@@ -5,61 +5,71 @@
         <div class="card shadow">
           <div class="card-body">
             <form class="row g-3" [ngClass]="{ 'was-validated': validated }" novalidate (submit)="search()">
-              <div class="col-md-4">
-                <label for="origin" class="form-label">
-                  Origen
-                </label>
-                <input
-                type="text"
-                class="form-control"
-                id="origin"
-                [typeahead]="locations"
-                [typeaheadScrollable]="true"
-                [typeaheadLatinize]="true"
-                [(ngModel)]="origin"
-                name="origin"
-                autocomplete="off"
-                required
-                >
-                <div class="invalid-feedback">
-                  Ingrese un origen.
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="destination" class="form-label">
-                  Destino
-                </label>
-                <input
-                type="text"
-                class="form-control"
-                id="destination"
-                [typeahead]="locations"
-                [typeaheadScrollable]="true"
-                [typeaheadLatinize]="true"
-                [(ngModel)]="destination"
-                name="destination"
-                autocomplete="off"
-                required
-                >
-                <div class="invalid-feedback">
-                  Ingrese un destino.
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="date" class="form-label">
-                  Día
-                </label>
-                <div class="btn-group d-flex" dropdown>
-                  <button id="button-basic" dropdownToggle type="button" class="form-select" aria-controls="dropdown-basic">
-                    {{ getSelectedDaysString() }}
-                  </button>
-                  <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu w-100" role="menu" aria-labelledby="button-basic">
-                    <li *ngFor="let day of days" role="menuitem" [ngClass]="{ 'bg-light': selectedDays.includes(day.value) }">
-                      <span class="dropdown-item" (click)="toggleDay($event, day.value)">
-                        {{ day.label }}
-                      </span>
-                    </li>
-                  </ul>
+              <div class="col-12">
+                <div class="home__form__top">
+                  <div class="home__form__block">
+                    <label for="origin" class="form-label">
+                      Origen
+                    </label>
+                    <input
+                      #originElement
+                      type="text"
+                      class="form-control"
+                      id="origin"
+                      [typeahead]="locations"
+                      [typeaheadScrollable]="true"
+                      [typeaheadLatinize]="true"
+                      [(ngModel)]="origin"
+                      name="origin"
+                      autocomplete="off"
+                      required
+                    >
+                    <div class="invalid-feedback">
+                      Ingrese un origen.
+                    </div>
+                  </div>
+                  <div class="home__form__block">
+                    <button type="button" class="btn btn-primary d-block w-100 home__form__swap-btn" (click)="swapLocations()">
+                      <img src="assets/imgs/arrow-double.svg" alt="Cambiar origen y destino">
+                    </button>
+                  </div>
+                  <div class="home__form__block">
+                    <label for="destination" class="form-label">
+                      Destino
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="destination"
+                      [typeahead]="locations"
+                      [typeaheadScrollable]="true"
+                      [typeaheadLatinize]="true"
+                      [(ngModel)]="destination"
+                      name="destination"
+                      autocomplete="off"
+                      required
+                    >
+                    <div class="invalid-feedback">
+                      Ingrese un destino.
+                    </div>
+                  </div>
+                  <div class="home__form__block">
+                    <label id="date" class="form-label">
+                      Día
+                    </label>
+                    <div class="btn-group d-flex" dropdown>
+                      <button dropdownToggle type="button" class="form-select" aria-controls="dropdown-date">
+                        {{ getSelectedDaysString() }}
+                      </button>
+                      <ul id="dropdown-date" *dropdownMenu class="dropdown-menu w-100" role="menu" aria-labelledby="date">
+                        <li *ngFor="let day of days" role="menuitem" [ngClass]="{ 'bg-light': selectedDays.includes(day.value) }">
+                          <span class="dropdown-item" (click)="toggleDay($event, day.value)">
+                            {{ day.label }}
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="col-12">

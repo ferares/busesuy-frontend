@@ -1,4 +1,4 @@
-import { Component, AfterContentInit, ViewChild } from '@angular/core';
+import { Component, AfterContentInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiService } from '../../../services/api.service';
@@ -8,8 +8,9 @@ import { ApiService } from '../../../services/api.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements AfterContentInit {
+export class HomeComponent implements AfterContentInit, AfterViewInit {
   @ViewChild('resultsElement') private resultsElement: any;
+  @ViewChild('originElement') private originElement: any;
   validated = false;
   locations: Array<any>;
   results: Array<any> = undefined as any;
@@ -64,7 +65,11 @@ export class HomeComponent implements AfterContentInit {
     );
   }
 
-  ngAfterContentInit() {
+  ngAfterViewInit(): void {
+    this.originElement?.nativeElement.focus();
+  }
+
+  ngAfterContentInit(): void {
     this.route.queryParams.subscribe(params => {
       const origin = decodeURIComponent(params['origen'] || '');
       const originDepartment = decodeURIComponent(params['departmentoOrigen'] || '');
@@ -109,6 +114,12 @@ export class HomeComponent implements AfterContentInit {
     const index = this.selectedDays.indexOf(day);
     if (index > -1) this.selectedDays.splice(index, 1);
     else this.selectedDays.push(day);
+  }
+
+  swapLocations(): void {
+    const tmpOrigin = this.origin;
+    this.origin = this.destination;
+    this.destination = tmpOrigin;
   }
 
   validate(): boolean {
