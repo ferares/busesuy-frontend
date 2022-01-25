@@ -24,6 +24,31 @@
   }
 }
 
+.home__form {
+  @include media-breakpoint-up('sm') {
+    &.was-validated {
+      &:invalid {
+        .home__form__swap-btn {
+          margin-bottom: 1.55rem;
+        }
+
+
+        @include media-breakpoint-up('md') {
+          .form-select {
+            margin-bottom: 1.55rem;
+          }
+        }
+
+        .form-control {
+          &:valid {
+            margin-bottom: 1.55rem;
+          }
+        }
+      }
+    }
+  }
+}
+
 .home__form__top {
   align-items: flex-end;
   display: grid;
