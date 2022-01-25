@@ -114,6 +114,25 @@
   transition: transform .2s ease-in-out;
 }
 
+.results-indirect__title {
+  text-align: center;
+
+  .results-indirect__accordion-heading__arrow {
+    margin: 0 .5rem;
+  }
+
+  @include media-breakpoint-down('sm') {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    .results-indirect__accordion-heading__arrow {
+      margin: .5rem 0;
+      transform: rotate(90deg);
+    }
+  }
+}
+
 accordion-group {
   &.panel-open,
   &.panel-opening {

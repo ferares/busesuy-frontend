@@ -130,8 +130,18 @@
                     {{result[1].destination}}, {{result[1].destinationDepartment}}
                     <img class="results-indirect__accordion-heading__chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" alt="Expandir/Colapsar">
                   </button>
+                  <h3 class="results-indirect__title lead mb-3">
+                    {{result[0].origin}}, {{result[0].originDepartment}}
+                    <img class="results-indirect__accordion-heading__arrow" width="15" height="15" src="assets/imgs/arrow-left.svg" alt="hacia">
+                    {{result[0].destination}}, {{result[0].destinationDepartment}}
+                  </h3>
                   <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
                   </app-results-table>
+                  <h3 class="results-indirect__title lead mb-3">
+                    {{result[1].origin}}, {{result[1].originDepartment}}
+                    <img class="results-indirect__accordion-heading__arrow" width="15" height="15" src="assets/imgs/arrow-left.svg" alt="hacia">
+                    {{result[1].destination}}, {{result[1].destinationDepartment}}
+                  </h3>
                   <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment">
                   </app-results-table>
                 </accordion-group>
