@@ -27,7 +27,7 @@ accordion-group {
     }
   }
 
-  &:last-child {
+  &:not(:first-child) {
     .panel {
       &.card {
         border-top-left-radius: 0;
