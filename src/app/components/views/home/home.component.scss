@@ -52,7 +52,7 @@
 .home__form__top {
   align-items: flex-end;
   display: grid;
-  grid-template-columns: 1fr 50px 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) 50px minmax(0, 1fr) minmax(0, 1fr);
   grid-gap: 15px;
   justify-content: center;
 
@@ -80,6 +80,12 @@
         grid-column: 1;
       }
     }
+  }
+}
+
+.form-select {
+  @include media-breakpoint-down('md') {
+    white-space: normal;
   }
 }
 
