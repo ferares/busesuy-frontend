@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +8,14 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   isCollapsed = true;
+  currentUrl = '';
+
   constructor(private router: Router) {
-    router.events.subscribe(_ => this.isCollapsed = true);
+    router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd) {
+        this.isCollapsed = true;
+        this.currentUrl = event.url;
+      }
+    });
   }
 }

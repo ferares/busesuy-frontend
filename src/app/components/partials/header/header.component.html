@@ -1,8 +1,11 @@
+<button type="button" class="skip-to-content btn btn-primary" [routerLink]="[currentUrl]" [fragment]="'main'">
+  Saltear navegación
+</button>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="['/']">
+    <span class="navbar-brand">
       BusesUY
-    </a>
+    </span>
     <button class="navbar-toggler" type="button" aria-controls="navbarNav" [attr.aria-expanded]="!isCollapsed" aria-label="Abrir/Cerrar navegación" (click)="isCollapsed = !isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>

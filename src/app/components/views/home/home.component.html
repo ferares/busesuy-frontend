@@ -33,7 +33,7 @@
                   </div>
                   <div class="home__form__block">
                     <button type="button" class="btn btn-primary d-block w-100 home__form__swap-btn" (click)="swapLocations()">
-                      <img src="assets/imgs/arrow-double.svg" alt="Cambiar origen y destino">
+                      <img src="assets/imgs/arrow-double.svg" height="20" width="20" alt="Cambiar origen y destino">
                     </button>
                   </div>
                   <div class="home__form__block">
@@ -78,7 +78,7 @@
               <div class="col-12">
                 <alert type="warning" [dismissible]="true" class="mb-0">
                   <div class="d-flex align-items-center">
-                    <img src="assets/imgs/danger.svg" class="flex-shrink-0 me-2" alt="">
+                    <img src="assets/imgs/danger.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="">
                     <span>
                       Los datos son de 2019. Verifíquelos en cada caso con las
                       compañías.
@@ -124,11 +124,11 @@
                     accordion-heading
                   >
                     {{result[0].origin}}, {{result[0].originDepartment}}
-                    <img class="results-indirect__accordion-heading__arrow" src="assets/imgs/arrow-left.svg" alt="con escala en">
+                    <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" alt="con escala en">
                     {{result[0].destination}}, {{result[0].destinationDepartment}}
-                    <img class="results-indirect__accordion-heading__arrow" src="assets/imgs/arrow-left.svg" alt="con destino">
+                    <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" alt="con destino">
                     {{result[1].destination}}, {{result[1].destinationDepartment}}
-                    <img class="results-indirect__accordion-heading__chevron" src="assets/imgs/chevron-down.svg" alt="Expandir/Colapsar">
+                    <img class="results-indirect__accordion-heading__chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" alt="Expandir/Colapsar">
                   </button>
                   <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
                   </app-results-table>
