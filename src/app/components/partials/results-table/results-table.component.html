@@ -2,64 +2,92 @@
   No hay resultados
 </p>
 <div *ngIf="results.length" class="table-responsive">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">
-          Empresa
-        </th>
-        <th scope="col">
-          Salida de
-          <br>
-          {{ origin }}
-        </th>
-        <th scope="col">
-          Llegada a
-          <br>
-          {{ destination }}
-        </th>
-        <th scope="col">
-          Duración
-        </th>
-        <th scope="col">
-          Frecuencia
-        </th>
-        <th scope="col">
-          Recorrido
-        </th>
-        <th scope="col">
-          Línea
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let result of results">
-        <td>
-          <a [routerLink]="['/empresas', result.company.name]">
-            {{ result.company.name }}
-          </a>
-        </td>
-        <td>
-          {{ result.originStop.time }} h
-        </td>
-        <td>
-          {{ result.destinationStop.time }} h
-        </td>
-        <td>
-          {{ result.duration }} h
-        </td>
-        <td>
-          {{ result.line.frequency }}
-        </td>
-        <td>
-          {{ result.line.route }}
-        </td>
-        <td>
-          <a [routerLink]="['/lineas', result.line.name]">
-            {{ result.line.name }}
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <ol class="list-unstyled">
+    <li *ngFor="let result of results; let i = index">
+      <div class="card mb-3 result">
+        <div class="row g-0">
+          <div class="col-12 col-md-3 result__company-wraper">
+            <h3 class="result__company h5">
+              <a [routerLink]="['/empresas', result.company.name]">
+                {{ result.company.name }}
+              </a>
+            </h3>
+          </div>
+          <div class="col-12 col-md-9">
+            <div class="card-body result__body position-relative">
+              <div class="result__body__item">
+                <h5 class="card-title">
+                  {{ result.originStop.time }} h - {{ result.destinationStop.time }} h
+                </h5>
+                <p class="card-text">
+                  Duración: {{ result.duration }} h
+                </p>
+              </div>
+              <div class="result__body__item">
+                <h5 class="card-title">
+                  Frecuencia
+                </h5>
+                <p class="card-text">
+                  {{ result.line.frequency }}
+                </p>
+              </div>
+              <div class="result__body__item">
+                <h5 class="card-title">
+                  Recorrido
+                </h5>
+                <p class="card-text">
+                  {{ result.line.route }}
+                </p>
+              </div>
+              <div class="result__body__item">
+                <a [routerLink]="['/lineas', result.line.name]">
+                  + Info
+                </a>
+              </div>
+              <div class="result__expand-btn-wrapper">
+                <button
+                  type="button"
+                  class="result__expand-btn"
+                  (click)="expanded[i] = !expanded[i]"
+                  [attr.aria-expanded]="expanded[i]"
+                >
+                  <img
+                    class="result__chevron"
+                    src="assets/imgs/chevron-down.svg"
+                    [alt]="expanded[i] ? 'Colapsar' : 'Expandir'"
+                    [ngClass]="{ 'result__chevron--open': expanded[i] }"
+                  >
+                </button>
+              </div>
+            </div>
+            <div id="card-{{i}}-collapse" [collapse]="!expanded[i]" [isAnimated]="true">
+              <div class="card-body result__body-expanded border-top">
+                <div class="result__body__item">
+                  <h5 class="card-title">
+                    Frecuencia
+                  </h5>
+                  <p class="card-text">
+                    {{ result.line.frequency }}
+                  </p>
+                </div>
+                <div class="result__body__item">
+                  <h5 class="card-title">
+                    Recorrido
+                  </h5>
+                  <p class="card-text">
+                    {{ result.line.route }}
+                  </p>
+                </div>
+                <div class="result__body__item">
+                  <a [routerLink]="['/lineas', result.line.name]">
+                    + Info
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ol>
 </div>

@@ -79,6 +79,10 @@
   }
 }
 
+.results-indirect__accordion-heading__chevron {
+  transition: transform .2s ease-in-out;
+}
+
 accordion-group {
   &.panel-open,
   &.panel-opening {
