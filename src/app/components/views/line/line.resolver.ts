@@ -29,7 +29,7 @@ export class LineResolver implements Resolve<any> {
           ).subscribe(departments => {
             const [originDepartment, destinationDepartment] = departments
             resolve({
-              line,
+              line: { ...line },
               origin: origin.name,
               originDepartment: originDepartment.name,
               destination: destination.name,
