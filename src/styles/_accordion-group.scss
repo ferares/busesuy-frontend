@@ -1,9 +1,15 @@
 accordion-group {
   &.panel-open,
   &.panel-opening {
-    .panel-heading {
-      &.card-header {
-        border-bottom: 1px solid transparentize($color-black, .875);
+    & > .panel {
+      & > .panel-heading {
+        &.card-header {
+          border-bottom: 1px solid transparentize($color-black, .875);
+        }
+
+        .panel-chevron {
+          transform: rotate(180deg);
+        }
       }
     }
   }
@@ -17,8 +23,12 @@ accordion-group {
     }
   }
 
+  .panel-chevron {
+    transition: transform .2s ease-in-out;
+  }
+
   &:not(:last-child) {
-    .panel {
+    & > .panel {
       &.card {
         border-bottom: 0;
         border-bottom-left-radius: 0;
@@ -28,7 +38,7 @@ accordion-group {
   }
 
   &:not(:first-child) {
-    .panel {
+    & > .panel {
       &.card {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
