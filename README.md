@@ -12,10 +12,21 @@ Este repositorio contiene el componente de frontend del proyecto, el cual se com
 
 Se utilizan [Node.js](https://nodejs.org/en/) y [npm](https://www.npmjs.com/) para el manejo de dependencias y proceso de desarrollo del frontend.
 
+### Dependencias notables
+
+- [Angular](https://angular.io/)
+- [Angular Bootstrap](https://valor-software.com/ngx-bootstrap/#/)
+- [Bootstrap](https://getbootstrap.com/)
+
+## Configuración inicial
+
+- Correr una instancia local del proyecto de backend.
+- Indicar el puerto en el que corre dicha instancia en el archivo `src/environments/environment.ts`.
+
 ## Comandos
 
 Los siguientes comandos están disponibles una vez instalados [Node.js](https://nodejs.org/en/) y [npm](https://www.npmjs.com/):
 
 - `npm i` - Instala las dependencias del proyecto.
 - `npm start` - Corre un servidor local en el puerto `4200` con hot reloading para desarrollo.
-- `npm run buil` - Compila el proyecto para producción en la carpeta `dist`.
+- `npm run build` - Compila el proyecto para producción en la carpeta `dist`.
