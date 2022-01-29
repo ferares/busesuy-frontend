@@ -2,6 +2,7 @@ import { Component, AfterContentInit, AfterViewInit, ViewChild } from '@angular/
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiService } from '../../../services/api.service';
+import { ImagesService } from '../../../services/images.service';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ import { ApiService } from '../../../services/api.service';
 export class HomeComponent implements AfterContentInit, AfterViewInit {
   @ViewChild('resultsElement') private resultsElement: any;
   @ViewChild('originElement') private originElement: any;
+  background: any = undefined as any;
   validated = false;
   locations: Array<any>;
   results: Array<any> = undefined as any;
@@ -59,7 +61,11 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
     private router: Router,
     private route: ActivatedRoute,
     private apiService: ApiService,
+    private imagesService: ImagesService,
   ) {
+    this.imagesService.getRandomImage().subscribe((image: any) => {
+      this.background = image;
+    });
     this.locations = route.snapshot.data['locations'].map(
       (location: any) => this.getLocationString(location.name, location.department.name)
     );

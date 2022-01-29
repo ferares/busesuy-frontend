@@ -14,12 +14,14 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { ApiService } from './services/api.service'
 import { CacheService } from './services/cache.service'
+import { ImagesService } from './services/images.service'
 
 import { HomeResolver } from './components/views/home/home.resolver';
 import { LineResolver } from './components/views/line/line.resolver';
@@ -64,6 +66,7 @@ import { environment } from '../environments/environment';
     AccordionModule.forRoot(),
     AlertModule.forRoot(),
     CollapseModule.forRoot(),
+    PopoverModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
@@ -79,6 +82,7 @@ import { environment } from '../environments/environment';
     { provide: LOCALE_ID, useValue: 'es-uy' },
     { provide: HTTP_INTERCEPTORS, useClass: CacheService, multi: true },
     ApiService,
+    ImagesService,
     HomeResolver,
     LineResolver,
     CompanyResolver,

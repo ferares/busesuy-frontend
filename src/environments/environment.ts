@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiURL: 'http://localhost:3000',
+  imagesURL: 'http://localhost:5000',
   hcaptchaSiteKey: '6c6f131f-270b-4280-a4f5-bdff7869d748',
 };
 

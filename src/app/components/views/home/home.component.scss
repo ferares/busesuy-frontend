@@ -9,10 +9,10 @@
 
 .page-home {
   background-attachment: fixed;
-  background-image: url('../../../../assets/imgs/bgs/beach.jpg');
   background-position: center;
   background-size: cover;
   height: 100%;
+  margin-bottom: 5rem;
   position: relative;
 
   &:before {
@@ -22,6 +22,15 @@
     inset: 0;
     position: absolute;
   }
+}
+
+.page-home__bg-data-btn {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
 }
 
 .home__form {
