@@ -49,6 +49,13 @@
   }
 }
 
+.result__body__item {
+  @include media-breakpoint-down('sm') {
+    margin: 0 auto;
+    width: calc(100% - 2rem);
+  }
+}
+
 .result__body-expanded {
   display: grid;
   grid-template-columns: 1fr 1fr 3rem;
