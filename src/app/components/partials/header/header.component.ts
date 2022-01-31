@@ -9,6 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
 export class HeaderComponent {
   isCollapsed = true;
   currentUrl = '';
+  linkCopied = false;
 
   constructor(private router: Router) {
     router.events.subscribe((event: any) => {
@@ -17,5 +18,13 @@ export class HeaderComponent {
         this.currentUrl = event.url;
       }
     });
+  }
+
+  share(): void {
+    navigator.clipboard.writeText(window.location.href);
+    this.linkCopied = true;
+    setTimeout(() => {
+      this.linkCopied = false
+    }, 3000);
   }
 }
