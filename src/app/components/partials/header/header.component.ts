@@ -21,10 +21,18 @@ export class HeaderComponent {
   }
 
   share(): void {
-    navigator.clipboard.writeText(window.location.href);
-    this.linkCopied = true;
-    setTimeout(() => {
-      this.linkCopied = false
-    }, 3000);
+    if (navigator.share) {
+      navigator.share({
+        title: 'BusesUY',
+        text: '',
+        url: window.location.href,
+      });
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      this.linkCopied = true;
+      setTimeout(() => {
+        this.linkCopied = false;
+      }, 3000);
+    }
   }
 }
