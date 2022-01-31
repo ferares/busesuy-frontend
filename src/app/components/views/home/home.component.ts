@@ -174,7 +174,7 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
           );
           this.resultsOrigin = this.origin;
           this.resultsDestination = this.destination;
-          // Set timeout to allow results to render (need on first load)
+          // Set timeout to allow results to render (needed on first load)
           setTimeout(() => {
             this.resultsElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
           }, 1);
