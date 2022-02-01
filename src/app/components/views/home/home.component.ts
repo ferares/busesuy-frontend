@@ -1,7 +1,9 @@
 import { Component, AfterContentInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { go, highlight } from 'fuzzysort';
+import { latinize } from 'ngx-bootstrap/typeahead';
+
+import { go, highlight, prepare } from 'fuzzysort';
 
 import { ApiService } from '../../../services/api.service';
 import { ImagesService } from '../../../services/images.service';
@@ -18,7 +20,8 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
   @ViewChild('destinationOptions') private destinationOptions: any;
   background: any = undefined as any;
   validated = false;
-  locations: Array<any>;
+  locations: any;
+  locationsSearch: Array<any>;
   filteredLocations: any;
   results: Array<any> = undefined as any;
   indirectResults: Array<any> = undefined as any;
@@ -71,9 +74,17 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
     this.imagesService.getRandomImage().subscribe((image: any) => {
       this.background = image;
     });
-    this.locations = route.snapshot.data['locations'].map(
-      (location: any) => this.getLocationString(location.name, location.department.name)
+    this.locations = route.snapshot.data['locations'].reduce(
+      (result: any, location: any) => {
+        const locationLabel = this.getLocationString(location.name, location.department.name)
+        return {
+          ...result,
+          [latinize(locationLabel)]: locationLabel,
+        }
+      },
+      {},
     );
+    this.locationsSearch = Object.keys(this.locations).map(prepare);
   }
 
   ngAfterViewInit(): void {
@@ -105,18 +116,26 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
   }
 
   filter(text: string): void {
-    this.filteredLocations = go(text, this.locations).map(result => {
+    this.filteredLocations = go(
+      latinize(text), // Remove tildes from search
+      this.locationsSearch,
+      { limit: 100, threshold: -100, allowTypo: false },
+    ).map(result => {
+      const value = this.locations[result.target];
       return {
-        ...result,
-        value: result.target,
-        target: highlight(result),
+        value,
+        target: highlight({
+          ...result,
+          target: value,
+        }),
       };
     });
-    if (!this.filteredLocations.length) {
-      this.filteredLocations = this.locations.map(location => {
+    if (!text) {
+      this.filteredLocations = this.locationsSearch.map(location => {
+        const value = this.locations[location.target];
         return {
-          value: location,
-          target: location,
+          value,
+          target: value,
         }
       })
     }
@@ -134,8 +153,13 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
 
   handleIntro(input: string, event: any): void {
     if ((event.code === 'Enter') || (event.code === 'NumpadEnter')) {
-      event.preventDefault();
-      this.setLocation(input, 0);
+      if (
+        ((input === 'origin') && (this.originOptions.isOpen)) ||
+        (this.destinationOptions.isOpen)
+      ) {
+        event.preventDefault();
+        this.setLocation(input, 0);
+      }
     }
   }
 
