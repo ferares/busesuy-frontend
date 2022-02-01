@@ -53,6 +53,10 @@
             margin-bottom: 1.55rem;
           }
         }
+
+        .home__form__location-options {
+          margin-top: -1.55rem;
+        }
       }
     }
   }
@@ -90,6 +94,12 @@
       }
     }
   }
+}
+
+.home__form__location-options {
+  max-height: 9rem;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .form-select {

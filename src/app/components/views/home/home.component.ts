@@ -1,6 +1,8 @@
 import { Component, AfterContentInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { go, highlight } from 'fuzzysort';
+
 import { ApiService } from '../../../services/api.service';
 import { ImagesService } from '../../../services/images.service';
 
@@ -12,9 +14,12 @@ import { ImagesService } from '../../../services/images.service';
 export class HomeComponent implements AfterContentInit, AfterViewInit {
   @ViewChild('resultsElement') private resultsElement: any;
   @ViewChild('originElement') private originElement: any;
+  @ViewChild('originOptions') private originOptions: any;
+  @ViewChild('destinationOptions') private destinationOptions: any;
   background: any = undefined as any;
   validated = false;
   locations: Array<any>;
+  filteredLocations: any;
   results: Array<any> = undefined as any;
   indirectResults: Array<any> = undefined as any;
   resultsOrigin = '';
@@ -97,6 +102,53 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
         this.validated = false;
       }
     });
+  }
+
+  filter(text: string): void {
+    this.filteredLocations = go(text, this.locations).map(result => {
+      return {
+        ...result,
+        value: result.target,
+        target: highlight(result),
+      };
+    });
+    if (!this.filteredLocations.length) {
+      this.filteredLocations = this.locations.map(location => {
+        return {
+          value: location,
+          target: location,
+        }
+      })
+    }
+  }
+
+  setLocation(input: string, index: number): void {
+    if (input === 'origin') {
+      this.origin = this.filteredLocations[index].value;
+      this.originOptions.isOpen = false;
+    } else {
+      this.destination = this.filteredLocations[index].value;
+      this.destinationOptions.isOpen = false;
+    }
+  }
+
+  handleIntro(input: string, event: any): void {
+    if ((event.code === 'Enter') || (event.code === 'NumpadEnter')) {
+      event.preventDefault();
+      this.setLocation(input, 0);
+    }
+  }
+
+  handleInput(input: string): void {
+    let value;
+    if (input === 'origin') {
+      value = this.origin;
+      this.originOptions.isOpen = true;
+    } else {
+      this.destinationOptions.isOpen = true;
+      value = this.destination;
+    }
+    this.filter(value);
   }
 
   getLocationString(locationName: string, departmentName: string): string {

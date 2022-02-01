@@ -9,7 +9,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { NgHcaptchaModule } from 'ng-hcaptcha';
 
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AlertModule } from 'ngx-bootstrap/alert';
@@ -61,7 +60,6 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    TypeaheadModule.forRoot(),
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
     AlertModule.forRoot(),
