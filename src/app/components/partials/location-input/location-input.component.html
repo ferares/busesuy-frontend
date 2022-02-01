@@ -1,0 +1,27 @@
+<div class="btn-group w-100" dropdown #options="bs-dropdown">
+  <div class="form-group w-100">
+    <input
+      #inputElement
+      type="text"
+      class="form-control"
+      [id]="id"
+      [(ngModel)]="input"
+      [name]="name"
+      autocomplete="off"
+      [required]="required"
+      dropdownToggle
+      (input)="handleInput()"
+      (click)="handleInput()"
+      (keydown)="handleIntro($event)"
+    >
+    <div class="invalid-feedback" *ngIf="invalidFeedback">
+      {{ invalidFeedback }}
+    </div>
+  </div>
+  <ul *dropdownMenu class="location-options dropdown-menu w-100" role="menu">
+    <li *ngFor="let option of filteredOptions; let i = index" role="menuitem">
+      <button type="button" class="dropdown-item" (click)="setLocation(i)" [innerHTML]="option.target">
+      </button>
+    </li>
+  </ul>
+</div>

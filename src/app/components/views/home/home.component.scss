@@ -96,12 +96,6 @@
   }
 }
 
-.home__form__location-options {
-  max-height: 9rem;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
 .form-select {
   @include media-breakpoint-down('md') {
     white-space: normal;

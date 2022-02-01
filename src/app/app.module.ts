@@ -36,6 +36,7 @@ import { LoaderComponent } from './components/partials/loader/loader.component';
 import { ResultsTableComponent } from './components/partials/results-table/results-table.component';
 import { MessageComponent } from './components/partials/message/message.component';
 import { FooterComponent } from './components/partials/footer/footer.component';
+import { LocationInputComponent } from './components/partials/location-input/location-input.component';
 
 import { environment } from '../environments/environment';
 
@@ -52,6 +53,7 @@ import { environment } from '../environments/environment';
     ResultsTableComponent,
     MessageComponent,
     FooterComponent,
+    LocationInputComponent,
   ],
   imports: [
     BrowserModule,

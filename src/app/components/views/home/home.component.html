@@ -48,33 +48,15 @@
                     <label for="origin" class="form-label">
                       Origen
                     </label>
-                    <div class="btn-group w-100" dropdown #originOptions="bs-dropdown">
-                      <div class="form-group w-100">
-                        <input
-                          #originElement
-                          type="text"
-                          class="form-control"
-                          id="origin"
-                          [(ngModel)]="origin"
-                          name="origin"
-                          autocomplete="off"
-                          required
-                          dropdownToggle
-                          (input)="handleInput('origin')"
-                          (click)="handleInput('origin')"
-                          (keydown)="handleIntro('origin', $event)"
-                        >
-                        <div class="invalid-feedback">
-                          Ingrese un origen.
-                        </div>
-                      </div>
-                      <ul *dropdownMenu class="home__form__location-options dropdown-menu w-100" role="menu">
-                        <li *ngFor="let location of filteredLocations; let i = index" role="menuitem">
-                          <button type="button" class="dropdown-item" (click)="setLocation('origin', i)" [innerHTML]="location.target">
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                    <app-location-input
+                      id="origin"
+                      name="origin"
+                      [(ngModel)]="origin"
+                      [required]="true"
+                      [locations]="locations"
+                      invalidFeedback="Ingrese un origen."
+                    >
+                    </app-location-input>
                   </div>
                   <div class="home__form__block">
                     <button type="button" class="btn btn-primary d-block w-100 home__form__swap-btn" (click)="swapLocations()">
@@ -85,32 +67,15 @@
                     <label for="destination" class="form-label">
                       Destino
                     </label>
-                    <div class="btn-group w-100" dropdown #destinationOptions="bs-dropdown">
-                      <div class="form-group w-100">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="destination"
-                          [(ngModel)]="destination"
-                          name="destination"
-                          autocomplete="off"
-                          required
-                          dropdownToggle
-                          (input)="handleInput('destination')"
-                          (click)="handleInput('destination')"
-                          (keydown)="handleIntro('destination', $event)"
-                        >
-                        <div class="invalid-feedback">
-                          Ingrese un destino.
-                        </div>
-                      </div>
-                      <ul *dropdownMenu class="home__form__location-options dropdown-menu w-100" role="menu">
-                        <li *ngFor="let location of filteredLocations; let i = index" role="menuitem">
-                          <button type="button" class="dropdown-item" (click)="setLocation('destination', i)" [innerHTML]="location.target">
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                    <app-location-input
+                      id="destination"
+                      name="destination"
+                      [(ngModel)]="destination"
+                      [required]="true"
+                      [locations]="locations"
+                      invalidFeedback="Ingrese un destino."
+                    >
+                    </app-location-input>
                   </div>
                   <div class="home__form__block">
                     <label id="date" class="form-label">
