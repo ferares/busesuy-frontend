@@ -32,7 +32,7 @@ export class ContactComponent {
   }
 
   onCaptchaError(): void {
-    this.error = 'Error de verificación de captcha';
+    this.error = $localize `Error de verificación de captcha`;
   }
 
   submit(token: string): void {
@@ -43,11 +43,11 @@ export class ContactComponent {
       this.apiService.submitContact(data).subscribe(
         (res: any) => {
           this.success = res?.success;
-          if (!this.success) this.error = 'Error interno, intente nuevamente más tarde';
+          if (!this.success) this.error = $localize `Error interno, intente nuevamente más tarde`;
           else this.form.reset();
         },
         (err: any) => {
-          this.error = 'Error interno, intente nuevamente más tarde';
+          this.error = $localize `Error interno, intente nuevamente más tarde`;
         },
       )
     }

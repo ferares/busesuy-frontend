@@ -32,35 +32,35 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
   selectedDays: Array<string> = [];
   days = [
     {
-      label: 'Lunes',
+      label:  $localize `Lunes`,
       value: 'lu',
     },
     {
-      label: 'Martes',
+      label:  $localize `Martes`,
       value: 'ma',
     },
     {
-      label: 'Miércoles',
+      label:  $localize `Miércoles`,
       value: 'mi',
     },
     {
-      label: 'Jueves',
+      label:  $localize `Jueves`,
       value: 'ju',
     },
     {
-      label: 'Viernes',
+      label:  $localize `Viernes`,
       value: 'vi',
     },
     {
-      label: 'Sábado',
+      label:  $localize `Sábado`,
       value: 'sa',
     },
     {
-      label: 'Domingo',
+      label:  $localize `Domingo`,
       value: 'do',
     },
     {
-      label: 'Feriados',
+      label:  $localize `Feriados`,
       value: 'fe',
     },
   ];
@@ -181,7 +181,7 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
   }
 
   getSelectedDaysString(): string {
-    if (!this.selectedDays.length) return 'Cualquier día'
+    if (!this.selectedDays.length) return $localize `Cualquier día`
     let selectedDaysLabels = []
     for (const dayValue of this.selectedDays) {
       const day = this.days.find(day => day.value === dayValue)

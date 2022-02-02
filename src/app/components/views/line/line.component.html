@@ -2,7 +2,7 @@
   <div class="container d-flex align-items-start justify-content-center h-100">
     <div class="row">
       <div class="col-12">
-        <h1 class="display-1 mb-4">
+        <h1 class="display-1 mb-4" i18n>
           Línea {{line.name}}
         </h1>
       </div>
@@ -10,30 +10,30 @@
         <div class="card">
           <div class="card-body">
             <h2 class="card-title h5">
-              <b>Número de línea:</b> {{ line.name }}
+              <b i18n>Número de línea:</b> {{ line.name }}
             </h2>
             <h3 class="card-subtitle mb-2 text-muted h6">
-              <b>Empresa:</b> {{ line.company.name }}
+              <b i18n>Empresa:</b> {{ line.company.name }}
             </h3>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <b>Origen:</b> {{ line.origin }}, {{ line.originDepartment }}
+              <b i18n>Origen:</b> {{ line.origin }}, {{ line.originDepartment }}
             </li>
             <li class="list-group-item">
-              <b>Destino:</b> {{ line.destination }}, {{ line.destinationDepartment }}
+              <b i18n>Destino:</b> {{ line.destination }}, {{ line.destinationDepartment }}
             </li>
             <li class="list-group-item">
-              <b>Hora salida:</b> {{ line.startTime }} h
+              <b i18n>Hora salida:</b> {{ line.startTime }} h
             </li>
             <li class="list-group-item">
-              <b>Hora llegada:</b> {{ line.endTime }} h
+              <b i18n>Hora llegada:</b> {{ line.endTime }} h
             </li>
             <li class="list-group-item">
-              <b>Ruta:</b> {{ line.route }}
+              <b i18n>Ruta:</b> {{ line.route }}
             </li>
             <li class="list-group-item">
-              <b>Frecuencia:</b> {{ line.frequency }}
+              <b i18n>Frecuencia:</b> {{ line.frequency }}
             </li>
           </ul>
         </div>
@@ -42,16 +42,16 @@
         <div class="card">
           <div class="card-body">
             <h2 class="card-title h3">
-              <b>Paradas</b>
+              <b i18n>Paradas</b>
             </h2>
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">
+                    <th scope="col" i18n>
                       Localidad
                     </th>
-                    <th scope="col">
+                    <th scope="col" i18n>
                       Hora
                     </th>
                   </tr>

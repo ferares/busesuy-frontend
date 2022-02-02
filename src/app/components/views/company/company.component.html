@@ -10,22 +10,22 @@
         <div class="card">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <b>Nombre:</b> {{ company.name }}
+              <b i18n>Nombre:</b> {{ company.name }}
             </li>
             <li *ngIf="company.phone" class="list-group-item">
-              <b>Teléfono:</b>
+              <b i18n>Teléfono:</b>
               <a href="tel:{{company.phone}}" target="_blank" rel="noreferrer">
                 {{ company.phone }}
               </a>
             </li>
             <li *ngIf="company.email" class="list-group-item">
-              <b>Correo electrónico:</b>
+              <b i18n>Correo electrónico:</b>
               <a href="mailto:{{company.email}}" target="_blank" rel="noreferrer">
                 {{ company.email }}
               </a>
             </li>
             <li *ngIf="company.web" class="list-group-item">
-              <b>Sitio web:</b>
+              <b i18n>Sitio web:</b>
               <a href="{{company.web}}" target="_blank" rel="noreferrer">
                 {{ company.web }}
               </a>
@@ -37,19 +37,19 @@
         <div class="card">
           <div class="card-body">
             <h2 class="card-title h3">
-              <b>Líneas</b>
+              <b i18n>Líneas</b>
             </h2>
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">
+                    <th scope="col" i18n>
                       Nombre
                     </th>
-                    <th scope="col">
+                    <th scope="col" i18n>
                       Origen
                     </th>
-                    <th scope="col">
+                    <th scope="col" i18n>
                       Destino
                     </th>
                   </tr>

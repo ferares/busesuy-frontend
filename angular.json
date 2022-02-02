@@ -13,6 +13,12 @@
           "strict": true
         }
       },
+      "i18n": {
+        "sourceLocale": "es",
+        "locales": {
+          "en": "src/locale/messages.en.json"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -26,6 +32,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "localize": true,
             "assets": [
               "src/favicon.ico",
               "src/assets",
@@ -67,7 +74,8 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "localize": ["es"]
             }
           },
           "defaultConfiguration": "production"
@@ -76,7 +84,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "busesuy-frontend:build:production"
+              "browserTarget": "busesuy-frontend:build:production",
             },
             "development": {
               "browserTarget": "busesuy-frontend:build:development"

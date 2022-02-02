@@ -1,4 +1,4 @@
-<p *ngIf="!results.length" class="lead mb-0">
+<p *ngIf="!results.length" class="lead mb-0" i18n>
   No hay resultados
 </p>
 <div *ngIf="results.length" class="table-responsive">
@@ -19,12 +19,12 @@
                 <h3 class="card-title h5">
                   {{ result.originStop.time }} h - {{ result.destinationStop.time }} h
                 </h3>
-                <p class="card-text">
+                <p class="card-text" i18n>
                   Duración: {{ result.duration }} h
                 </p>
               </div>
               <div class="result__body__item">
-                <h3 class="card-title h5">
+                <h3 class="card-title h5" i18n>
                   Frecuencia
                 </h3>
                 <p class="card-text">
@@ -32,7 +32,7 @@
                 </p>
               </div>
               <div class="result__body__item">
-                <h3 class="card-title h5">
+                <h3 class="card-title h5" i18n>
                   Recorrido
                 </h3>
                 <p class="card-text">
@@ -40,7 +40,7 @@
                 </p>
               </div>
               <div class="result__body__item">
-                <a [routerLink]="['/lineas', result.line.name]">
+                <a [routerLink]="['/lineas', result.line.name]" i18n>
                   + Info
                 </a>
               </div>
@@ -55,6 +55,7 @@
                   <img
                     class="result__chevron"
                     src="assets/imgs/chevron-down.svg"
+                    i18n-alt
                     [alt]="expanded[i] ? 'Colapsar' : 'Expandir'"
                     [ngClass]="{ 'result__chevron--open': expanded[i] }"
                   >
@@ -64,7 +65,7 @@
             <div id="card-{{i}}-collapse" [collapse]="!expanded[i]" [isAnimated]="true">
               <div class="card-body result__body-expanded border-top">
                 <div class="result__body__item">
-                  <h3 class="card-title h5">
+                  <h3 class="card-title h5" i18n>
                     Frecuencia
                   </h3>
                   <p class="card-text text-truncate w-100">
@@ -72,7 +73,7 @@
                   </p>
                 </div>
                 <div class="result__body__item">
-                  <h3 class="card-title h5">
+                  <h3 class="card-title h5" i18n>
                     Recorrido
                   </h3>
                   <p class="card-text">
@@ -80,7 +81,7 @@
                   </p>
                 </div>
                 <div class="result__body__item">
-                  <a [routerLink]="['/lineas', result.line.name]">
+                  <a [routerLink]="['/lineas', result.line.name]" i18n>
                     + Info
                   </a>
                 </div>
