@@ -52,7 +52,7 @@
           aria-labelledby="button-lang"
         >
           <li *ngFor="let lang of langs" role="menuitem">
-            <a class="dropdown-item" href="{{lang.url}}">
+            <a class="dropdown-item" href="{{lang.url}}{{currentUrl}}">
               <img class="img-fluid me-1" src="{{lang.flag}}" alt="">
               {{lang.label}}
             </a>
