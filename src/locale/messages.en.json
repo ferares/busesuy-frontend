@@ -11,6 +11,8 @@
     "5950006384328456451": " About ",
     "7064037261478945127": " Contact ",
     "3367646580763901870": "Share",
+    "4712909434657470612": "Select language",
+    "4540786501684613158": "Current language {$INTERPOLATION}",
     "2160471319618804836": " Link copied to the clipboard.\n",
     "2298779754626437176": " Loading ",
     "7085700103586451059": " No results\n",
@@ -23,6 +25,7 @@
     "3475372976648918896": " The {$START_LINK} data{$CLOSE_LINK} comes from the Ministry of Transportation and Public Works and does not include intradepartamental lines nor lines from Montevideo's metropolitan area. ",
     "9127382954236349291": " The next stage of the project will be getting a more complete data set. ",
     "5766550899180082407": " This {$START_LINK} project{$CLOSE_LINK} is created under an {$START_LINK_1} open source license (GPL v2.0){$CLOSE_LINK} and it has no comercial or lucrative ends. For inquiries, suggestions or colaborations go to our {$START_LINK_2}contact page{$CLOSE_LINK}. ",
+    "4968081678045718901": "About | BusesUY",
     "5988527754735881488": "Name:",
     "7987388837571654186": "Telephone:",
     "7337010589991836518": "E-Mail:",
@@ -37,6 +40,7 @@
     "7493527611933443985": " Input a message. ",
     "8784667062520760968": " This site is protected by hCaptcha and its {$START_LINK}Privacy Policy{$CLOSE_LINK} and {$START_LINK_1}Terms of Service{$CLOSE_LINK} apply. ",
     "4097117933882429207": " Send ",
+    "2654625478658939792": "Contact | BusesUY",
     "1273295556838210146": "Captcha verification error",
     "2406139256136570556": "Internal error, try again later",
     "8321665289839446261": " BusesUY - Bus lines browser\n",
@@ -78,6 +82,7 @@
     "7207864080872037675": "Frequencies:",
     "1982639654773018729": "Stops",
     "478301850854130020": " Location ",
-    "4260951893170287352": " Time "
+    "4260951893170287352": " Time ",
+    "7745025573067334876": "Line {$PH} | BusesUY"
   }
 }

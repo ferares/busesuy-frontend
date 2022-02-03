@@ -8,3 +8,15 @@
     transform: translateY(0);
   }
 }
+
+.header__lang {
+  .dropdown-toggle {
+    &::after {
+      display: none;
+    }
+  }
+
+  .dropdown-menu {
+    transform: translateY(1rem) !important;
+  }
+}

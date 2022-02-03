@@ -11,6 +11,8 @@
     "5950006384328456451": " Sobre ",
     "7064037261478945127": " Contato ",
     "3367646580763901870": "Compartilhar",
+    "4712909434657470612": "Selecione o idioma",
+    "4540786501684613158": "Idioma atual {$INTERPOLATION}",
     "2160471319618804836": " Link copiado para o clipboard.\n",
     "2298779754626437176": " Carregando ",
     "7085700103586451059": " Sem resultados\n",
@@ -23,6 +25,7 @@
     "3475372976648918896": " Os {$START_LINK} dados{$CLOSE_LINK} são do Ministério de Transportes e Obras Públicas e não incluem linhas intradepartamentais nem linhas da região metropolitana de Montevidéu. ",
     "9127382954236349291": " A próxima etapa do projeto será a obtenção de um conjunto de dados mais completo. ",
     "5766550899180082407": " Este {$START_LINK} projeto{$CLOSE_LINK} é criado sob uma {$START_LINK_1} licença de código aberto (GPL v2.0){$CLOSE_LINK} e não tem fins comerciais ou lucrativos. Para consultas, sugestões ou colaborações acesse nossa {$START_LINK_2}página de contato{$CLOSE_LINK}. ",
+    "4968081678045718901": "Sobre | BusesUY",
     "5988527754735881488": "Nome:",
     "7987388837571654186": "Telefone:",
     "7337010589991836518": "E-Mail:",
@@ -37,6 +40,7 @@
     "7493527611933443985": " Insira uma mensagem. ",
     "8784667062520760968": " Este site é protegido por hCaptcha e sua {$START_LINK}política de privacidade{$CLOSE_LINK} e {$START_LINK_1}termos de serviço{$CLOSE_LINK} se aplicam. ",
     "4097117933882429207": " Mandar ",
+    "2654625478658939792": "Contato | BusesUY",
     "1273295556838210146": "Erro de verificação de captcha",
     "2406139256136570556": "Erro interno, tente novamente mais tarde",
     "8321665289839446261": " BusesUY - Navegador de linhas de ônibus\n",
@@ -78,6 +82,7 @@
     "7207864080872037675": "Frequências:",
     "1982639654773018729": "Paradas",
     "478301850854130020": " Localização ",
-    "4260951893170287352": " Tempo "
+    "4260951893170287352": " Tempo ",
+    "7745025573067334876": "Linha {$PH} | BusesUY"
   }
 }

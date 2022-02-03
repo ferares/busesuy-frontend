@@ -1,5 +1,5 @@
 {
-  "locale": "en-US",
+  "locale": "es",
   "translations": {
     "4145494513972746377": " Nueva versión disponible ",
     "8467956836265225932": " Actualizar ",
@@ -11,6 +11,8 @@
     "5950006384328456451": " Acerca de ",
     "7064037261478945127": " Contacto ",
     "3367646580763901870": "Compartir",
+    "4712909434657470612": "Seleccionar idioma",
+    "4540786501684613158": "Idioma actual {$INTERPOLATION}",
     "2160471319618804836": " Enlace copiado al portapapeles.\n",
     "2298779754626437176": " Cargando ",
     "7085700103586451059": " No hay resultados\n",
@@ -23,6 +25,7 @@
     "3475372976648918896": " Los {$START_LINK} datos{$CLOSE_LINK} son del Ministerio de Transporte y Obras Públicas y no incluyen líneas intradepartamentales ni del área metropolitana de Montevideo. ",
     "9127382954236349291": " La próxima etapa del proyecto será conseguir datos más completos. ",
     "5766550899180082407": " Este {$START_LINK} proyecto{$CLOSE_LINK} está creado bajo una {$START_LINK_1} licencia de código abierto (GPL v2.0){$CLOSE_LINK} y no tiene fines comerciales ni lucrativos. Por consultas, sugerencias o colaboraciones dirigrse a nuestra {$START_LINK_2}página de contacto{$CLOSE_LINK}. ",
+    "4968081678045718901": "Acerca de | BusesUY",
     "5988527754735881488": "Nombre:",
     "7987388837571654186": "Teléfono:",
     "7337010589991836518": "Correo electrónico:",
@@ -37,14 +40,10 @@
     "7493527611933443985": " Ingrese un mensaje. ",
     "8784667062520760968": " Este formulario está protegido por hCaptcha y su {$START_LINK}política de privacidad{$CLOSE_LINK} y {$START_LINK_1}términos de servicio{$CLOSE_LINK} aplican. ",
     "4097117933882429207": " Enviar ",
+    "2654625478658939792": "Contacto | BusesUY",
     "1273295556838210146": "Error de verificación de captcha",
     "2406139256136570556": "Error interno, intente nuevamente más tarde",
     "8321665289839446261": " BusesUY - Buscador de líneas de ómnibus\n",
-    "4271014928840920894": "Tomada por:",
-    "7264646142666811319": "En:",
-    "6541237457720457753": " Ver foto ",
-    "8056953130057337452": "Datos de la foto",
-    "4679827630752360312": "Sobre la foto de fondo",
     "256212843503083486": " Ingrese un origen. ",
     "8987231026839014065": "Cambiar origen y destino",
     "522473200424140189": " Ingrese un destino. ",
@@ -58,6 +57,11 @@
     "897441752372642825": "con destino",
     "91918213216316856": "Expandir/Colapsar",
     "5493561808322166944": "hacia",
+    "4271014928840920894": "Tomada por:",
+    "7264646142666811319": "En:",
+    "6541237457720457753": " Ver foto ",
+    "8056953130057337452": "Datos de la foto",
+    "4679827630752360312": "Sobre la foto de fondo",
     "3279361939339881718": "Lunes",
     "3034133202174050830": "Martes",
     "6153546602430353751": "Miércoles",
@@ -78,6 +82,7 @@
     "7207864080872037675": "Frecuencia:",
     "1982639654773018729": "Paradas",
     "478301850854130020": " Localidad ",
-    "4260951893170287352": " Hora "
+    "4260951893170287352": " Hora ",
+    "7745025573067334876": "Línea {$PH} | BusesUY"
   }
 }

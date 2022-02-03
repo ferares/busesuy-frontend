@@ -10,6 +10,7 @@ import { SwUpdate } from '@angular/service-worker';
 export class AppComponent implements OnInit {
   public updateAvailable = false;
   langs: Array<any> = [];
+  currentLang: any = undefined as any;
 
   constructor(
     private swUpdate: SwUpdate,
@@ -29,12 +30,30 @@ export class AppComponent implements OnInit {
     const { hostname, protocol } = window.location;
     const hostnameParts = hostname.split('.');
     let host = `${hostname}`;
+    let current = 'es';
     if (hostnameParts.length === 3) {
       host = `${hostnameParts[1]}.${hostnameParts[2]}`;
+      current = hostnameParts[0];
     }
-    this.langs.push({ name: 'es', url: `${protocol}//${host}` });
-    this.langs.push({ name: 'en', url: `${protocol}//en.${host}` });
-    this.langs.push({ name: 'pt', url: `${protocol}//pt.${host}` });
+    this.langs.push({
+      label: 'Español',
+      name: 'es',
+      url: `${protocol}//${host}`,
+      flag: 'assets/imgs/uy.svg',
+    });
+    this.langs.push({
+      label: 'English',
+      name: 'en',
+      url: `${protocol}//en.${host}`,
+      flag: 'assets/imgs/gb.svg',
+      });
+    this.langs.push({
+      label: 'Português',
+      name: 'pt',
+      url: `${protocol}//pt.${host}`,
+      flag: 'assets/imgs/br.svg',
+    });
+    this.currentLang = this.langs.find(lang => lang.name === current);
   }
 
   updateHreflangs(): void {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -7,6 +7,8 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  @Input('langs') langs: Array<any> = [];
+  @Input('currentLang') currentLang: any = undefined as any;
   isCollapsed = true;
   currentUrl = '';
   linkCopied = false;
