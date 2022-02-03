@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
 
-  constructor() {
+  constructor(private titleService: Title) {
+    this.titleService.setTitle($localize `Acerca de | BusesUY`);
   }
 }

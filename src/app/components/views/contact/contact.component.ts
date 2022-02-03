@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 import { ApiService } from '../../../services/api.service';
 
@@ -16,7 +16,8 @@ export class ContactComponent {
   success = false;
   sending = false;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private titleService: Title) {
+    this.titleService.setTitle($localize `Contacto | BusesUY`);
     this.form = new FormGroup({
       name: new FormControl(''),
       email: new FormControl('', Validators.required),

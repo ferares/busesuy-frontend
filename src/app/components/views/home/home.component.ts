@@ -1,5 +1,6 @@
 import { Component, AfterContentInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { latinize } from 'ngx-bootstrap/typeahead';
 
@@ -70,7 +71,9 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
     private route: ActivatedRoute,
     private apiService: ApiService,
     private imagesService: ImagesService,
+    private titleService: Title,
   ) {
+    this.titleService.setTitle('BusesUY');
     this.imagesService.getRandomImage().subscribe((image: any) => {
       this.background = image;
     });
@@ -106,7 +109,10 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
         this.selectedDays = days.split(',');
       }
 
-      if ((this.origin) && (this.destination)) this.search();
+      if ((this.origin) && (this.destination)) {
+        this.titleService.setTitle(`${this.origin} -> ${this.destination} | BusesUY`);
+        this.search();
+      }
       else {
         this.results = undefined as any;
         this.indirectResults = undefined as any;
