@@ -1,0 +1,47 @@
+<div class="bg-light h-100 py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1 class="display-1" i18n>
+          Datos
+        </h1>
+      </div>
+      <div class="col-12 my-4 lead">
+        <p i18n>
+          BusesUY cuenta con datos de las siguientes zonas:
+        </p>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col" i18n>
+                  Zona
+                </th>
+                <th scope="col" i18n>
+                  Estado
+                </th>
+                <th scope="col" i18n>
+                  Fuente
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let line of data">
+                <td>
+                  {{line.label}}
+                </td>
+                <td>
+                  <img class="img-fluid me-1" width="20" height="20" src="assets/imgs/{{statuses[line.status].icon}}.svg" alt="">
+                  {{statuses[line.status].label}}
+                </td>
+                <td>
+                  {{line.source}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

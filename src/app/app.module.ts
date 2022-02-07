@@ -31,6 +31,8 @@ import { LineComponent } from './components/views/line/line.component';
 import { CompanyComponent } from './components/views/company/company.component';
 import { ContactComponent } from './components/views/contact/contact.component';
 import { AboutComponent } from './components/views/about/about.component';
+import { DataComponent } from './components/views/data/data.component';
+
 import { HeaderComponent } from './components/partials/header/header.component';
 import { LoaderComponent } from './components/partials/loader/loader.component';
 import { ResultsTableComponent } from './components/partials/results-table/results-table.component';
@@ -52,6 +54,7 @@ import { environment } from '../environments/environment';
     ResultsTableComponent,
     MessageComponent,
     FooterComponent,
+    DataComponent,
   ],
   imports: [
     BrowserModule,

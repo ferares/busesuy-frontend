@@ -14,6 +14,8 @@ import { ContactComponent } from './components/views/contact/contact.component';
 
 import { AboutComponent } from './components/views/about/about.component';
 
+import { DataComponent } from './components/views/data/data.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -38,6 +40,10 @@ const routes: Routes = [
   {
     path: 'proyecto',
     component: AboutComponent,
+  },
+  {
+    path: 'datos',
+    component: DataComponent,
   },
 ];
 
