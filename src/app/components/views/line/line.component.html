@@ -13,7 +13,8 @@
               <b i18n>Número de línea:</b> {{ line.name }}
             </h2>
             <h3 class="card-subtitle mb-2 text-muted h6">
-              <b i18n>Empresa:</b> {{ line.company.name }}
+              <b i18n>Empresa:</b>&nbsp;
+              <a [routerLink]="['/empresas', line.company.name]">{{ line.company.name }}</a>
             </h3>
           </div>
           <ul class="list-group list-group-flush">
