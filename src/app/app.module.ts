@@ -14,6 +14,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +39,7 @@ import { LoaderComponent } from './components/partials/loader/loader.component';
 import { ResultsTableComponent } from './components/partials/results-table/results-table.component';
 import { MessageComponent } from './components/partials/message/message.component';
 import { FooterComponent } from './components/partials/footer/footer.component';
+import { BackgroundsComponent } from './components/partials/backgrounds/backgrounds.component';
 
 import { environment } from '../environments/environment';
 
@@ -55,6 +57,7 @@ import { environment } from '../environments/environment';
     MessageComponent,
     FooterComponent,
     DataComponent,
+    BackgroundsComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ import { environment } from '../environments/environment';
     AlertModule.forRoot(),
     CollapseModule.forRoot(),
     PopoverModule.forRoot(),
+    ModalModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

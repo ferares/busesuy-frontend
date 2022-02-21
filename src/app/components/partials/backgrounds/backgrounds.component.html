@@ -1,0 +1,143 @@
+<form novalidate [ngClass]="{ 'was-validated': validated}">
+  <fieldset [disabled]="sending">
+    <div class="row g-3 mb-3">
+      <div class="col-lg-6">
+        <label for="name" class="form-label" i18n>
+          Nombre (opcional)
+        </label>
+        <input
+          type="name"
+          name="name"
+          [(ngModel)]="name"
+          class="form-control"
+          id="name"
+          aria-describedby="backgrounds-name-description"
+        >
+        <small id="backgrounds-name-description" i18n>
+          Nombre de la persona que sacó la foto.
+        </small>
+      </div>
+      <div class="col-lg-6">
+        <label for="link" class="form-label" i18n>
+          Enlace (opcional)
+        </label>
+        <input
+          type="text"
+          name="link"
+          [(ngModel)]="link"
+          class="form-control"
+          id="link"
+          aria-describedby="backgrounds-link-description"
+        >
+        <small id="backgrounds-link-description" i18n>
+          Enlace al sitio personal de la persona que sacó la foto (Sitio web,
+          Instagram, Twitter, etc.).
+        </small>
+      </div>
+    </div>
+    <div *ngFor="let location of locations;let i = index" class="mb-3">
+      <alert *ngIf="location.error" type="danger" class="mb-0">
+        <div class="d-flex align-items-center">
+          <img src="assets/imgs/danger.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="">
+          <span>
+            {{location.error}}
+          </span>
+        </div>
+      </alert>
+      <alert *ngIf="location.success" type="success" class="mb-0">
+        <div class="d-flex align-items-center">
+          <img src="assets/imgs/check.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="" i18n>
+          <span i18n>
+            Fotos recibidas.
+          </span>
+        </div>
+      </alert>
+      <div *ngIf="!location.error && !location.success" class="card mb-3">
+        <div class="card-body">
+          <div class="row position-relative">
+            <div class="col-lg-6">
+              <label for="location-{{i}}" class="form-label" i18n>
+                Ubicación (requerido)
+              </label>
+              <input
+                type="text"
+                name="location-{{i}}"
+                class="form-control"
+                id="location-{{i}}"
+                [(ngModel)]="location.name"
+                required
+                aria-describedby="backgrounds-location-description"
+              >
+              <small id="backgrounds-location-description">
+                Ubicación en la que se sacó la foto.
+              </small>
+            </div>
+            <div class="col-lg-6">
+              <label for="pictures-{{i}}" class="form-label" i18n>
+                Fotos (requerido)
+              </label>
+              <input
+                type="file"
+                class="form-control"
+                id="pictures-{{i}}"
+                (change)="updatePicturesLocation(i, $event)"
+                accept="image/jpeg"
+                multiple
+                required
+              >
+            </div>
+            <div *ngIf="locations.length > 1" class="position-absolute top-0 start-100 w-auto p-0 pe-4 translate-middle">
+              <button type="button" class="btn btn-link w-100 mb-auto p-0" (click)="removeLocation(i)" i18n>
+                <img class="img-fluid" src="assets/imgs/cancel.svg" alt="Borrar" i18n-alt>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <alert *ngIf="error" type="danger" class="mb-0">
+        <div class="d-flex align-items-center">
+          <img src="assets/imgs/danger.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="">
+          <span>
+            {{error}}
+          </span>
+        </div>
+      </alert>
+      <alert *ngIf="success" type="success" class="mb-0">
+        <div class="d-flex align-items-center">
+          <img src="assets/imgs/check.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="" i18n>
+          <span i18n>
+            Gracias por colaborar.
+          </span>
+        </div>
+      </alert>
+    </div>
+    <div class="col-lg-4 offset-lg-8 mb-3">
+      <button type="button" class="btn btn-primary w-100" (click)="addLocation()" i18n>
+        Agregar ubicación
+      </button>
+    </div>
+    <div class="col-12">
+      <p i18n>
+        Este formulario está protegido por hCaptcha y su
+        <a class="link-dark" href="https://hcaptcha.com/privacy" target="_blank" rel="noreferrer">política de privacidad</a> y
+        <a class="link-dark" href="https://hcaptcha.com/terms" target="_blank" rel="noreferrer">términos de servicio</a> aplican.
+      </p>
+    </div>
+    <div class="col-lg-4 offset-lg-4">
+      <button
+        type="button"
+        class="btn btn-primary w-100"
+        ngHcaptchaInvisibleButton
+        (click)="onClickSubmit()"
+        (verify)="submit($event)"
+        (expired)="onCaptchaError()"
+        (error)="onCaptchaError()"
+        i18n
+      >
+        Enviar
+      </button>
+    </div>
+  </fieldset>
+</form>

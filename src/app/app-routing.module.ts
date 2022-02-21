@@ -21,7 +21,7 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component: HomeComponent,
-    resolve: { locations: HomeResolver },
+    resolve: { data: HomeResolver },
   },
   {
     path: 'lineas/:name',

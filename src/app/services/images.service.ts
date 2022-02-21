@@ -28,4 +28,11 @@ export class ImagesService {
       catchError((error: any) => of(this.fallback as any))
     );
   }
+
+  submitImages(data: any): any {
+    // this.setLoading(true);
+    return this.http.post<any>(`${IMAGES_URL}/new`, data).pipe(
+      // finalize(() => this.setLoading(false))
+    );
+  }
 }

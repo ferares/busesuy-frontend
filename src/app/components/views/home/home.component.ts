@@ -7,7 +7,6 @@ import { latinize } from 'ngx-bootstrap/typeahead';
 import { go, highlight, prepare } from 'fuzzysort';
 
 import { ApiService } from '../../../services/api.service';
-import { ImagesService } from '../../../services/images.service';
 
 @Component({
   selector: 'app-home',
@@ -70,14 +69,11 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
     private router: Router,
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private imagesService: ImagesService,
     private titleService: Title,
   ) {
     this.titleService.setTitle('BusesUY');
-    this.imagesService.getRandomImage().subscribe((image: any) => {
-      this.background = image;
-    });
-    this.locations = route.snapshot.data['locations'].reduce(
+    this.background = route.snapshot.data['data']['background'];
+    this.locations = route.snapshot.data['data']['locations'].reduce(
       (result: any, location: any) => {
         const locationLabel = this.getLocationString(location.name, location.department.name)
         return {
@@ -264,5 +260,4 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
       )
     }
   }
-
 }

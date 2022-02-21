@@ -207,13 +207,11 @@
     </div>
   </div>
   <ng-container *ngIf="background">
-    <ng-template #datosFoto>
+    <ng-template #backgroundPopover bsPopover>
       <ul class="list-unstyled">
         <li class="mb-3 mt-1">
           <img class="me-1" height="20" width="20" src="assets/imgs/person-frame.svg" i18n-alt alt="Tomada por:">
-          <a *ngIf="background.user.link" href="{{background.user.link}}" target="_blank" rel="noreferrer">
-            {{background.user.name}}
-          </a>
+          <a *ngIf="background.user.link" href="{{background.user.link}}" target="_blank" rel="noreferrer">{{background.user.name}}</a>
           <span *ngIf="!background.user.link">
             {{background.user.name}}
           </span>
@@ -225,14 +223,18 @@
           </span>
         </li>
       </ul>
-      <a class="btn btn-secondary w-100" href="{{background.picture}}" target="_blank" i18n>
+      <a class="btn btn-primary w-100 mb-2" href="{{background.picture}}" target="_blank" i18n>
         Ver foto
       </a>
+      <button type="button" class="btn btn-secondary w-100" (click)="backgroundsModal.show();backgroundPopover2.click();" i18n>
+        Compartí tus fotos
+      </button>
     </ng-template>
     <button
+      #backgroundPopover2
       type="button"
       class="page-home__bg-data-btn"
-      [popover]="datosFoto"
+      [popover]="backgroundPopover"
       [outsideClick]="true"
       i18n-popoverTitle
       popoverTitle="Datos de la foto"
@@ -241,4 +243,22 @@
       <img src="assets/imgs/camera.svg" i18n-alt alt="Sobre la foto de fondo" width="20" height="20">
     </button>
   </ng-container>
+</div>
+<div bsModal #backgroundsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="backgrounds-modal-title">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="backgrounds-modal-title" class="modal-title pull-left" i18n>
+          Compartí tus fotos
+        </h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Cerrar" i18n-aria-label (click)="backgroundsModal.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-backgrounds>
+        </app-backgrounds>
+      </div>
+    </div>
+  </div>
 </div>
