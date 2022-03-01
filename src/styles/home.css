@@ -1,0 +1,15 @@
+/*Home*/
+.home-content{ min-height: 100%; min-height: 500px; }
+
+/*Background*/
+.home-content .home-background{ width: 100%; height: 100%; position: absolute; top: 0; left: 0; min-height: 100vh; background-position: center; background-repeat: no-repeat; background-size: cover; z-index: 10; }
+
+/*Search Form*/
+.home-content .search-form{ position: relative; z-index: 100; background: #FFF; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.5); margin-bottom: 100px; border-radius: 10px; }
+.home-content .search-form form{ display: flex; align-items: center; justify-content: space-between; }
+.home-content .search-form form label{ font-weight: bold; margin-bottom: 10px; display: block; }
+.home-content .search-form form .origin-box{ position: relative; }
+.home-content .search-form form .destiny-box{ position: relative; }
+
+/*Search Alert*/
+.home-content .search-form alert{ margin-top: 50px; }

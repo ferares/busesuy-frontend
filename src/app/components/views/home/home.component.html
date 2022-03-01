@@ -3,250 +3,205 @@
 
     <h1 i18n>Buscador de líneas de ómnibus</h1>
 
-    <div class="page-home py-4" style="background-image:url('{{background?.picture}}')">
-      <div class="container d-flex align-items-center justify-content-center h-100">
-        <div class="row w-100">
-          <div class="col-12">
-            <div class="card shadow">
-              <div class="card-body">
-                <form class="row g-3 home__form" [ngClass]="{ 'was-validated': validated }" novalidate (submit)="search()">
-                  <div class="col-12">
-                    <div class="home__form__top">
-                      <div class="home__form__block">
-                        <label for="origin" class="form-label" i18n>
-                          Origen
-                        </label>
-                        <div class="btn-group w-100" dropdown #originOptions="bs-dropdown">
-                          <div class="form-group w-100">
-                            <input
-                              #originElement
-                              type="text"
-                              class="form-control"
-                              id="origin"
-                              [(ngModel)]="origin"
-                              name="origin"
-                              autocomplete="off"
-                              required
-                              dropdownToggle
-                              (input)="handleInput('origin')"
-                              (click)="handleInput('origin')"
-                              (keydown)="handleIntro('origin', $event)"
-                            >
-                            <div class="invalid-feedback" i18n>
-                              Ingrese un origen.
-                            </div>
-                          </div>
-                          <ul *dropdownMenu class="home__form__location-options dropdown-menu w-100" role="menu">
-                            <li *ngFor="let location of filteredLocations; let i = index" role="menuitem">
-                              <button type="button" class="dropdown-item" (click)="setLocation('origin', i)" [innerHTML]="location.target">
-                              </button>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="home__form__block">
-                        <button type="button" class="btn btn-primary d-block w-100 home__form__swap-btn" (click)="swapLocations()">
-                          <img src="assets/imgs/arrow-double.svg" height="20" width="20" i18n-alt alt="Cambiar origen y destino">
-                        </button>
-                      </div>
-                      <div class="home__form__block">
-                        <label for="destination" class="form-label" i18n>
-                          Destino
-                        </label>
-                        <div class="btn-group w-100" dropdown #destinationOptions="bs-dropdown">
-                          <div class="form-group w-100">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="destination"
-                              [(ngModel)]="destination"
-                              name="destination"
-                              autocomplete="off"
-                              required
-                              dropdownToggle
-                              (input)="handleInput('destination')"
-                              (click)="handleInput('destination')"
-                              (keydown)="handleIntro('destination', $event)"
-                            >
-                            <div class="invalid-feedback" i18n>
-                              Ingrese un destino.
-                            </div>
-                          </div>
-                          <ul *dropdownMenu class="home__form__location-options dropdown-menu w-100" role="menu">
-                            <li *ngFor="let location of filteredLocations; let i = index" role="menuitem">
-                              <button type="button" class="dropdown-item" (click)="setLocation('destination', i)" [innerHTML]="location.target">
-                              </button>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="home__form__block">
-                        <label id="date" class="form-label" i18n>
-                          Día
-                        </label>
-                        <div class="btn-group d-flex" dropdown>
-                          <button dropdownToggle type="button" class="form-select text-truncate" aria-controls="dropdown-date">
-                            {{ getSelectedDaysString() }}
-                          </button>
-                          <ul id="dropdown-date" *dropdownMenu class="dropdown-menu w-100" role="menu" aria-labelledby="date">
-                            <li *ngFor="let day of days" role="menuitem" [ngClass]="{ 'bg-light': selectedDays.includes(day.value) }">
-                              <span class="dropdown-item" (click)="toggleDay($event, day.value)">
-                                {{ day.label }}
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <alert type="warning" [dismissible]="true" class="mb-0">
-                      <div class="d-flex align-items-center">
-                        <img src="assets/imgs/shield.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="">
-                        <span i18n>
-                          Dada la situación sanitaria por COVID-19 estos datos están
-                          sujetos a cambios sin previo aviso. Verifíquelos en cada
-                          caso con las compañías.
-                        </span>
-                      </div>
-                    </alert>
-                  </div>
-                  <div class="col-md-4 offset-md-4 mt-0">
-                    <button class="btn btn-primary w-100" type="submit" i18n>
-                      Buscar
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div #resultsElement>
-            <div *ngIf="results" class="col-12 mt-4">
-              <div class="card shadow">
-                <div class="card-body">
-                  <h2 class="card-title h5" i18n>
-                    Líneas
-                  </h2>
-                  <app-results-table [results]="results" [origin]="resultsOrigin" [destination]="resultsDestination">
-                  </app-results-table>
-                </div>
-              </div>
-            </div>
-            <div *ngIf="(!results || !results.length) && indirectResults" class="col-12 mt-4">
-              <div class="card shadow">
-                <div class="card-body">
-                  <h2 class="card-title h5" i18n>
-                    Transbordos
-                  </h2>
-                  <p *ngIf="!indirectResults || !indirectResults.length" class="lead mb-0" i18n>
-                    No hay resultados
-                  </p>
-                  <accordion *ngIf="indirectResults && indirectResults.length" [isAnimated]="true">
-                    <accordion-group *ngFor="let result of indirectResults">
-                      <button
-                        type="button"
-                        class="results-indirect__accordion-heading"
-                        accordion-heading
-                      >
-                        <span class="text-nowrap text-truncate w-100">
-                          {{result[0].origin}}, {{result[0].originDepartment}}
-                        </span>
-                        <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="con escala en">
-                        <span class="text-nowrap text-truncate w-100">
-                          {{result[0].destination}}, {{result[0].destinationDepartment}}
-                        </span>
-                        <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="con destino">
-                        <span class="text-nowrap text-truncate w-100">
-                          {{result[1].destination}}, {{result[1].destinationDepartment}}
-                        </span>
-                        <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
-                      </button>
+    <div class="home-background" style="background-image:url('{{background?.picture}}')"></div>
 
-                      <accordion [isAnimated]="true">
-                        <accordion-group>
-                          <button
-                            type="button"
-                            class="results-indirect__accordion-heading results-indirect__accordion-heading--scale"
-                            accordion-heading
-                          >
-                            <span class="text-nowrap text-truncate w-100">
-                              {{result[0].origin}}, {{result[0].originDepartment}}
-                            </span>
-                            <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="hacia">
-                            <span class="text-nowrap text-truncate w-100">
-                              {{result[0].destination}}, {{result[0].destinationDepartment}}
-                            </span>
-                            <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
-                          </button>
-                          <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
-                          </app-results-table>
-                        </accordion-group>
-                        <accordion-group>
-                          <button
-                            type="button"
-                            class="results-indirect__accordion-heading results-indirect__accordion-heading--scale"
-                            accordion-heading
-                          >
-                            <span class="text-nowrap text-truncate w-100">
-                              {{result[1].origin}}, {{result[1].originDepartment}}
-                            </span>
-                            <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="hacia">
-                            <span class="text-nowrap text-truncate w-100">
-                              {{result[1].destination}}, {{result[1].destinationDepartment}}
-                            </span>
-                            <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
-                          </button>
-                          <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment">
-                          </app-results-table>
-                        </accordion-group>
-                      </accordion>
-                    </accordion-group>
-                  </accordion>
-                </div>
-              </div>
-            </div>
+    <!--Search Form-->
+    <div class="search-form">
+      <form class="row g-3 home__form" [ngClass]="{ 'was-validated': validated }" novalidate (submit)="search()">
+
+        <!--Origin-->
+        <div class="origin-box">
+          <label for="origin" i18n>Origen</label>
+          <div dropdown #originOptions="bs-dropdown">
+            <input #originElement type="text" class="form-control" id="origin" [(ngModel)]="origin" name="origin" autocomplete="off" required dropdownToggle (input)="handleInput('origin')" (click)="handleInput('origin')" (keydown)="handleIntro('origin', $event)">
+            <ul *dropdownMenu class="dropdown-menu" role="menu">
+              <li *ngFor="let location of filteredLocations; let i = index" role="menuitem">
+                <button type="button" class="dropdown-item" (click)="setLocation('origin', i)" [innerHTML]="location.target"></button>
+              </li>
+            </ul>
+            <div class="invalid-feedback" i18n>Ingrese un origen.</div>
+          </div>
+        </div>
+
+        <!--Switch Origin and Destiny-->
+        <button type="button" class="btn btn-primary d-block w-100 home__form__swap-btn" (click)="swapLocations()">
+          <img src="assets/imgs/arrow-double.svg" height="20" width="20" i18n-alt alt="Cambiar origen y destino">
+        </button>
+
+        <!--Destiny-->
+        <div class="destiny-box">
+          <label for="destination" i18n>Destino</label>
+          <div dropdown #destinationOptions="bs-dropdown">
+
+            <input type="text" class="form-control" id="destination" [(ngModel)]="destination" name="destination" autocomplete="off" required dropdownToggle (input)="handleInput('destination')" (click)="handleInput('destination')" (keydown)="handleIntro('destination', $event)">
+            <div class="invalid-feedback" i18n>Ingrese un destino.</div>
+
+            <ul *dropdownMenu class="home__form__location-options dropdown-menu w-100" role="menu">
+              <li *ngFor="let location of filteredLocations; let i = index" role="menuitem">
+                <button type="button" class="dropdown-item" (click)="setLocation('destination', i)" [innerHTML]="location.target">
+                </button>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+
+        <!--Day-->
+        <div class="day-box">
+          <label id="date" class="form-label" i18n>Día</label>
+          <div class="btn-group d-flex" dropdown>
+            <button dropdownToggle type="button" class="form-select text-truncate" aria-controls="dropdown-date">{{ getSelectedDaysString() }}</button>
+            <ul id="dropdown-date" *dropdownMenu class="dropdown-menu w-100" role="menu" aria-labelledby="date">
+              <li *ngFor="let day of days" role="menuitem" [ngClass]="{ 'bg-light': selectedDays.includes(day.value) }">
+                <span class="dropdown-item" (click)="toggleDay($event, day.value)">{{ day.label }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!--Search Button-->
+        <button type="submit" i18n>Buscar</button>
+
+      </form>
+
+      <alert type="warning" [dismissible]="true" class="alert-warning">
+          <img src="assets/imgs/shield.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="">
+          <p>Dada la situación sanitaria por COVID-19 estos datos están sujetos a cambios sin previo aviso. Verifíquelos en cada caso con las compañías. </p>
+      </alert>
+      
+    </div>
+
+    <!--Search Results--> 
+    <div #resultsElement>
+      <div *ngIf="results" class="col-12 mt-4">
+        <div class="card shadow">
+          <div class="card-body">
+            <h2 class="card-title h5" i18n>
+              Líneas
+            </h2>
+            <app-results-table [results]="results" [origin]="resultsOrigin" [destination]="resultsDestination">
+            </app-results-table>
           </div>
         </div>
       </div>
-      <ng-container *ngIf="background">
-        <ng-template #backgroundPopover bsPopover>
-          <ul class="list-unstyled">
-            <li class="mb-3 mt-1">
-              <img class="me-1" height="20" width="20" src="assets/imgs/person-frame.svg" i18n-alt alt="Tomada por:">
-              <a *ngIf="background.user.link" href="{{background.user.link}}" target="_blank" rel="noreferrer">{{background.user.name}}</a>
-              <span *ngIf="!background.user.link">
-                {{background.user.name}}
-              </span>
-            </li>
-            <li>
-              <img height="20" width="20" src="assets/imgs/location.svg" i18n-alt alt="En:">
-              <span class="ms-1">
-                {{background.location}}
-              </span>
-            </li>
-          </ul>
-          <a class="btn btn-primary w-100 mb-2" href="{{background.picture}}" target="_blank" i18n>
-            Ver foto
-          </a>
-          <button type="button" class="btn btn-secondary w-100" (click)="backgroundsModal.show();backgroundPopover2.click();" i18n>
-            Compartí tus fotos
-          </button>
-        </ng-template>
-        <button
-          #backgroundPopover2
-          type="button"
-          class="page-home__bg-data-btn"
-          [popover]="backgroundPopover"
-          [outsideClick]="true"
-          i18n-popoverTitle
-          popoverTitle="Datos de la foto"
-          placement="top"
-        >
-          <img src="assets/imgs/camera.svg" i18n-alt alt="Sobre la foto de fondo" width="20" height="20">
-        </button>
-      </ng-container>
+      <div *ngIf="(!results || !results.length) && indirectResults" class="col-12 mt-4">
+        <div class="card shadow">
+          <div class="card-body">
+            <h2 class="card-title h5" i18n>
+              Transbordos
+            </h2>
+            <p *ngIf="!indirectResults || !indirectResults.length" class="lead mb-0" i18n>
+              No hay resultados
+            </p>
+            <accordion *ngIf="indirectResults && indirectResults.length" [isAnimated]="true">
+              <accordion-group *ngFor="let result of indirectResults">
+                <button
+                  type="button"
+                  class="results-indirect__accordion-heading"
+                  accordion-heading
+                >
+                  <span class="text-nowrap text-truncate w-100">
+                    {{result[0].origin}}, {{result[0].originDepartment}}
+                  </span>
+                  <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="con escala en">
+                  <span class="text-nowrap text-truncate w-100">
+                    {{result[0].destination}}, {{result[0].destinationDepartment}}
+                  </span>
+                  <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="con destino">
+                  <span class="text-nowrap text-truncate w-100">
+                    {{result[1].destination}}, {{result[1].destinationDepartment}}
+                  </span>
+                  <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
+                </button>
+
+                <accordion [isAnimated]="true">
+                  <accordion-group>
+                    <button
+                      type="button"
+                      class="results-indirect__accordion-heading results-indirect__accordion-heading--scale"
+                      accordion-heading
+                    >
+                      <span class="text-nowrap text-truncate w-100">
+                        {{result[0].origin}}, {{result[0].originDepartment}}
+                      </span>
+                      <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="hacia">
+                      <span class="text-nowrap text-truncate w-100">
+                        {{result[0].destination}}, {{result[0].destinationDepartment}}
+                      </span>
+                      <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
+                    </button>
+                    <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
+                    </app-results-table>
+                  </accordion-group>
+                  <accordion-group>
+                    <button
+                      type="button"
+                      class="results-indirect__accordion-heading results-indirect__accordion-heading--scale"
+                      accordion-heading
+                    >
+                      <span class="text-nowrap text-truncate w-100">
+                        {{result[1].origin}}, {{result[1].originDepartment}}
+                      </span>
+                      <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="hacia">
+                      <span class="text-nowrap text-truncate w-100">
+                        {{result[1].destination}}, {{result[1].destinationDepartment}}
+                      </span>
+                      <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
+                    </button>
+                    <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment">
+                    </app-results-table>
+                  </accordion-group>
+                </accordion>
+              </accordion-group>
+            </accordion>
+          </div>
+        </div>
+      </div>
     </div>
 
+    
+
+    
+    <!--Background Info-->
+    <ng-container *ngIf="background">
+      <ng-template #backgroundPopover bsPopover>
+        <ul class="list-unstyled">
+          <li class="mb-3 mt-1">
+            <img class="me-1" height="20" width="20" src="assets/imgs/person-frame.svg" i18n-alt alt="Tomada por:">
+            <a *ngIf="background.user.link" href="{{background.user.link}}" target="_blank" rel="noreferrer">{{background.user.name}}</a>
+            <span *ngIf="!background.user.link">
+              {{background.user.name}}
+            </span>
+          </li>
+          <li>
+            <img height="20" width="20" src="assets/imgs/location.svg" i18n-alt alt="En:">
+            <span class="ms-1">
+              {{background.location}}
+            </span>
+          </li>
+        </ul>
+        <a class="btn btn-primary w-100 mb-2" href="{{background.picture}}" target="_blank" i18n>
+          Ver foto
+        </a>
+        <button type="button" class="btn btn-secondary w-100" (click)="backgroundsModal.show();backgroundPopover2.click();" i18n>
+          Compartí tus fotos
+        </button>
+      </ng-template>
+      <button
+        #backgroundPopover2
+        type="button"
+        class="page-home__bg-data-btn"
+        [popover]="backgroundPopover"
+        [outsideClick]="true"
+        i18n-popoverTitle
+        popoverTitle="Datos de la foto"
+        placement="top"
+      >
+        <img src="assets/imgs/camera.svg" i18n-alt alt="Sobre la foto de fondo" width="20" height="20">
+      </button>
+    </ng-container>
+  
+    <!--Share Photos-->
     <div bsModal #backgroundsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="backgrounds-modal-title">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">

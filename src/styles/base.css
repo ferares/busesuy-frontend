@@ -4,13 +4,25 @@ body{ font-family: "Nunito", sans-serif; font-size: 17px; color: #000; }
 .content{ width: 100%; max-width: 1160px; margin: 0 auto; }
 
 /*Angular*/
-#main{ padding-top: 100px; }
+#main{ padding-top: 100px; height: auto; display: block !important; }
 
 /*Inputs*/
 input,
 select,
-textarea{ font-family: "Nunito", sans-serif; }
+textarea{ font-family: "Nunito", sans-serif; padding: 10px; width: 100%; border: 1px solid #CCC; border-radius: 5px; resize: none; font-size: 1em; }
+input:focus,
+select:focus,
+textarea:focus{ outline: none; }
 
 /*Buttons*/
 .btn,
-button{ display: inline-block; padding: 10px; border: 2px solid #000; background: transparent; font-family: "Nunito", sans-serif; cursor: pointer; }
+button{ display: inline-block; padding: 10px; border: 2px solid #000; background: transparent; font-family: "Nunito", sans-serif; cursor: pointer; font-size: 1em; transition: all .3s; }
+
+/*Dropdown Menu*/
+.dropdown-menu{ overflow-y: auto; position: absolute; width: 100%; top: 0; left: 0; background: #FFF; max-height: 0; opacity: 0; visibility: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.5); border-radius: 10px; padding: 10px 5px; }
+.dropdown-menu.show{ visibility: visible; opacity: 1; max-height: 200px; }
+.dropdown-menu button{ border: none; padding: 5px 10px; text-align: left; background: transparent; border-radius: 5px; display: block; width: 100%; }
+.dropdown-menu button:hover{ background: #EEE; }
+
+/*Alert*/
+alert{ display: flex; width: 100%; background: #EEE; padding: 20px; border-radius: 10px; }
