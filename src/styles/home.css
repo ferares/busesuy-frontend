@@ -8,12 +8,15 @@
 .home-content .search-form{ position: relative; z-index: 100; background: #FFF; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.5); margin-bottom: 100px; border-radius: 10px; }
 .home-content .search-form form{ display: flex; align-items: flex-start; justify-content: space-between; }
 .home-content .search-form form label{ font-weight: bold; margin-bottom: 10px; display: block; }
-.home-content .search-form form .origin-box{ position: relative; min-width: 28%; }
-.home-content .search-form form .destiny-box{ position: relative; min-width: 28%; }
-.home-content .search-form form .day-box{ position: relative; min-width: 30%; padding: 0 20px; }
+.home-content .search-form form .origin-box{ position: relative; min-width: 25%; }
+.home-content .search-form form .destiny-box{ position: relative; min-width: 25%; }
+.home-content .search-form form .day-box{ position: relative; min-width: 30%; margin: 0 20px; }
 .home-content .search-form .swap-locations{ border: none; padding: 0 20px; position: relative; top: 40px; }
 .home-content .search-form .swap-locations i{ transition: all 0.6s; font-size: 1.2em; }
 .home-content .search-form .swap-locations:hover i{ transform: rotate(180deg); }
+
+.home-content .search-form .search-button{ border-radius: 55px; border: none; background: #F2BD2A; border: 2px solid #F2BD2A; padding: 10px 30px; font-weight: bold; font-size: 1.1em; position: relative; top: 24px; } 
+.home-content .search-form .search-button:hover{ background: transparent; color: #000; border-color: #000; }
 
 
 /*Search Alert*/

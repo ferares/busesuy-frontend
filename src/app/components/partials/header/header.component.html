@@ -22,11 +22,13 @@
     <div class="right-options">
 
       <!--Share Button-->
-      <button type="button" (click)="share()">Share</button>
+      <button type="button" (click)="share()" class="share-button">
+        <i class="fa-solid fa-share-nodes"></i>
+      </button>
 
       <!--Language Select Dropdown-->
       <div dropdown>
-        <button id="button-lang" dropdownToggle type="button" aria-controls="dropdown-lang" i18n-title title="Seleccionar idioma">
+        <button id="button-lang" dropdownToggle type="button" aria-controls="dropdown-lang" i18n-title title="Seleccionar idioma" class="language-button">
           <img class="img-fluid" src="{{currentLang['flag']}}" i18n-alt alt="Idioma actual {{currentLang['label']}}">
         </button>
         <ul id="dropdown-lang" *dropdownMenu role="menu" aria-labelledby="button-lang">

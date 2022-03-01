@@ -9,3 +9,5 @@
 .main-header .main-nav ul li a{ text-decoration: none; font-weight: bold; color: #000; display: block; padding: 0 10px; line-height: 70px; }
 
 .main-header .right-options{ display: flex; }
+.main-header .right-options .share-button{ border: none; font-size: 1.5em; }
+.main-header .right-options .language-button{ border: none; }
