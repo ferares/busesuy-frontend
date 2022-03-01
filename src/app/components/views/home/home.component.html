@@ -5,6 +5,12 @@
 
     <div class="home-background" style="background-image:url('{{background?.picture}}')"></div>
 
+    <!--Covid Message-->
+    <alert type="warning" [dismissible]="true">
+        <i class="fa-solid fa-virus-covid"></i>
+        <p>Dada la situación sanitaria por COVID-19 estos datos están sujetos a cambios sin previo aviso.<br />Verifíquelos en cada caso con las compañías.</p>
+    </alert>
+
     <!--Search Form-->
     <div class="search-form">
       <form class="row g-3 home__form" [ngClass]="{ 'was-validated': validated }" novalidate (submit)="search()">
@@ -24,8 +30,8 @@
         </div>
 
         <!--Switch Origin and Destiny-->
-        <button type="button" class="btn btn-primary d-block w-100 home__form__swap-btn" (click)="swapLocations()">
-          <img src="assets/imgs/arrow-double.svg" height="20" width="20" i18n-alt alt="Cambiar origen y destino">
+        <button type="button" (click)="swapLocations()" class="swap-locations">
+          <i class="fa-solid fa-arrows-rotate"></i>
         </button>
 
         <!--Destiny-->
@@ -36,7 +42,7 @@
             <input type="text" class="form-control" id="destination" [(ngModel)]="destination" name="destination" autocomplete="off" required dropdownToggle (input)="handleInput('destination')" (click)="handleInput('destination')" (keydown)="handleIntro('destination', $event)">
             <div class="invalid-feedback" i18n>Ingrese un destino.</div>
 
-            <ul *dropdownMenu class="home__form__location-options dropdown-menu w-100" role="menu">
+            <ul *dropdownMenu class="dropdown-menu" role="menu">
               <li *ngFor="let location of filteredLocations; let i = index" role="menuitem">
                 <button type="button" class="dropdown-item" (click)="setLocation('destination', i)" [innerHTML]="location.target">
                 </button>
@@ -49,9 +55,9 @@
         <!--Day-->
         <div class="day-box">
           <label id="date" class="form-label" i18n>Día</label>
-          <div class="btn-group d-flex" dropdown>
-            <button dropdownToggle type="button" class="form-select text-truncate" aria-controls="dropdown-date">{{ getSelectedDaysString() }}</button>
-            <ul id="dropdown-date" *dropdownMenu class="dropdown-menu w-100" role="menu" aria-labelledby="date">
+          <div class="button-group" dropdown>
+            <button dropdownToggle type="button" class="day" aria-controls="dropdown-date">{{ getSelectedDaysString() }}</button>
+            <ul id="dropdown-date" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="date">
               <li *ngFor="let day of days" role="menuitem" [ngClass]="{ 'bg-light': selectedDays.includes(day.value) }">
                 <span class="dropdown-item" (click)="toggleDay($event, day.value)">{{ day.label }}</span>
               </li>
@@ -64,11 +70,6 @@
 
       </form>
 
-      <alert type="warning" [dismissible]="true" class="alert-warning">
-          <img src="assets/imgs/shield.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="">
-          <p>Dada la situación sanitaria por COVID-19 estos datos están sujetos a cambios sin previo aviso. Verifíquelos en cada caso con las compañías. </p>
-      </alert>
-      
     </div>
 
     <!--Search Results--> 
