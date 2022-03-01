@@ -1,73 +1,34 @@
-<a class="skip-to-content btn btn-primary" [routerLink]="[currentUrl]" [fragment]="'main'" i18n>
-  Saltear navegación
-</a>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <div class="container-fluid">
-    <span class="navbar-brand order-1">
-      BusesUY
-    </span>
-    <button class="navbar-toggler me-auto order-2" type="button" aria-controls="navbarNav" [attr.aria-expanded]="!isCollapsed" i18n-aria-label aria-label="Abrir/Cerrar navegación" (click)="isCollapsed = !isCollapsed">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse order-4" id="navbarNav" [collapse]="isCollapsed" [isAnimated]="true">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/']" i18n>
-            Inicio
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/proyecto']" i18n>
-            Acerca de
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/datos']" i18n>
-            Datos
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/contacto']" i18n>
-            Contacto
-          </a>
-        </li>
+<header class="main-header">
+  <div class="content">
+
+    <nav class="main-nav">
+      <ul>
+        <li><a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/']" i18n>Inicio</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/proyecto']" i18n>Acerca de</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/datos']" i18n>Datos</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/contacto']" i18n>Contacto</a></li>
       </ul>
-    </div>
-    <div class="d-flex order-3 order-sm-5">
-      <button type="button" class="btn btn-secondary d-flex me-2" (click)="share()">
-        <img class="img-fluid" height="20" width="20" src="assets/imgs/share.svg" i18n-alt alt="Compartir">
-      </button>
-      <div class="btn-group header__lang" dropdown>
-        <button
-          id="button-lang"
-          dropdownToggle
-          type="button"
-          class="btn btn-secondary dropdown-toggle d-flex"
-          aria-controls="dropdown-lang"
-          i18n-title
-          title="Seleccionar idioma"
-        >
+    </nav>
+    
+    <div class="right-options">
+      <button type="button" (click)="share()">Share</button>
+
+      <div dropdown>
+        <button id="button-lang" dropdownToggle type="button" aria-controls="dropdown-lang" i18n-title title="Seleccionar idioma">
           <img class="img-fluid" src="{{currentLang['flag']}}" i18n-alt alt="Idioma actual {{currentLang['label']}}">
         </button>
-        <ul
-          id="dropdown-lang"
-          *dropdownMenu
-          class="dropdown-menu dropdown-menu-right dropdown-menu-dark"
-          role="menu"
-          aria-labelledby="button-lang"
-        >
+        <ul id="dropdown-lang" *dropdownMenu role="menu" aria-labelledby="button-lang">
           <li *ngFor="let lang of langs" role="menuitem">
-            <a class="dropdown-item" href="{{lang.url}}{{currentUrl}}">
-              <img class="img-fluid me-1" src="{{lang.flag}}" alt="">
-              {{lang.label}}
-            </a>
+            <a href="{{lang.url}}{{currentUrl}}"><img class="img-fluid me-1" src="{{lang.flag}}" alt="">{{lang.label}}</a>
           </li>
         </ul>
       </div>
     </div>
+
   </div>
-</nav>
+</header>
+
 
 <app-message *ngIf="linkCopied" type="info" i18n>
-  Enlace copiado al portapapeles.
+Enlace copiado al portapapeles.
 </app-message>

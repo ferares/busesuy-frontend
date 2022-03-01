@@ -1,0 +1,16 @@
+body{ font-family: "Montserrat", sans-serif; font-size: 14px; color: #000; }
+
+/*Generics*/
+.content{ width: 100%; max-width: 1160px; margin: 0 auto; }
+
+/*Angular*/
+#main{ padding-top: 100px; }
+
+/*Inputs*/
+input,
+select,
+textarea{ font-family: "Montserrat", sans-serif; }
+
+/*Buttons*/
+.btn,
+button{ display: inline-block; padding: 10px; border: 2px solid #000; background: transparent; font-family: "Montserrat", sans-serif; cursor: pointer; }
