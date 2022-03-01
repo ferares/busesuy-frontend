@@ -1,4 +1,4 @@
-body{ font-family: "Montserrat", sans-serif; font-size: 14px; color: #000; }
+body{ font-family: "Nunito", sans-serif; font-size: 17px; color: #000; }
 
 /*Generics*/
 .content{ width: 100%; max-width: 1160px; margin: 0 auto; }
@@ -9,8 +9,8 @@ body{ font-family: "Montserrat", sans-serif; font-size: 14px; color: #000; }
 /*Inputs*/
 input,
 select,
-textarea{ font-family: "Montserrat", sans-serif; }
+textarea{ font-family: "Nunito", sans-serif; }
 
 /*Buttons*/
 .btn,
-button{ display: inline-block; padding: 10px; border: 2px solid #000; background: transparent; font-family: "Montserrat", sans-serif; cursor: pointer; }
+button{ display: inline-block; padding: 10px; border: 2px solid #000; background: transparent; font-family: "Nunito", sans-serif; cursor: pointer; }

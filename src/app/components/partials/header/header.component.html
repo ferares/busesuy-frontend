@@ -1,18 +1,30 @@
 <header class="main-header">
   <div class="content">
-
+    
     <nav class="main-nav">
+
+      <!--Logo-->
+      <a [routerLink]="['/']" i18n>
+        <figure>
+          <img src="/assets/imgs/temp-logo.svg" />
+        </figure>
+      </a>
+
+      <!--Menu-->
       <ul>
-        <li><a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/']" i18n>Inicio</a></li>
         <li><a routerLinkActive="active" [routerLink]="['/proyecto']" i18n>Acerca de</a></li>
         <li><a routerLinkActive="active" [routerLink]="['/datos']" i18n>Datos</a></li>
         <li><a routerLinkActive="active" [routerLink]="['/contacto']" i18n>Contacto</a></li>
       </ul>
+
     </nav>
     
     <div class="right-options">
+
+      <!--Share Button-->
       <button type="button" (click)="share()">Share</button>
 
+      <!--Language Select Dropdown-->
       <div dropdown>
         <button id="button-lang" dropdownToggle type="button" aria-controls="dropdown-lang" i18n-title title="Seleccionar idioma">
           <img class="img-fluid" src="{{currentLang['flag']}}" i18n-alt alt="Idioma actual {{currentLang['label']}}">
