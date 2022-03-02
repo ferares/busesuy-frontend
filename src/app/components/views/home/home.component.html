@@ -1,9 +1,5 @@
-<section class="home-content">
+<section class="home-content" style="background-image:url('{{background?.picture}}')">
   <div class="content">
-
-    <h1 i18n>Buscador de líneas de ómnibus</h1>
-
-    <div class="home-background" style="background-image:url('{{background?.picture}}')"></div>
 
     <!--Covid Message-->
     <alert type="warning" [dismissible]="true">
@@ -12,7 +8,11 @@
     </alert>
 
     <!--Search Form-->
+    
     <div class="search-form">
+      
+      <h1 i18n>Buscador de líneas de ómnibus</h1>
+
       <form class="row g-3 home__form" [ngClass]="{ 'was-validated': validated }" novalidate (submit)="search()">
 
         <!--Origin-->
@@ -74,90 +74,83 @@
 
     <!--Search Results--> 
     <div #resultsElement>
-      <div *ngIf="results" class="col-12 mt-4">
-        <div class="card shadow">
-          <div class="card-body">
-            <h2 class="card-title h5" i18n>
-              Líneas
-            </h2>
-            <app-results-table [results]="results" [origin]="resultsOrigin" [destination]="resultsDestination">
-            </app-results-table>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="(!results || !results.length) && indirectResults" class="col-12 mt-4">
-        <div class="card shadow">
-          <div class="card-body">
-            <h2 class="card-title h5" i18n>
-              Transbordos
-            </h2>
-            <p *ngIf="!indirectResults || !indirectResults.length" class="lead mb-0" i18n>
-              No hay resultados
-            </p>
-            <accordion *ngIf="indirectResults && indirectResults.length" [isAnimated]="true">
-              <accordion-group *ngFor="let result of indirectResults">
-                <button
-                  type="button"
-                  class="results-indirect__accordion-heading"
-                  accordion-heading
-                >
-                  <span class="text-nowrap text-truncate w-100">
-                    {{result[0].origin}}, {{result[0].originDepartment}}
-                  </span>
-                  <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="con escala en">
-                  <span class="text-nowrap text-truncate w-100">
-                    {{result[0].destination}}, {{result[0].destinationDepartment}}
-                  </span>
-                  <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="con destino">
-                  <span class="text-nowrap text-truncate w-100">
-                    {{result[1].destination}}, {{result[1].destinationDepartment}}
-                  </span>
-                  <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
-                </button>
 
-                <accordion [isAnimated]="true">
-                  <accordion-group>
-                    <button
-                      type="button"
-                      class="results-indirect__accordion-heading results-indirect__accordion-heading--scale"
-                      accordion-heading
-                    >
-                      <span class="text-nowrap text-truncate w-100">
-                        {{result[0].origin}}, {{result[0].originDepartment}}
-                      </span>
-                      <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="hacia">
-                      <span class="text-nowrap text-truncate w-100">
-                        {{result[0].destination}}, {{result[0].destinationDepartment}}
-                      </span>
-                      <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
-                    </button>
-                    <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
-                    </app-results-table>
-                  </accordion-group>
-                  <accordion-group>
-                    <button
-                      type="button"
-                      class="results-indirect__accordion-heading results-indirect__accordion-heading--scale"
-                      accordion-heading
-                    >
-                      <span class="text-nowrap text-truncate w-100">
-                        {{result[1].origin}}, {{result[1].originDepartment}}
-                      </span>
-                      <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="hacia">
-                      <span class="text-nowrap text-truncate w-100">
-                        {{result[1].destination}}, {{result[1].destinationDepartment}}
-                      </span>
-                      <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
-                    </button>
-                    <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment">
-                    </app-results-table>
-                  </accordion-group>
-                </accordion>
-              </accordion-group>
-            </accordion>
-          </div>
-        </div>
+      <div *ngIf="results" class="lines-results">
+          <h2 i18n>Líneas</h2>
+          <app-results-table [results]="results" [origin]="resultsOrigin" [destination]="resultsDestination"></app-results-table>
       </div>
+
+      <div *ngIf="results" class="transboard-results">
+
+        <div *ngIf="(!results || !results.length) && indirectResults" class="col-12 mt-4">
+          <div class="card shadow">
+            <div class="card-body">
+              
+              <div class="no-results">
+                <h2 i18n>Transbordos</h2>
+                <p *ngIf="!indirectResults || !indirectResults.length" class="lead mb-0" i18n>No hay resultados</p>
+              </div>
+              
+              <accordion *ngIf="indirectResults && indirectResults.length" [isAnimated]="true">
+                <accordion-group *ngFor="let result of indirectResults">
+
+                  <button type="button" class="path-card" accordion-heading>
+                      
+                      <div class="pather">
+                        <span class="path-dot">{{result[0].origin}}, {{result[0].originDepartment}}</span>
+                        <span class="path-dot">{{result[0].destination}}, {{result[0].destinationDepartment}}</span>
+                        <span class="path-dot">{{result[1].destination}}, {{result[1].destinationDepartment}}</span>
+                      </div>
+
+                      <i class="fa-solid fa-circle-chevron-down collapse-arrow"></i>
+                  </button>
+
+                  <accordion [isAnimated]="true">
+                    <accordion-group>
+                      <button
+                        type="button"
+                        class="results-indirect__accordion-heading results-indirect__accordion-heading--scale"
+                        accordion-heading
+                      >
+                        <span class="text-nowrap text-truncate w-100">
+                          {{result[0].origin}}, {{result[0].originDepartment}}
+                        </span>
+                        <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="hacia">
+                        <span class="text-nowrap text-truncate w-100">
+                          {{result[0].destination}}, {{result[0].destinationDepartment}}
+                        </span>
+                        <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
+                      </button>
+                      <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
+                      </app-results-table>
+                    </accordion-group>
+                    <accordion-group>
+                      <button
+                        type="button"
+                        class="results-indirect__accordion-heading results-indirect__accordion-heading--scale"
+                        accordion-heading
+                      >
+                        <span class="text-nowrap text-truncate w-100">
+                          {{result[1].origin}}, {{result[1].originDepartment}}
+                        </span>
+                        <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="hacia">
+                        <span class="text-nowrap text-truncate w-100">
+                          {{result[1].destination}}, {{result[1].destinationDepartment}}
+                        </span>
+                        <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
+                      </button>
+                      <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment">
+                      </app-results-table>
+                    </accordion-group>
+                  </accordion>
+                </accordion-group>
+              </accordion>
+            </div>
+          </div>
+        </div>      
+      </div>
+
+
     </div>
 
     
@@ -188,22 +181,16 @@
           Compartí tus fotos
         </button>
       </ng-template>
-      <button
-        #backgroundPopover2
-        type="button"
-        class="page-home__bg-data-btn"
-        [popover]="backgroundPopover"
-        [outsideClick]="true"
-        i18n-popoverTitle
-        popoverTitle="Datos de la foto"
-        placement="top"
-      >
-        <img src="assets/imgs/camera.svg" i18n-alt alt="Sobre la foto de fondo" width="20" height="20">
+      
+      <button #backgroundPopover2 type="button" class="camera-button" [popover]="backgroundPopover" [outsideClick]="true" i18n-popoverTitle popoverTitle="Datos de la foto" placement="top">
+        <i class="fa-solid fa-camera"></i>
       </button>
+
     </ng-container>
   
+
     <!--Share Photos-->
-    <div bsModal #backgroundsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="backgrounds-modal-title">
+    <div bsModal #backgroundsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="backgrounds-modal-title" style="display: none;">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">

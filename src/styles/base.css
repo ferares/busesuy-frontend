@@ -4,7 +4,7 @@ body{ font-family: "Nunito", sans-serif; font-size: 17px; color: #000; }
 .content{ width: 100%; max-width: 1160px; margin: 0 auto; }
 
 /*Angular*/
-#main{ padding-top: 100px; height: auto; display: block !important; }
+#main{ height: auto; min-height: calc(100vh - 100px); display: block !important; position: relative; z-index: 50; }
 
 /*Inputs*/
 input,
