@@ -24,7 +24,7 @@
 .camera-button:hover{ background: #000; }
 
 /*Lines*/
-.home-content .lines-results{ position: relative; z-index: 100; background: #FFF; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.5); margin-bottom: 30px; border-radius: 10px; }
+.home-content .lines-results{ position: relative; z-index: 100; background: transparent; padding: 30px 0; margin-bottom: 30px; }
 .home-content .lines-results h2{ font-weight: bold; font-size: 1.2em; margin-bottom: 20px; }
 
 /*Transboard*/
@@ -41,3 +41,11 @@
 .path-card .pather .path-dot:last-child{ margin-bottom: 0; }
 
 .path-card.expanded-card{ border-left: 15px solid #F2BD2A; width: calc(100% - 15px); margin-left: 15px; }
+
+/*Table Responsive*/
+.table-responsive .bus-info{ box-shadow: 0 0 10px rgba(0,0,0,0.5); margin-bottom: 10px; border-radius: 10px; background: #FFF; padding: 20px; position: relative; }
+.table-responsive .bus-info .company-name{ color: #000; text-decoration: none; font-weight: bold; margin-bottom: 10px; display: block; font-size: 1.2em; } 
+.table-responsive .bus-info .bus-info-times p{ margin-bottom: 5px; }
+.table-responsive .bus-info .bus-icon{ position: absolute; right: 30px; font-size: 2em; top: 20px; }
+.table-responsive .bus-info .more-info{ color: #000; text-decoration: none; display: inline-block; margin-top: 10px; font-weight: 600; }
+.table-responsive .bus-info .more-info i{ margin-right: 5px; }
