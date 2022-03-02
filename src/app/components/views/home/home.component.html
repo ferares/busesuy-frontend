@@ -66,7 +66,9 @@
         </div>
 
         <!--Search Button-->
-        <button type="submit" class="search-button" i18n>Buscar</button>
+        <button type="submit" class="search-button" i18n>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
 
       </form>
 
@@ -102,45 +104,40 @@
                         <span class="path-dot">{{result[1].destination}}, {{result[1].destinationDepartment}}</span>
                       </div>
 
-                      <i class="fa-solid fa-circle-chevron-down collapse-arrow"></i>
+                      <i class="fa-solid fa-angle-down collapse-arrow"></i>
                   </button>
 
                   <accordion [isAnimated]="true">
                     <accordion-group>
-                      <button
-                        type="button"
-                        class="results-indirect__accordion-heading results-indirect__accordion-heading--scale"
-                        accordion-heading
-                      >
-                        <span class="text-nowrap text-truncate w-100">
-                          {{result[0].origin}}, {{result[0].originDepartment}}
-                        </span>
-                        <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="hacia">
-                        <span class="text-nowrap text-truncate w-100">
-                          {{result[0].destination}}, {{result[0].destinationDepartment}}
-                        </span>
-                        <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
+                      
+                      <button type="button" class="path-card expanded-card" accordion-heading>
+                        <div class="pather">
+                          <span class="path-dot">{{result[0].origin}}, {{result[0].originDepartment}}</span>
+                          <span class="path-dot">{{result[0].destination}}, {{result[0].destinationDepartment}}</span>
+                        </div>
+                        
+                        <i class="fa-solid fa-angle-down collapse-arrow"></i>
                       </button>
+
                       <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
+
                       </app-results-table>
                     </accordion-group>
+
                     <accordion-group>
-                      <button
-                        type="button"
-                        class="results-indirect__accordion-heading results-indirect__accordion-heading--scale"
-                        accordion-heading
-                      >
-                        <span class="text-nowrap text-truncate w-100">
-                          {{result[1].origin}}, {{result[1].originDepartment}}
-                        </span>
-                        <img class="results-indirect__accordion-heading__arrow" width="20" height="20" src="assets/imgs/arrow-left.svg" i18n-alt alt="hacia">
-                        <span class="text-nowrap text-truncate w-100">
-                          {{result[1].destination}}, {{result[1].destinationDepartment}}
-                        </span>
-                        <img class="panel-chevron" width="20" height="20" src="assets/imgs/chevron-down.svg" i18n-alt alt="Expandir/Colapsar">
+                      
+                      <button type="button" class="path-card expanded-card" accordion-heading>
+
+                        <div class="pather">
+                          <span class="path-dot">{{result[1].origin}}, {{result[1].originDepartment}}</span>
+                          <span class="path-dot">{{result[1].destination}}, {{result[1].destinationDepartment}}</span>
+                        </div>
+
+                        <i class="fa-solid fa-angle-down collapse-arrow"></i>
                       </button>
-                      <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment">
-                      </app-results-table>
+
+                      <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment"></app-results-table>
+
                     </accordion-group>
                   </accordion>
                 </accordion-group>

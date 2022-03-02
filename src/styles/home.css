@@ -33,9 +33,11 @@
 
 /*Bus Cards*/
 .path-card{ width: 100%; box-shadow: 0 0 10px rgba(0,0,0,0.5); margin-bottom: 10px; border-radius: 10px; background: #FFF; border: none; padding: 20px; position: relative; }
-.path-card .collapse-arrow{ position: absolute; right: 20px; top: 50%; font-size: 1em; } 
+.path-card .collapse-arrow{ position: absolute; right: 20px; top: 20px; font-size: 1em; } 
 .path-card .pather{ display: flex; justify-content: space-between; flex-direction: column; position: relative; text-align: left; }
 .path-card .pather .path-dot{ position: relative; padding-left: 25px; margin-bottom: 10px; }
 .path-card .pather .path-dot:before{ content: ""; display: block; border-radius: 100%; width: 13px; height: 13px; border: 2px solid #000; position: absolute; left: 0; top: 3px; background: #FFF; z-index: 10; }
 .path-card .pather:before{ content: ""; display: block; position: absolute; width: 2px; height: calc(100% - 10px); background: #000; top: 3px; left: 5px; }
 .path-card .pather .path-dot:last-child{ margin-bottom: 0; }
+
+.path-card.expanded-card{ border-left: 15px solid #F2BD2A; width: calc(100% - 15px); margin-left: 15px; }
