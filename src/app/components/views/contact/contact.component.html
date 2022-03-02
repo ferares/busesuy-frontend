@@ -1,55 +1,39 @@
-<div class="bg-light h-100 py-4">
-  <div class="container d-flex align-items-start justify-content-center h-100">
-    <div class="row w-100">
-      <div class="col-lg-8 offset-lg-2">
-        <h1 class="display-1" i18n>
-          Contacto
-        </h1>
-      </div>
-      <div class="col-lg-8 offset-lg-2">
+<section class="content-page contact-page">
+  <div class="content">
+
+      <h1 class="page-title" i18n>Contacto</h1>
+
+      <div class="page-text">
+
         <form [formGroup]="form" novalidate [ngClass]="{ 'was-validated': validated}">
           <fieldset [disabled]="sending">
             <div class="row g-3 mb-3">
               <div class="col-sm-6">
-                <label for="name" class="form-label" i18n>
-                  Nombre
-                </label>
+                <label for="name" class="form-label" i18n>Nombre</label>
                 <input type="name" formControlName="name" class="form-control" id="name">
               </div>
               <div class="col-sm-6">
-                <label for="email" class="form-label" i18n>
-                  Correo electrónico (requerido)
-                </label>
+                <label for="email" class="form-label" i18n>Correo electrónico (requerido)</label>
                 <input type="email" formControlName="email" class="form-control" id="email" required>
-                <div class="invalid-feedback" i18n>
-                  Ingrese un correo electrónico.
-                </div>
+                <div class="invalid-feedback" i18n>Ingrese un correo electrónico.</div>
               </div>
             </div>
             <div class="mb-3">
-              <label for="message" class="form-label" i18n>
-                Mensaje (requerido)
-              </label>
+              <label for="message" class="form-label" i18n>Mensaje (requerido)</label>
               <textarea formControlName="message" class="form-control" id="message" rows="6" required></textarea>
-              <div class="invalid-feedback" i18n>
-                Ingrese un mensaje.
-              </div>
+              <div class="invalid-feedback" i18n>Ingrese un mensaje.</div>
             </div>
             <div class="col-12">
               <alert *ngIf="error" type="danger" class="mb-0">
                 <div class="d-flex align-items-center">
                   <img src="assets/imgs/danger.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="">
-                  <span>
-                    {{error}}
-                  </span>
+                  <span>{{error}}</span>
                 </div>
               </alert>
               <alert *ngIf="success" type="success" class="mb-0">
                 <div class="d-flex align-items-center">
                   <img src="assets/imgs/check.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="" i18n>
-                  <span i18n>
-                    Gracias, mensaje enviado con éxito.
-                  </span>
+                  <span i18n>Gracias, mensaje enviado con éxito.</span>
                 </div>
               </alert>
             </div>
@@ -61,22 +45,17 @@
               </p>
             </div>
             <div class="col-lg-4 offset-lg-4">
-              <button
-                type="button"
-                class="btn btn-primary w-100"
-                ngHcaptchaInvisibleButton
-                (click)="onClickSubmit()"
-                (verify)="submit($event)"
-                (expired)="onCaptchaError()"
-                (error)="onCaptchaError()"
-                i18n
-              >
-              Enviar
-            </button>
+              <button type="button" class="btn btn-primary w-100" ngHcaptchaInvisibleButton (click)="onClickSubmit()" (verify)="submit($event)" (expired)="onCaptchaError()" (error)="onCaptchaError()" i18n>Enviar</button>
           </div>
           </fieldset>
         </form>
+
+
       </div>
-    </div>
+
   </div>
-</div>
+</section>
+
+
+
+        
