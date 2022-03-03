@@ -6,9 +6,9 @@
 .home-content .search-form h1{ font-weight: bold; font-size: 1.5em; margin-bottom: 30px; }
 .home-content .search-form form{ display: flex; align-items: flex-start; justify-content: space-between; }
 .home-content .search-form form label{ font-weight: bold; margin-bottom: 10px; display: block; }
-.home-content .search-form form .origin-box{ position: relative; min-width: 25%; }
-.home-content .search-form form .destiny-box{ position: relative; min-width: 25%; }
-.home-content .search-form form .day-box{ position: relative; min-width: 30%; margin: 0 20px; }
+.home-content .search-form form .origin-box{ position: relative; min-width: 28%; max-width: 28%; }
+.home-content .search-form form .destiny-box{ position: relative; min-width: 28%; max-width: 28%; }
+.home-content .search-form form .day-box{ position: relative; min-width: 28%; max-width: 28%; margin: 0 20px; }
 .home-content .search-form .swap-locations{ border: none; padding: 0 20px; position: relative; top: 40px; }
 .home-content .search-form .swap-locations i{ transition: all 0.6s; font-size: 1.2em; }
 .home-content .search-form .swap-locations:hover i{ transform: rotate(180deg); }
@@ -24,11 +24,11 @@
 .camera-button:hover{ background: #000; }
 
 /*Lines*/
-.home-content .lines-results{ position: relative; z-index: 100; background: transparent; padding: 30px 0; margin-bottom: 30px; }
+.home-content .lines-results{ position: relative; z-index: 100; background: transparent; margin-bottom: 30px; }
 .home-content .lines-results h2{ font-weight: bold; font-size: 1.2em; margin-bottom: 20px; }
 
 /*Transboard*/
-.home-content .transboard-results{ position: relative; z-index: 100; background: transparent; padding: 30px 0; margin-bottom: 30px; }
+.home-content .transboard-results{ position: relative; z-index: 100; background: transparent; margin-bottom: 30px; }
 .home-content .transboard-results h2{ font-weight: bold; font-size: 1.2em; margin-bottom: 20px; }
 .home-content .transboard-results .table-responsive .bus-info{ width: 100%; }
 
