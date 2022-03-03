@@ -9,7 +9,7 @@
             <a class="company-name" [routerLink]="['/empresas', result.company.name]">{{ result.company.name }}</a>
 
             <div class="bus-info-times">
-              <p><strong>Horario:</strong> {{ result.originStop.time }} h - {{ result.destinationStop.time }} h</p>
+              <p><strong>Salida:</strong> {{ result.originStop.time }} hs. - <strong>Llegada</strong> {{ result.destinationStop.time }} hs.</p>
               <p><strong>Duración:</strong> {{ result.duration }} h</p>
               <p><strong>Frecuencia:</strong> {{ result.line.frequency }}</p>
               <p><strong>Recorrido:</strong> {{ result.line.route }}</p>
