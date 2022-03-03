@@ -1,4 +1,7 @@
-<p *ngIf="!results.length" class="lead mb-0" i18n>No hay resultados</p>
+<div *ngIf="!results.length" class="no-results" i18n>
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <p>No hay resultados</p>
+</div>
 
 <div *ngIf="results.length" class="table-responsive">
   <ul class="list-unstyled">

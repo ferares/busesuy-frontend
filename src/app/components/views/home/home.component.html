@@ -84,13 +84,15 @@
 
       <div *ngIf="results" class="transboard-results">
 
-        <div *ngIf="(!results || !results.length) && indirectResults" class="col-12 mt-4">
+        <div *ngIf="(!results || !results.length) && indirectResults">
           <div class="card shadow">
             <div class="card-body">
               
-              <div class="no-results">
-                <h2 i18n>Transbordos</h2>
-                <p *ngIf="!indirectResults || !indirectResults.length" class="lead mb-0" i18n>No hay resultados</p>
+              <h2 i18n>Transbordos</h2>
+
+              <div class="no-results" *ngIf="!indirectResults || !indirectResults.length" i18n>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <p>No hay resultados</p>
               </div>
               
               <accordion *ngIf="indirectResults && indirectResults.length" [isAnimated]="true">
