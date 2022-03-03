@@ -13,14 +13,12 @@
 
             <div class="bus-info-times">
               <p><strong>Salida:</strong> {{ result.originStop.time }} hs. - <strong>Llegada</strong> {{ result.destinationStop.time }} hs.</p>
-              <p><strong>Duración:</strong> {{ result.duration }} h</p>
+              <p><strong>Duración:</strong> {{ result.duration }} h - <strong>Recorrido:</strong> {{ result.line.route }}</p>
               <p><strong>Frecuencia:</strong> {{ result.line.frequency }}</p>
-              <p><strong>Recorrido:</strong> {{ result.line.route }}</p>
             </div>
 
             <a class="more-info" [routerLink]="['/lineas', result.line.name]" i18n>
-              <i class="fa-solid fa-circle-info"></i>
-              <span>Más Información</span>
+              <i class="fa-solid fa-arrow-right"></i>
             </a>
 
             <i class="fa-solid fa-bus-simple bus-icon"></i>
