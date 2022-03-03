@@ -2,7 +2,7 @@
 .home-content{ min-height: calc(100vh - 100px); background-position: center; background-repeat: no-repeat; background-size: cover; padding-top: 120px; }
 
 /*Search Form*/
-.home-content .search-form{ position: relative; z-index: 100; background: #FFF; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.5); margin-bottom: 30px; border-radius: 10px; }
+.home-content .search-form{ position: relative; z-index: 5000; background: #FFF; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.5); margin-bottom: 30px; border-radius: 10px; }
 .home-content .search-form h1{ font-weight: bold; font-size: 1.5em; margin-bottom: 30px; }
 .home-content .search-form form{ display: flex; align-items: flex-start; justify-content: space-between; }
 .home-content .search-form form label{ font-weight: bold; margin-bottom: 10px; display: block; }
@@ -30,21 +30,23 @@
 /*Transboard*/
 .home-content .transboard-results{ position: relative; z-index: 100; background: transparent; padding: 30px 0; margin-bottom: 30px; }
 .home-content .transboard-results h2{ font-weight: bold; font-size: 1.2em; margin-bottom: 20px; }
-.home-content .transboard-results .table-responsive .bus-info{ width: calc(100% - 25px); margin-left: 25px;  }
+.home-content .transboard-results .table-responsive .bus-info{ width: 100%; }
 
 /*Bus Cards*/
 .path-card{ width: 100%; box-shadow: 0 0 10px rgba(0,0,0,0.5); margin-bottom: 10px; border-radius: 10px; background: #FFF; border: none; padding: 20px; position: relative; }
-.path-card .collapse-arrow{ position: absolute; right: 20px; top: 20px; font-size: 1em; } 
+.path-card .collapse-arrow{ position: absolute; right: 20px; top: 20px; font-size: 1em; transition: all .3s; } 
 .path-card .pather{ display: flex; justify-content: space-between; flex-direction: column; position: relative; text-align: left; }
 .path-card .pather .path-dot{ position: relative; padding-left: 25px; margin-bottom: 10px; }
 .path-card .pather .path-dot:before{ content: ""; display: block; border-radius: 100%; width: 13px; height: 13px; border: 2px solid #000; position: absolute; left: 0; top: 3px; background: #FFF; z-index: 10; }
 .path-card .pather:before{ content: ""; display: block; position: absolute; width: 2px; height: calc(100% - 10px); background: #000; top: 3px; left: 5px; }
 .path-card .pather .path-dot:last-child{ margin-bottom: 0; }
 
-.path-card.expanded-card{ border-left: 10px solid #F2BD2A; width: calc(100% - 15px); margin-left: 15px; }
+.path-card.expanded-card{ border-left: 10px solid #F2BD2A; width: 100% }
 
 /*Table Responsive*/
-.table-responsive .bus-info{ box-shadow: 0 0 10px rgba(0,0,0,0.5); margin-bottom: 10px; border-radius: 10px; background: #FFF; padding: 20px; position: relative; border-left: 10px solid #999 ; }
+.table-responsive ul{ display: flex; flex-wrap: wrap; justify-content: space-between; }
+.table-responsive ul li{ width: 100%; transition: all .3s; }
+.table-responsive .bus-info{ box-shadow: 0 0 10px rgba(0,0,0,0.5); margin-bottom: 20px; border-radius: 10px; background: #FFF; padding: 20px; position: relative; border-left: 10px solid #000; }
 .table-responsive .bus-info .company-name{ color: #000; text-decoration: none; font-weight: bold; margin-bottom: 10px; display: block; font-size: 1.2em; } 
 .table-responsive .bus-info .bus-info-times p{ margin-bottom: 5px; }
 .table-responsive .bus-info .bus-icon{ position: absolute; right: 30px; font-size: 2em; top: 20px; }

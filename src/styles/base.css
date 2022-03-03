@@ -38,10 +38,12 @@ button{ display: inline-block; padding: 10px; border: 2px solid #000; background
 .button-group ul li.bg-light{ background: #EEE; }
 
 /*Alert*/
-alert .alert{ display: flex; align-items: center; width: 100%; background: #EEE; padding: 20px; border-radius: 10px; z-index: 100; position: relative; }
+alert .alert{ display: flex; align-items: center; width: 100%; background: #EEE; padding: 20px 20px 25px; border-radius: 10px; z-index: 100; position: relative; line-height: 1.4; }
 alert .alert i{ font-size: 2em; margin-right: 20px; margin-left: 10px; }
 alert .alert .close{ border: none; font-size: 1.2em; color: #999; }
-alert .alert .close span + span{ display: none; }
+alert .alert .close:before{ content: "\f00d"; font-family: "Font Awesome 6 Free"; font-weight: 900; display: block; width: 10px; height: 10px; font-size: 1em; color: #AAA; position: absolute; top: 50%; margin-top: -11px; left: 25px; transition: all .3s; }
+alert .alert .close:hover:before{ color: #000; }
+alert .alert .close span{ display: none; }
 
     /*Warning*/
     alert .alert-warning{  background: #FFF5F5; }
@@ -49,3 +51,7 @@ alert .alert .close span + span{ display: none; }
 
 /*Invalid Feedback*/
 .invalid-feedback{ color: #F00; font-size: .8em; display: block; margin-top: 10px; opacity: 0; visibility: hidden; max-height: 0; }
+
+/*Accordion*/
+.accordion-toggle[aria-expanded="true"] .path-card .collapse-arrow{ transform: rotate(180deg); }
+.panel-collapse{ padding-left: 20px; }
