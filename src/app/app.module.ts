@@ -40,6 +40,7 @@ import { ResultsTableComponent } from './components/partials/results-table/resul
 import { MessageComponent } from './components/partials/message/message.component';
 import { FooterComponent } from './components/partials/footer/footer.component';
 import { BackgroundsComponent } from './components/partials/backgrounds/backgrounds.component';
+import { ModalComponent } from './components/partials/modal/modal.component';
 
 import { environment } from '../environments/environment';
 
@@ -58,6 +59,7 @@ import { environment } from '../environments/environment';
     FooterComponent,
     DataComponent,
     BackgroundsComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,9 @@
+<div class="modal" [ngClass]="{ 'show': show }">
+  <div class="modal-content">
+    <button type="button" class="modal-close" (click)="close()" i18n>
+      Cerrar
+    </button>
+    <ng-content>
+    </ng-content>
+  </div>
+</div>

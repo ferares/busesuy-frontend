@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -8,14 +8,12 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./line.component.scss']
 })
 export class LineComponent {
-  line: any = undefined as any;
+  @Input('data') data!: any;
 
   constructor(private route: ActivatedRoute, private titleService: Title) {
-    this.line = route.snapshot.data['data'].line;
-    this.line.origin = route.snapshot.data['data'].origin;
-    this.line.originDepartment = route.snapshot.data['data'].originDepartment;
-    this.line.destination = route.snapshot.data['data'].destination;
-    this.line.destinationDepartment = route.snapshot.data['data'].destinationDepartment;
-    this.titleService.setTitle($localize `Línea ${this.line.name} | BusesUY`);
+    if (this.route.snapshot.data['data'].line) {
+      this.data = this.route.snapshot.data['data'];
+      this.titleService.setTitle($localize `Línea ${this.data.line.name} | BusesUY`);
+    }
   }
 }

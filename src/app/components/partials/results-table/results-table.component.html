@@ -17,9 +17,9 @@
               <p><strong>Frecuencia:</strong> {{ result.line.frequency }}</p>
             </div>
 
-            <a class="more-info" [routerLink]="['/lineas', result.line.name]" i18n>
+            <button type="button" class="more-info" (click)="getLineInfo(result.line.name)" i18n>
               <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            </button>
 
             <i class="fa-solid fa-bus-simple bus-icon"></i>
 
@@ -28,3 +28,8 @@
     </li>
   </ul>
 </div>
+
+<app-modal #lineInfoModal>
+  <app-line *ngIf="lineInfo" [data]="lineInfo">
+  </app-line>
+</app-modal>

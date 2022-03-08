@@ -21,7 +21,10 @@ export class HomeResolver implements Resolve<any> {
         this.imagesService.getRandomImage(),
       ]).subscribe((data: Array<any>) => {
         const [locations, background] = data;
-        resolve({ locations, background });
+        const img = new Image();
+        img.onload = () => resolve({ locations, background });
+        img.onerror = () => resolve({ locations, background });
+        img.src = background.picture;
       });
     })
   }

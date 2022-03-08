@@ -8,9 +8,9 @@
     </alert>
 
     <!--Search Form-->
-    
+
     <div class="search-form">
-      
+
       <h1 class="title-icon" i18n>
         <i class="fa-solid fa-bus"></i>Buscador de líneas de ómnibus en Uruguay
       </h1>
@@ -76,7 +76,7 @@
 
     </div>
 
-    <!--Search Results--> 
+    <!--Search Results-->
     <div #resultsElement>
 
       <div *ngIf="results" class="lines-results">
@@ -89,19 +89,19 @@
         <div *ngIf="(!results || !results.length) && indirectResults">
           <div class="card shadow">
             <div class="card-body">
-              
+
               <h2 i18n>Transbordos</h2>
 
               <div class="no-results" *ngIf="!indirectResults || !indirectResults.length" i18n>
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <p>No hay resultados</p>
               </div>
-              
+
               <accordion *ngIf="indirectResults && indirectResults.length" [isAnimated]="true">
                 <accordion-group *ngFor="let result of indirectResults">
 
                   <button type="button" class="path-card" accordion-heading>
-                      
+
                       <div class="pather">
                         <span class="path-dot">{{result[0].origin}}, {{result[0].originDepartment}}</span>
                         <span class="path-dot">{{result[0].destination}}, {{result[0].destinationDepartment}}</span>
@@ -113,13 +113,13 @@
 
                   <accordion [isAnimated]="true">
                     <accordion-group>
-                      
+
                       <button type="button" class="path-card expanded-card" accordion-heading>
                         <div class="pather">
                           <span class="path-dot">{{result[0].origin}}, {{result[0].originDepartment}}</span>
                           <span class="path-dot">{{result[0].destination}}, {{result[0].destinationDepartment}}</span>
                         </div>
-                        
+
                         <i class="fa-solid fa-angle-down collapse-arrow"></i>
                       </button>
 
@@ -129,7 +129,7 @@
                     </accordion-group>
 
                     <accordion-group>
-                      
+
                       <button type="button" class="path-card expanded-card" accordion-heading>
 
                         <div class="pather">
@@ -148,15 +148,15 @@
               </accordion>
             </div>
           </div>
-        </div>      
+        </div>
       </div>
 
 
     </div>
 
-    
 
-    
+
+
     <!--Background Info-->
     <ng-container *ngIf="background">
       <ng-template #backgroundPopover bsPopover>
@@ -182,13 +182,13 @@
           Compartí tus fotos
         </button>
       </ng-template>
-      
+
       <button #backgroundPopover2 type="button" class="camera-button" [popover]="backgroundPopover" [outsideClick]="true" i18n-popoverTitle popoverTitle="Datos de la foto" placement="top">
         <i class="fa-solid fa-camera"></i>
       </button>
 
     </ng-container>
-  
+
 
     <!--Share Photos-->
     <div bsModal #backgroundsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="backgrounds-modal-title" style="display: none;">
