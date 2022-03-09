@@ -1,0 +1,9 @@
+<div [class]="'alert alert-' + type" [ngClass]="{ 'show': !dismissed }">
+  <ng-template *ngIf="dismissible">
+      <button type="button" class="close btn-close" i18n-aria-label aria-label="Cerrar" (click)="close()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </ng-template>
+  <ng-content>
+  </ng-content>
+</div>

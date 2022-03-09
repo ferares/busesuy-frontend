@@ -46,6 +46,7 @@ import { LocationInputComponent } from './components/partials/location-input/loc
 import { DayInputComponent } from './components/partials/day-input/day-input.component';
 import { AccordionComponent } from './components/partials/accordion/accordion.component';
 import { PopoverComponent } from './components/partials/popover/popover.component';
+import { AlertComponent } from './components/partials/alert/alert.component';
 
 import { environment } from '../environments/environment';
 
@@ -70,6 +71,7 @@ import { environment } from '../environments/environment';
     DayInputComponent,
     AccordionComponent,
     PopoverComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
