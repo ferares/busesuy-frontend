@@ -41,6 +41,7 @@ import { MessageComponent } from './components/partials/message/message.componen
 import { FooterComponent } from './components/partials/footer/footer.component';
 import { BackgroundsComponent } from './components/partials/backgrounds/backgrounds.component';
 import { ModalComponent } from './components/partials/modal/modal.component';
+import { DropdownComponent } from './components/partials/dropdown/dropdown.component';
 
 import { environment } from '../environments/environment';
 
@@ -60,6 +61,7 @@ import { environment } from '../environments/environment';
     DataComponent,
     BackgroundsComponent,
     ModalComponent,
+    DropdownComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 <header class="main-header">
   <div class="content">
-    
+
     <nav class="main-nav">
 
       <!--Logo-->
@@ -18,7 +18,7 @@
       </ul>
 
     </nav>
-    
+
     <div class="right-options">
 
       <!--Share Button-->
@@ -27,16 +27,16 @@
       </button>
 
       <!--Language Select Dropdown-->
-      <div dropdown>
-        <button id="button-lang" dropdownToggle type="button" aria-controls="dropdown-lang" i18n-title title="Seleccionar idioma" class="language-button">
-          <img class="img-fluid" src="{{currentLang['flag']}}" i18n-alt alt="Idioma actual {{currentLang['label']}}">
-        </button>
-        <ul id="dropdown-lang" *dropdownMenu role="menu" aria-labelledby="button-lang">
+      <button id="button-lang" type="button" aria-controls="dropdown-lang" i18n-title title="Seleccionar idioma" class="language-button" (click)="dropdown.toggle()">
+        <img class="img-fluid" src="{{currentLang['flag']}}" i18n-alt alt="Idioma actual {{currentLang['label']}}">
+      </button>
+      <app-dropdown #dropdown>
+        <ul id="dropdown-lang" role="menu" aria-labelledby="button-lang">
           <li *ngFor="let lang of langs" role="menuitem">
-            <a href="{{lang.url}}{{currentUrl}}"><img class="img-fluid me-1" src="{{lang.flag}}" alt="">{{lang.label}}</a>
+            <a href="{{lang.url}}{{currentUrl}}" (click)="dropdown.close()"><img class="img-fluid me-1" src="{{lang.flag}}" alt="">{{lang.label}}</a>
           </li>
         </ul>
-      </div>
+      </app-dropdown>
     </div>
 
   </div>
