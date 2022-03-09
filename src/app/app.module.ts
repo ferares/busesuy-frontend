@@ -9,13 +9,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { NgHcaptchaModule } from 'ng-hcaptcha';
 
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { AccordionModule } from 'ngx-bootstrap/accordion';
-import { AlertModule } from 'ngx-bootstrap/alert';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { PopoverModule } from 'ngx-bootstrap/popover';
-import { ModalModule } from 'ngx-bootstrap/modal';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -80,12 +73,6 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    BsDropdownModule.forRoot(),
-    AccordionModule.forRoot(),
-    AlertModule.forRoot(),
-    CollapseModule.forRoot(),
-    PopoverModule.forRoot(),
-    ModalModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

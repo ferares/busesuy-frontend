@@ -36,22 +36,22 @@
       </div>
     </div>
     <div *ngFor="let location of locations;let i = index" class="mb-3">
-      <alert *ngIf="location.error" type="danger" class="mb-0">
+      <app-alert *ngIf="location.error" type="danger" class="mb-0">
         <div class="d-flex align-items-center">
           <img src="assets/imgs/danger.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="">
           <span>
             {{location.error}}
           </span>
         </div>
-      </alert>
-      <alert *ngIf="location.success" type="success" class="mb-0">
+      </app-alert>
+      <app-alert *ngIf="location.success" type="success" class="mb-0">
         <div class="d-flex align-items-center">
           <img src="assets/imgs/check.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="" i18n>
           <span i18n>
             Fotos recibidas.
           </span>
         </div>
-      </alert>
+      </app-alert>
       <div *ngIf="!location.error && !location.success" class="card mb-3">
         <div class="card-body">
           <div class="row position-relative">
@@ -96,22 +96,22 @@
       </div>
     </div>
     <div class="col-12">
-      <alert *ngIf="error" type="danger" class="mb-0">
+      <app-alert *ngIf="error" type="danger" class="mb-0">
         <div class="d-flex align-items-center">
           <img src="assets/imgs/danger.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="">
           <span>
             {{error}}
           </span>
         </div>
-      </alert>
-      <alert *ngIf="success" type="success" class="mb-0">
+      </app-alert>
+      <app-alert *ngIf="success" type="success" class="mb-0">
         <div class="d-flex align-items-center">
           <img src="assets/imgs/check.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="" i18n>
           <span i18n>
             Gracias por colaborar.
           </span>
         </div>
-      </alert>
+      </app-alert>
     </div>
     <div class="col-lg-4 offset-lg-8 mb-3">
       <button type="button" class="btn btn-primary w-100" (click)="addLocation()" i18n>
