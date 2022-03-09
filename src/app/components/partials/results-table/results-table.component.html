@@ -7,7 +7,7 @@
   <ul class="list-unstyled">
     <li *ngFor="let result of results; let i = index">
 
-        <div class="bus-info">
+        <div [class]="'bus-info ' + result.company.name.toLowerCase().replaceAll(' ', '-')">
 
             <a class="company-name" [routerLink]="['/empresas', result.company.name]">{{ result.company.name }}</a>
 
