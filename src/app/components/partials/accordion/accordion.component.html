@@ -1,0 +1,10 @@
+<div class="accordion" [ngClass]="{ 'open': show }">
+  <header class="accordion-header" (click)="toggle()">
+    <ng-content select="[accordion-heading]">
+    </ng-content>
+  </header>
+  <div class="accordion-content">
+    <ng-content>
+    </ng-content>
+  </div>
+</div>

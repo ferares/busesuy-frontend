@@ -44,6 +44,7 @@ import { ModalComponent } from './components/partials/modal/modal.component';
 import { DropdownComponent } from './components/partials/dropdown/dropdown.component';
 import { LocationInputComponent } from './components/partials/location-input/location-input.component';
 import { DayInputComponent } from './components/partials/day-input/day-input.component';
+import { AccordionComponent } from './components/partials/accordion/accordion.component';
 
 import { environment } from '../environments/environment';
 
@@ -66,6 +67,7 @@ import { environment } from '../environments/environment';
     DropdownComponent,
     LocationInputComponent,
     DayInputComponent,
+    AccordionComponent,
   ],
   imports: [
     BrowserModule,

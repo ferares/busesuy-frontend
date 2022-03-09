@@ -73,8 +73,8 @@
                 <p>No hay resultados</p>
               </div>
 
-              <accordion *ngIf="indirectResults && indirectResults.length" [isAnimated]="true">
-                <accordion-group *ngFor="let result of indirectResults">
+              <ng-container *ngIf="indirectResults && indirectResults.length">
+                <app-accordion *ngFor="let result of indirectResults">
 
                   <button type="button" class="path-card" accordion-heading>
 
@@ -87,8 +87,8 @@
                       <i class="fa-solid fa-angle-down collapse-arrow"></i>
                   </button>
 
-                  <accordion [isAnimated]="true">
-                    <accordion-group>
+                  <accordion>
+                    <app-accordion>
 
                       <button type="button" class="path-card expanded-card" accordion-heading>
                         <div class="pather">
@@ -102,9 +102,9 @@
                       <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
 
                       </app-results-table>
-                    </accordion-group>
+                    </app-accordion>
 
-                    <accordion-group>
+                    <app-accordion>
 
                       <button type="button" class="path-card expanded-card" accordion-heading>
 
@@ -118,10 +118,10 @@
 
                       <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment"></app-results-table>
 
-                    </accordion-group>
+                    </app-accordion>
                   </accordion>
-                </accordion-group>
-              </accordion>
+                </app-accordion>
+              </ng-container>
             </div>
           </div>
         </div>
