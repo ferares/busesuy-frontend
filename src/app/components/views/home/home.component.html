@@ -135,7 +135,10 @@
 
     <!--Background Info-->
     <ng-container *ngIf="background">
-      <ng-template #backgroundPopover bsPopover>
+      <app-popover #backgroundPopover>
+        <h4 popover-heading>
+          Datos de la foto
+        </h4>
         <ul class="list-unstyled">
           <li class="mb-3 mt-1">
             <img class="me-1" height="20" width="20" src="assets/imgs/person-frame.svg" i18n-alt alt="Tomada por:">
@@ -154,12 +157,12 @@
         <a class="btn btn-primary w-100 mb-2" href="{{background.picture}}" target="_blank" i18n>
           Ver foto
         </a>
-        <button type="button" class="btn btn-secondary w-100" (click)="backgroundsModal.open();backgroundPopover2.click();" i18n>
+        <button type="button" class="btn btn-secondary w-100" (click)="backgroundsModal.open();backgroundPopover.close()" i18n>
           Compartí tus fotos
         </button>
-      </ng-template>
+      </app-popover>
 
-      <button #backgroundPopover2 type="button" class="camera-button" [popover]="backgroundPopover" [outsideClick]="true" i18n-popoverTitle popoverTitle="Datos de la foto" placement="top">
+      <button type="button" class="camera-button" (click)="backgroundPopover.open()">
         <i class="fa-solid fa-camera"></i>
       </button>
 

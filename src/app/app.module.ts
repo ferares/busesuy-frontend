@@ -45,6 +45,7 @@ import { DropdownComponent } from './components/partials/dropdown/dropdown.compo
 import { LocationInputComponent } from './components/partials/location-input/location-input.component';
 import { DayInputComponent } from './components/partials/day-input/day-input.component';
 import { AccordionComponent } from './components/partials/accordion/accordion.component';
+import { PopoverComponent } from './components/partials/popover/popover.component';
 
 import { environment } from '../environments/environment';
 
@@ -68,6 +69,7 @@ import { environment } from '../environments/environment';
     LocationInputComponent,
     DayInputComponent,
     AccordionComponent,
+    PopoverComponent,
   ],
   imports: [
     BrowserModule,
