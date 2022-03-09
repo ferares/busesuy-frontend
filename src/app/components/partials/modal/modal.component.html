@@ -1,4 +1,8 @@
 <div class="modal" [ngClass]="{ 'show': show }">
+  <div class="modal-header">
+    <ng-content select="[modal-heading]">
+    </ng-content>
+  </div>
   <div class="modal-content">
     <button type="button" class="modal-close" (click)="close()" i18n>
       Cerrar

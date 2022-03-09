@@ -154,7 +154,7 @@
         <a class="btn btn-primary w-100 mb-2" href="{{background.picture}}" target="_blank" i18n>
           Ver foto
         </a>
-        <button type="button" class="btn btn-secondary w-100" (click)="backgroundsModal.show();backgroundPopover2.click();" i18n>
+        <button type="button" class="btn btn-secondary w-100" (click)="backgroundsModal.open();backgroundPopover2.click();" i18n>
           Compartí tus fotos
         </button>
       </ng-template>
@@ -167,24 +167,18 @@
 
 
     <!--Share Photos-->
-    <div bsModal #backgroundsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="backgrounds-modal-title" style="display: none;">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 id="backgrounds-modal-title" class="modal-title pull-left" i18n>
-              Compartí tus fotos
-            </h4>
-            <button type="button" class="btn-close close pull-right" aria-label="Cerrar" i18n-aria-label (click)="backgroundsModal.hide()">
-              <span aria-hidden="true" class="visually-hidden">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <app-backgrounds>
-            </app-backgrounds>
-          </div>
-        </div>
+    <app-modal #backgroundsModal>
+      <div modal-heading>
+        <h4 id="backgrounds-modal-title" class="modal-title pull-left" i18n>
+          Compartí tus fotos
+        </h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Cerrar" i18n-aria-label (click)="backgroundsModal.close()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
       </div>
-    </div>
+      <app-backgrounds>
+      </app-backgrounds>
+    </app-modal>
 
   </div>
 </section>
