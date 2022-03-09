@@ -42,6 +42,7 @@ import { FooterComponent } from './components/partials/footer/footer.component';
 import { BackgroundsComponent } from './components/partials/backgrounds/backgrounds.component';
 import { ModalComponent } from './components/partials/modal/modal.component';
 import { DropdownComponent } from './components/partials/dropdown/dropdown.component';
+import { LocationInputComponent } from './components/partials/location-input/location-input.component';
 
 import { environment } from '../environments/environment';
 
@@ -62,6 +63,7 @@ import { environment } from '../environments/environment';
     BackgroundsComponent,
     ModalComponent,
     DropdownComponent,
+    LocationInputComponent,
   ],
   imports: [
     BrowserModule,

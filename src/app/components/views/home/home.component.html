@@ -20,15 +20,8 @@
         <!--Origin-->
         <div class="origin-box">
           <label for="origin" i18n>Origen</label>
-          <div dropdown #originOptions="bs-dropdown">
-            <input #originElement type="text" class="form-control" id="origin" [(ngModel)]="origin" name="origin" autocomplete="off" required dropdownToggle (input)="handleInput('origin')" (click)="handleInput('origin')" (keydown)="handleIntro('origin', $event)">
-            <ul *dropdownMenu class="dropdown-menu" role="menu">
-              <li *ngFor="let location of filteredLocations; let i = index" role="menuitem">
-                <button type="button" class="dropdown-item" (click)="setLocation('origin', i)" [innerHTML]="location.target"></button>
-              </li>
-            </ul>
-            <div class="invalid-feedback" i18n>Ingrese un origen.</div>
-          </div>
+          <app-location-input input-id="origin" name="origin" [options]="locations" [(ngModel)]="origin">
+          </app-location-input>
         </div>
 
         <!--Switch Origin and Destiny-->
@@ -39,19 +32,8 @@
         <!--Destiny-->
         <div class="destiny-box">
           <label for="destination" i18n>Destino</label>
-          <div dropdown #destinationOptions="bs-dropdown">
-
-            <input type="text" class="form-control" id="destination" [(ngModel)]="destination" name="destination" autocomplete="off" required dropdownToggle (input)="handleInput('destination')" (click)="handleInput('destination')" (keydown)="handleIntro('destination', $event)">
-            <div class="invalid-feedback" i18n>Ingrese un destino.</div>
-
-            <ul *dropdownMenu class="dropdown-menu" role="menu">
-              <li *ngFor="let location of filteredLocations; let i = index" role="menuitem">
-                <button type="button" class="dropdown-item" (click)="setLocation('destination', i)" [innerHTML]="location.target">
-                </button>
-              </li>
-            </ul>
-
-          </div>
+          <app-location-input input-id="destination" name="destination" [options]="locations" [(ngModel)]="destination">
+          </app-location-input>
         </div>
 
         <!--Day-->

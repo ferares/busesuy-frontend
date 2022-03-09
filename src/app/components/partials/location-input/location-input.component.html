@@ -1,0 +1,9 @@
+<div>
+  <input type="text" class="form-control" [id]="id" [(ngModel)]="input" [name]="name" autocomplete="off" required (input)="handleInput()" (click)="handleInput()" (keydown)="handleIntro($event)" (blur)="handleBlur()">
+  <ul class="dropdown-menu" role="menu" [ngClass]="{ 'show': open }">
+    <li *ngFor="let location of filteredLocations; let i = index" role="menuitem">
+      <button type="button" class="dropdown-item" (click)="setLocation(i)" [innerHTML]="location.target"></button>
+    </li>
+  </ul>
+  <div class="invalid-feedback" i18n>Ingrese un origen.</div>
+</div>

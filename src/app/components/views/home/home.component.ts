@@ -2,9 +2,7 @@ import { Component, AfterContentInit, AfterViewInit, ViewChild } from '@angular/
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-import { latinize } from 'ngx-bootstrap/typeahead';
-
-import { go, highlight, prepare } from 'fuzzysort';
+import { getLocationString } from '../../../utils';
 
 import { ApiService } from '../../../services/api.service';
 
@@ -21,8 +19,6 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
   background: any = undefined as any;
   validated = false;
   locations: any;
-  locationsSearch: Array<any>;
-  filteredLocations: any;
   results: Array<any> = undefined as any;
   indirectResults: Array<any> = undefined as any;
   resultsOrigin = '';
@@ -73,17 +69,7 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
   ) {
     this.titleService.setTitle('BusesUY');
     this.background = route.snapshot.data['data']['background'];
-    this.locations = route.snapshot.data['data']['locations'].reduce(
-      (result: any, location: any) => {
-        const locationLabel = this.getLocationString(location.name, location.department.name)
-        return {
-          ...result,
-          [latinize(locationLabel)]: locationLabel,
-        }
-      },
-      {},
-    );
-    this.locationsSearch = Object.keys(this.locations).map(prepare);
+    this.locations = route.snapshot.data['data']['locations'];
   }
 
   ngAfterViewInit(): void {
@@ -98,8 +84,8 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
       const destinationDepartment = decodeURIComponent(params['departmentoDestino'] || '');
       const days = decodeURIComponent(params['dias'] || '');
 
-      this.origin = this.getLocationString(origin, originDepartment);
-      this.destination = this.getLocationString(destination, destinationDepartment);
+      this.origin = getLocationString(origin, originDepartment);
+      this.destination = getLocationString(destination, destinationDepartment);
 
       if (days) {
         this.selectedDays = days.split(',');
@@ -108,78 +94,12 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
       if ((this.origin) && (this.destination)) {
         this.titleService.setTitle(`${this.origin} -> ${this.destination} | BusesUY`);
         this.search();
-      }
-      else {
+      } else {
         this.results = undefined as any;
         this.indirectResults = undefined as any;
         this.validated = false;
       }
     });
-  }
-
-  filter(text: string): void {
-    this.filteredLocations = go(
-      latinize(text), // Remove tildes from search
-      this.locationsSearch,
-      { limit: 100, threshold: -100, allowTypo: false },
-    ).map(result => {
-      const value = this.locations[result.target];
-      return {
-        value,
-        target: highlight({
-          ...result,
-          target: value,
-        }),
-      };
-    });
-    if (!text) {
-      this.filteredLocations = this.locationsSearch.map(location => {
-        const value = this.locations[location.target];
-        return {
-          value,
-          target: value,
-        }
-      })
-    }
-  }
-
-  setLocation(input: string, index: number): void {
-    if (input === 'origin') {
-      this.origin = this.filteredLocations[index].value;
-      this.originOptions.isOpen = false;
-    } else {
-      this.destination = this.filteredLocations[index].value;
-      this.destinationOptions.isOpen = false;
-    }
-  }
-
-  handleIntro(input: string, event: any): void {
-    if ((event.code === 'Enter') || (event.code === 'NumpadEnter')) {
-      if (
-        ((input === 'origin') && (this.originOptions.isOpen)) ||
-        (this.destinationOptions.isOpen)
-      ) {
-        event.preventDefault();
-        this.setLocation(input, 0);
-      }
-    }
-  }
-
-  handleInput(input: string): void {
-    let value;
-    if (input === 'origin') {
-      value = this.origin;
-      this.originOptions.isOpen = true;
-    } else {
-      this.destinationOptions.isOpen = true;
-      value = this.destination;
-    }
-    this.filter(value);
-  }
-
-  getLocationString(locationName: string, departmentName: string): string {
-    if ((!locationName) || (!departmentName)) return '';
-    return `${locationName}, ${departmentName}`;
   }
 
   getSelectedDaysString(): string {
