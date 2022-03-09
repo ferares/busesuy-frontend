@@ -39,14 +39,8 @@
         <!--Day-->
         <div class="day-box">
           <label id="date" class="form-label" i18n>Día</label>
-          <div class="button-group" dropdown>
-            <button dropdownToggle type="button" class="day" aria-controls="dropdown-date">{{ getSelectedDaysString() }}</button>
-            <ul id="dropdown-date" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="date">
-              <li *ngFor="let day of days" role="menuitem" [ngClass]="{ 'bg-light': selectedDays.includes(day.value) }">
-                <span class="dropdown-item" (click)="toggleDay($event, day.value)">{{ day.label }}</span>
-              </li>
-            </ul>
-          </div>
+          <app-day-input name="date" input-id="date" [(ngModel)]="selectedDays">
+          </app-day-input>
         </div>
 
         <!--Search Button-->

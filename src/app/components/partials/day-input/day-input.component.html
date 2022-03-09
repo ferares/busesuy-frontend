@@ -1,0 +1,9 @@
+<div class="button-group">
+  <button type="button" class="day" aria-controls="dropdown-date" (click)="dropdown.toggle()">{{ getSelectedDaysString() }}</button>
+  <app-dropdown #dropdown>
+    <label *ngFor="let day of days">
+      <input [attr.aria-labelledby]="id" type="checkbox" [name]="name" [checked]="selectedDays.includes(day.value)" (change)="toggleDay($event, day.value)">
+      {{ day.label }}
+    </label>
+  </app-dropdown>
+</div>

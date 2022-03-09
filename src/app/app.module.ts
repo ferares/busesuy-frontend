@@ -43,6 +43,7 @@ import { BackgroundsComponent } from './components/partials/backgrounds/backgrou
 import { ModalComponent } from './components/partials/modal/modal.component';
 import { DropdownComponent } from './components/partials/dropdown/dropdown.component';
 import { LocationInputComponent } from './components/partials/location-input/location-input.component';
+import { DayInputComponent } from './components/partials/day-input/day-input.component';
 
 import { environment } from '../environments/environment';
 
@@ -64,6 +65,7 @@ import { environment } from '../environments/environment';
     ModalComponent,
     DropdownComponent,
     LocationInputComponent,
+    DayInputComponent,
   ],
   imports: [
     BrowserModule,

@@ -26,40 +26,6 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
   origin = '';
   destination = '';
   selectedDays: Array<string> = [];
-  days = [
-    {
-      label:  $localize `Lunes`,
-      value: 'lu',
-    },
-    {
-      label:  $localize `Martes`,
-      value: 'ma',
-    },
-    {
-      label:  $localize `Miércoles`,
-      value: 'mi',
-    },
-    {
-      label:  $localize `Jueves`,
-      value: 'ju',
-    },
-    {
-      label:  $localize `Viernes`,
-      value: 'vi',
-    },
-    {
-      label:  $localize `Sábado`,
-      value: 'sa',
-    },
-    {
-      label:  $localize `Domingo`,
-      value: 'do',
-    },
-    {
-      label:  $localize `Feriados`,
-      value: 'fe',
-    },
-  ];
 
   constructor(
     private router: Router,
@@ -100,24 +66,6 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
         this.validated = false;
       }
     });
-  }
-
-  getSelectedDaysString(): string {
-    if (!this.selectedDays.length) return $localize `Cualquier día`
-    let selectedDaysLabels = []
-    for (const dayValue of this.selectedDays) {
-      const day = this.days.find(day => day.value === dayValue)
-      selectedDaysLabels.push(day?.label)
-    }
-    return selectedDaysLabels.join(', ')
-  }
-
-  toggleDay(event: Event, day: string): void {
-    event.preventDefault();
-    event.stopPropagation();
-    const index = this.selectedDays.indexOf(day);
-    if (index > -1) this.selectedDays.splice(index, 1);
-    else this.selectedDays.push(day);
   }
 
   swapLocations(): void {
