@@ -88,38 +88,37 @@
                   </button>
 
                   <app-accordion>
-                    <app-accordion>
 
-                      <button type="button" class="path-card expanded-card" accordion-heading>
-                        <div class="pather">
-                          <span class="path-dot">{{result[0].origin}}, {{result[0].originDepartment}}</span>
-                          <span class="path-dot">{{result[0].destination}}, {{result[0].destinationDepartment}}</span>
-                        </div>
+                    <button type="button" class="path-card expanded-card" accordion-heading>
+                      <div class="pather">
+                        <span class="path-dot">{{result[0].origin}}, {{result[0].originDepartment}}</span>
+                        <span class="path-dot">{{result[0].destination}}, {{result[0].destinationDepartment}}</span>
+                      </div>
 
-                        <i class="fa-solid fa-angle-down collapse-arrow"></i>
-                      </button>
+                      <i class="fa-solid fa-angle-down collapse-arrow"></i>
+                    </button>
 
-                      <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
+                    <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
 
-                      </app-results-table>
-                    </app-accordion>
-
-                    <app-accordion>
-
-                      <button type="button" class="path-card expanded-card" accordion-heading>
-
-                        <div class="pather">
-                          <span class="path-dot">{{result[1].origin}}, {{result[1].originDepartment}}</span>
-                          <span class="path-dot">{{result[1].destination}}, {{result[1].destinationDepartment}}</span>
-                        </div>
-
-                        <i class="fa-solid fa-angle-down collapse-arrow"></i>
-                      </button>
-
-                      <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment"></app-results-table>
-
-                    </app-accordion>
+                    </app-results-table>
                   </app-accordion>
+
+                  <app-accordion>
+
+                    <button type="button" class="path-card expanded-card" accordion-heading>
+
+                      <div class="pather">
+                        <span class="path-dot">{{result[1].origin}}, {{result[1].originDepartment}}</span>
+                        <span class="path-dot">{{result[1].destination}}, {{result[1].destinationDepartment}}</span>
+                      </div>
+
+                      <i class="fa-solid fa-angle-down collapse-arrow"></i>
+                    </button>
+
+                    <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment"></app-results-table>
+
+                  </app-accordion>
+
                 </app-accordion>
               </ng-container>
             </div>
