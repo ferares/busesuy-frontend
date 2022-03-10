@@ -81,3 +81,8 @@ button{ display: inline-block; padding: 10px; border: 2px solid #000; background
 
 .accordion .accordion{ padding-left: 20px; }
 .accordion .accordion .accordion-content{ padding-left: 20px; }
+
+/*Modals*/
+.modal{ position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: rgba(0,0,0,0.6); z-index: 99999; opacity: 0; visibility: hidden; transition: all .3s; }
+.modal.show{ opacity: 1; visibility: visible; }
+.modal-content{ background: #FFF; position: absolute; width: 90%; max-width: 900px; height: 90%; max-height: 800px; top: 50%; left: 50%; transform: translateY(-50%) translateX(-50%); border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); }
