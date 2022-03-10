@@ -85,5 +85,10 @@ button{ display: inline-block; padding: 10px; border: 2px solid #000; background
 /*Modals*/
 .modal{ position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: rgba(0,0,0,0.6); z-index: 99999; opacity: 0; visibility: hidden; transition: all .3s; }
 .modal.show{ opacity: 1; visibility: visible; }
-.modal-content{ background: #FFF; position: absolute; width: 90%; max-width: 900px; height: 90%; max-height: 500px; top: 50%; left: 50%; transform: translateY(-50%) translateX(-50%); border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); padding: 30px; }
+.modal-content{ background: #FFF; position: absolute; width: 90%; max-width: 900px; height: 90%; max-height: 500px; top: 50%; left: 50%; transform: translateY(-50%) translateX(-50%); border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); padding: 30px; overflow-y: auto; }
 .modal-close{ position: absolute; right: 15px; top: 15px; font-size: 1.6em; border: none; padding: 0; width: 40px; height: 40px; text-align: center; list-style: 40px; }
+
+.modal::-webkit-scrollbar{ width: 4px; height: 4px; }
+.modal::-webkit-scrollbar-track{ background-color: transparent; }
+.modal::-webkit-scrollbar-thumb{ background-color: #CCC; border: none; border-radius: 5px; }
+.modal::-webkit-scrollbar-thumb:hover{ background-color: #CCC; }
