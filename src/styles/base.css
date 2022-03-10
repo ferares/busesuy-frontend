@@ -74,8 +74,8 @@ button{ display: inline-block; padding: 10px; border: 2px solid #000; background
 .invalid-feedback{ color: #F00; font-size: .8em; display: block; margin-top: 10px; opacity: 0; visibility: hidden; max-height: 0; }
 
 /*Accordion*/
-.accordion .accordion-content{ visibility: hidden; opacity: 0; max-height: 0; transition: all .3s; }
-.accordion.open > .accordion-header + .accordion-content{ visibility: visible; opacity: 1; max-height: 10000px; }
+.accordion .accordion-content{ visibility: hidden; opacity: 0; max-height: 0; transition: all .3s; overflow: hidden; }
+.accordion.open > .accordion-header + .accordion-content{ visibility: visible; opacity: 1; max-height: 10000px; overflow: visible; }
 
 .accordion.open > .accordion-header .path-card .collapse-arrow{ transform: rotate(180deg); }
 
@@ -85,4 +85,5 @@ button{ display: inline-block; padding: 10px; border: 2px solid #000; background
 /*Modals*/
 .modal{ position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: rgba(0,0,0,0.6); z-index: 99999; opacity: 0; visibility: hidden; transition: all .3s; }
 .modal.show{ opacity: 1; visibility: visible; }
-.modal-content{ background: #FFF; position: absolute; width: 90%; max-width: 900px; height: 90%; max-height: 800px; top: 50%; left: 50%; transform: translateY(-50%) translateX(-50%); border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); }
+.modal-content{ background: #FFF; position: absolute; width: 90%; max-width: 900px; height: 90%; max-height: 500px; top: 50%; left: 50%; transform: translateY(-50%) translateX(-50%); border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); padding: 30px; }
+.modal-close{ position: absolute; right: 15px; top: 15px; font-size: 1.6em; border: none; padding: 0; width: 40px; height: 40px; text-align: center; list-style: 40px; }
