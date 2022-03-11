@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 import { latinMap } from './latin-map';
@@ -21,12 +21,14 @@ export class LocationInputComponent implements ControlValueAccessor, OnInit {
   @Input('input-id') id = '';
   @Input('name') name = '';
   @Input('options') options: any = [];
+  @ViewChildren('locationBtns') locationBtns!: QueryList<any>;
   locations: any;
   input = '';
   value = '';
   locationsSearch: Array<any> = [];
   filteredLocations: any;
   open = false;
+  focusingOut: any;
   onChanged: any = (value: string) => {};
   onTouched: any = () => {};
 
@@ -66,17 +68,56 @@ export class LocationInputComponent implements ControlValueAccessor, OnInit {
     });
   }
 
-  handleIntro(event: any): void {
+  getFocusedLocation(): any {
+    const locationBtnsArray = this.locationBtns.toArray()
+    for (let index = 0; index < locationBtnsArray.length; index++) {
+      const locationBtn = locationBtnsArray[index];
+      if (locationBtn.nativeElement === document.activeElement) {
+        return index;
+      }
+    }
+
+    return -1;
+  }
+
+  handleKeyDown(event: any): void {
     if ((event.code === 'Enter') || (event.code === 'NumpadEnter')) {
       if (this.open) {
         event.preventDefault();
-        this.setLocation(0);
+        const focusedIndex = this.getFocusedLocation();
+        if (focusedIndex > -1) {
+          this.setLocation(focusedIndex);
+        } else {
+          this.setLocation(0);
+        }
       }
+    } else if ((event.code === 'ArrowUp') || (event.code === 'ArrowDown')) {
+      event.preventDefault();
+      const locationBtnsArray = this.locationBtns.toArray()
+      const focusedIndex = this.getFocusedLocation();
+      if (focusedIndex > -1) {
+        let next = focusedIndex + (event.code === 'ArrowUp' ? -1 : 1);
+        if (next < 0) next = locationBtnsArray.length - 1;
+        if (next >= locationBtnsArray.length) next = 0;
+        locationBtnsArray[next].nativeElement.focus();
+      } else {
+        locationBtnsArray[0].nativeElement.focus();
+      }
+    } else if (event.code === 'Escape') {
+      this.open = false;
     }
   }
 
-  handleBlur(): void {
-    this.open = false;
+  handleFocusOut(): void {
+    // Set timeout to wait and see if a focusin will happen
+    this.focusingOut = setTimeout(() => {
+      this.open = false;
+    }, 0);
+  }
+
+  handleFocusIn(): void {
+    // Clear the timeout from focusout that would close the dropdown
+    clearTimeout(this.focusingOut);
   }
 
   handleInput(): void {
