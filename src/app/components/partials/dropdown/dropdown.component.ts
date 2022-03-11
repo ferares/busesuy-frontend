@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dropdown',
@@ -6,9 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./dropdown.component.scss']
 })
 export class DropdownComponent {
+  @Input('dropdown-id') id = '';
   show = false;
 
-  constructor() { }
+  constructor() {
+    document.addEventListener('keydown', (event: any) => {
+      if (event.code === 'Escape') this.close();
+    });
+  }
 
   close(): void {
     this.show = false;
