@@ -1,9 +1,10 @@
-<div class="button-group">
-  <button type="button" class="day" aria-controls="dropdown-date" (click)="dropdown.toggle()">{{ getSelectedDaysString() }}</button>
-  <app-dropdown #dropdown>
-    <label *ngFor="let day of days" [ngClass]="{ 'active': selectedDays.includes(day.value) }">
-      <input [attr.aria-labelledby]="id" type="checkbox" [name]="name" [checked]="selectedDays.includes(day.value)" (change)="toggleDay($event, day.value)">
-      {{ day.label }}
-    </label>
-  </app-dropdown>
+<div class="button-group" (focusout)="handleFocusOut()" (focusin)="handleFocusIn()" (keydown)="handleKeyDown($event)">
+  <button type="button" class="day" aria-controls="dropdown-dates" (click)="open()">{{ getSelectedDaysString() }}</button>
+  <ul id="dropdown-dates" class="dropdown-menu" role="listbox" aria-multiselectable="true" aria-label="Días" i18n-aria-label [ngClass]="{ 'show': show }" tabindex="-1">
+    <li *ngFor="let day of days;let i = index" [ngClass]="{ 'active': selectedDays.includes(day.value) }" role="menuitem">
+      <button #dayBtns type="button" role="option" [attr.aria-selected]="selectedDays.includes(day.value)" (click)="toggleDay(day.value)">
+        {{ day.label }}
+      </button>
+    </li>
+  </ul>
 </div>

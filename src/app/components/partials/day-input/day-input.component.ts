@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ViewChildren, QueryList } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
@@ -12,9 +12,9 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
   }],
 })
 export class DayInputComponent implements ControlValueAccessor {
-  @Input('input-id') id = '';
-  @Input('name') name = '';
-  @Input('options') options: any = [];
+  @ViewChildren('dayBtns') dayBtns!: QueryList<any>;
+  show = false;
+  focusingOut: any;
   selectedDays: Array<string> = [];
   days = [
     {
@@ -67,6 +67,50 @@ export class DayInputComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
+  open(): void {
+    this.show = true;
+  }
+
+  handleFocusOut(): void {
+    this.focusingOut = setTimeout(() => {
+      this.show = false;
+    }, 0);
+  }
+
+  handleFocusIn(): void {
+    clearTimeout(this.focusingOut);
+  }
+
+  getFocusedDay(): number {
+    const dayBtnsArray = this.dayBtns.toArray()
+    for (let index = 0; index < dayBtnsArray.length; index++) {
+      const dayBtn = dayBtnsArray[index];
+      if (dayBtn.nativeElement === document.activeElement) {
+        return index;
+      }
+    }
+
+    return -1;
+  }
+
+  handleKeyDown(event: any): void {
+    if ((event.code === 'ArrowUp') || (event.code === 'ArrowDown')) {
+      event.preventDefault();
+      const dayBtnsArray = this.dayBtns.toArray();
+      const focusedIndex = this.getFocusedDay();
+      if (focusedIndex > -1) {
+        let next = focusedIndex + (event.code === 'ArrowUp' ? -1 : 1);
+        if (next < 0) next = dayBtnsArray.length - 1;
+        if (next >= dayBtnsArray.length) next = 0;
+        dayBtnsArray[next].nativeElement.focus();
+      } else {
+        dayBtnsArray[0].nativeElement.focus();
+      }
+    } else if (event.code === 'Escape') {
+      this.show = false;
+    }
+  }
+
   getSelectedDaysString(): string {
     if (!this.selectedDays.length) return $localize `Cualquier día`
     let selectedDaysLabels = []
@@ -77,9 +121,7 @@ export class DayInputComponent implements ControlValueAccessor {
     return selectedDaysLabels.join(', ')
   }
 
-  toggleDay(event: Event, day: string): void {
-    event.preventDefault();
-    event.stopPropagation();
+  toggleDay(day: string): void {
     const index = this.selectedDays.indexOf(day);
     if (index > -1) this.selectedDays.splice(index, 1);
     else this.selectedDays.push(day);
