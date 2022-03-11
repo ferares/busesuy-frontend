@@ -68,8 +68,8 @@ export class LocationInputComponent implements ControlValueAccessor, OnInit {
     });
   }
 
-  getFocusedLocation(): any {
-    const locationBtnsArray = this.locationBtns.toArray()
+  getFocusedLocation(): number {
+    const locationBtnsArray = this.locationBtns.toArray();
     for (let index = 0; index < locationBtnsArray.length; index++) {
       const locationBtn = locationBtnsArray[index];
       if (locationBtn.nativeElement === document.activeElement) {
@@ -83,11 +83,9 @@ export class LocationInputComponent implements ControlValueAccessor, OnInit {
   handleKeyDown(event: any): void {
     if ((event.code === 'Enter') || (event.code === 'NumpadEnter')) {
       if (this.open) {
-        event.preventDefault();
         const focusedIndex = this.getFocusedLocation();
-        if (focusedIndex > -1) {
-          this.setLocation(focusedIndex);
-        } else {
+        if (focusedIndex === -1) {
+          event.preventDefault();
           this.setLocation(0);
         }
       }
