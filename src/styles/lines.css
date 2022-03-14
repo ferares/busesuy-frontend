@@ -36,3 +36,22 @@
 .agencia-central{ border-color: #1D965D !important; }
 .agencia-central .bus-icon{ color: #1D965D !important; }
 
+/*Turismar*/
+.turismar{ border-color: #1F2F63 !important; }
+.turismar .bus-icon{ color: #1F2F63 !important; }
+
+/*Bruno*/
+.bruno{ border-color: #6A6A87 !important; }
+.bruno .bus-icon{ color: #6A6A87 !important; }
+
+/*Sabelin*/
+.sabelin{ border-color: #0B4264 !important; }
+.sabelin .bus-icon{ color: #0B4264 !important; }
+
+/*Cynsa*/
+.cynsa{ border-color: #D63010 !important; }
+.cynsa .bus-icon{ color: #D63010 !important; }
+
+/*CUT*/
+.cut{ border-color: #D2D5D6 !important; }
+.cut .bus-icon{ color: #D2D5D6 !important; }
