@@ -3,7 +3,7 @@
 
 /*Search Form*/
 .home-content .search-form{ position: relative; z-index: 5000; background: #FFF; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.3); margin-bottom: 30px; border-radius: 10px; }
-.home-content .search-form h1{ font-weight: bold; font-size: 1.5em; margin-bottom: 30px; }
+.home-content .search-form h1{ font-weight: 600; font-size: 1.6em; margin-bottom: 30px; letter-spacing: -1px; }
 .home-content .search-form form{ display: flex; align-items: flex-start; justify-content: space-between; }
 .home-content .search-form form label{ font-weight: bold; margin-bottom: 10px; display: block; }
 .home-content .search-form form .origin-box{ position: relative; min-width: 28%; max-width: 28%; }
@@ -47,7 +47,7 @@
 .table-responsive ul{ display: flex; flex-wrap: wrap; justify-content: space-between; }
 .table-responsive ul li{ width: calc(50% - 10px); transition: all .3s; }
 .table-responsive .bus-info{ box-shadow: 0 0 10px rgba(0,0,0,0.3); margin-bottom: 20px; border-radius: 10px; background: #FFF; padding: 20px; position: relative; border-left: 10px solid #000; }
-.table-responsive .bus-info .company-name{ color: #000; text-decoration: none; font-weight: bold; margin-bottom: 10px; display: block; font-size: 1.2em; } 
+.table-responsive .bus-info .company-name{ color: #000; text-decoration: none; margin-bottom: 10px; display: block; font-size: 1.3em; font-family: "Maven Pro"; font-weight: 600; letter-spacing: -1px; } 
 .table-responsive .bus-info .bus-info-times p{ margin-bottom: 5px; }
 .table-responsive .bus-info .bus-icon{ position: absolute; right: 82px; font-size: 1.5em; top: 55px; }
 .table-responsive .bus-info .more-info{ color: #000; text-decoration: none; display: inline-block; margin-top: 10px; font-weight: 600; position: absolute; right: 30px; top: 50%; margin-top: -20px; font-size: 1.4em; background: #F2BD2A; border-radius: 100%; width: 40px; height: 40px; transition: all .3s; border: 2px solid transparent; padding: 0; }
@@ -58,3 +58,9 @@
 .no-results{ background: #FFF; padding: 20px; width: 100%; box-shadow: 0 0 10px rgba(0,0,0,0.3); display: flex; border-radius: 10px; align-items: center; }
 .no-results i{ margin-right: 15px; font-size: 1.4em; }
 .no-results p{ font-weight: bold; }
+
+/*Background Info*/
+.popover{ background: #FFF; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.3); border-radius: 10px; display: inline-block; }
+.popover li{ margin-bottom: 10px; }
+.popover .popover-title{ font-weight: bold; margin-bottom: 20px; }
+.popover .btn{ padding: 5px 20px; font-weight: bold; color: #000; margin-right: 10px; }
