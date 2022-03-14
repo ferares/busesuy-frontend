@@ -7,3 +7,32 @@
 /*Rutas del Sol*/
 .rutas-del-sol{ border-color: #06376C !important; }
 .rutas-del-sol .bus-icon{ color: #06376C !important; }
+
+/*Nossar*/
+.nossar{ border-color: #006E55 !important; }
+.nossar .bus-icon{ color: #006E55 !important; }
+
+/*Chadre*/
+.chadre{ border-color: #FF1C25 !important; }
+.chadre .bus-icon{ color: #FF1C25 !important; }
+
+/*CITA*/
+.cita{ border-color: #F2C230 !important; }
+.cita .bus-icon{ color: #F2C230 !important; }
+
+/*El Norteño*/
+.el-norteño{ border-color: #AE5602 !important; }
+.el-norteño .bus-icon{ color: #AE5602 !important; }
+
+/*COTABU*/
+.cotabu{ border-color: #2F3C53 !important; }
+.cotabu .bus-icon{ color: #2F3C53 !important; }
+
+/*Turil*/
+.turil{ border-color: #0692DB !important; }
+.turil .bus-icon{ color: #0692DB !important; }
+
+/*Agencia Central*/
+.agencia-central{ border-color: #1D965D !important; }
+.agencia-central .bus-icon{ color: #1D965D !important; }
+
