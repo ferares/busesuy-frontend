@@ -66,3 +66,6 @@
 .popover .popover-title{ font-weight: bold; margin-bottom: 20px; }
 .popover .btn{ padding: 5px 20px; font-weight: bold; color: #000; margin-right: 10px; }
 .popover .close-popover{ position: absolute; top: 15px; right: 15px; cursor: pointer; }
+
+/*Covid Message*/
+.covid-message .alert{ background-image: url("../assets/imgs/covid.svg"); background-repeat: no-repeat; background-position: right -110px top -240px; background-size: 1120px; background-blend-mode: color-burn; } 
