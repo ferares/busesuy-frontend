@@ -1,16 +1,8 @@
 <section class="home-content" style="background-image:url('{{background?.picture}}')">
   <div class="content">
 
-    <!--Covid-19 Message-->
-    <app-alert type="warning" [dismissible]="true">
-      <i class="fa-solid fa-virus-covid"></i>
-      <p>Dada la situación sanitaria por COVID-19 estos datos están sujetos a cambios sin previo aviso.<br />Verifíquelos en cada caso con las compañías.</p>
-    </app-alert>
-
     <!--Search Form-->
-
     <div class="search-form">
-
       <h1 class="title-icon" i18n>
         <i class="fa-solid fa-bus"></i>Buscador de líneas de ómnibus en Uruguay
       </h1>
@@ -49,8 +41,13 @@
         </button>
 
       </form>
-
     </div>
+
+    <!--Covid-19 Message-->
+    <app-alert type="warning" [dismissible]="true">
+      <i class="fa-solid fa-virus-covid"></i>
+      <p>Dada la situación sanitaria por COVID-19 estos datos están sujetos a cambios sin previo aviso.<br />Verifíquelos en cada caso con las compañías.</p>
+    </app-alert>
 
     <!--Search Results-->
     <div #resultsElement>
@@ -135,6 +132,7 @@
     <!--Background Info-->
     <ng-container *ngIf="background">
       <app-popover #backgroundPopover>
+        <div class="close-popover"><i class="fa-solid fa-xmark"></i></div>
         <h4 class="popover-title">Datos de la foto</h4>
         <ul class="list-unstyled">
           <li>

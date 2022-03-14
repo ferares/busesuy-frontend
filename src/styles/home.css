@@ -60,7 +60,9 @@
 .no-results p{ font-weight: bold; }
 
 /*Background Info*/
-.popover{ background: #FFF; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.3); border-radius: 10px; display: inline-block; }
+.popover{ background: #FFF; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.3); border-radius: 10px; display: inline-block; position: absolute; opacity: 0; visibility: hidden; overflow: hidden; max-height: 0; max-width: 0; transition: opacity .3s; top: 100px; right: 70px; z-index: 99999; }
+.popover.show{ opacity: 1; visibility: visible; overflow: visible; max-width: 500px; max-height: 500px; }
 .popover li{ margin-bottom: 10px; }
 .popover .popover-title{ font-weight: bold; margin-bottom: 20px; }
 .popover .btn{ padding: 5px 20px; font-weight: bold; color: #000; margin-right: 10px; }
+.popover .close-popover{ position: absolute; top: 15px; right: 15px; cursor: pointer; }
