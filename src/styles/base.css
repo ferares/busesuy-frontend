@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5, h6{ font-family: "Maven Pro", sans-serif; }
 .title-icon i{ margin-right: 10px; }
 
 /*Angular*/
-#main{ height: auto; min-height: calc(100vh - 100px); display: block !important; position: relative; z-index: 50; }
+#main{ height: auto; min-height: 100vh; display: block !important; position: relative; z-index: 50; }
 
 /*Inputs*/
 input,
