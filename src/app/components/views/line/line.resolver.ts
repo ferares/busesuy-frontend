@@ -13,6 +13,7 @@ export class LineResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot): any {
     return new Promise((resolve, reject) => {
       const name = route.paramMap.get('name') || '';
+      // TODO: Move this into api service
       this.apiService.getLineByName(name).subscribe(line => {
         combineLatest(
           [

@@ -13,10 +13,12 @@ import { ModalService } from './services/modal.service'
 })
 export class AppComponent implements OnInit, OnDestroy {
   @ViewChild('modalLine') modalLine!: any;
+  @ViewChild('modalCompany') modalCompany!: any;
   public updateAvailable = false;
   langs: Array<any> = [];
   currentLang: any = undefined as any;
   modalLineContent: any;
+  modalCompanyContent: any;
   modalSubscription: Subscription = undefined as any;
   swSubscription: Subscription = undefined as any;
 
@@ -81,8 +83,14 @@ export class AppComponent implements OnInit, OnDestroy {
     this.swSubscription = this.swUpdate.available.subscribe(_ => this.updateAvailable = true);
     this.modalSubscription = this.modalService.modals.subscribe(
       (modals: any) => {
-        if (modals.line.open) this.modalLine.open();
-        this.modalLineContent = modals.line.content;
+        if (modals.line.open) {
+          this.modalLine.open();
+          this.modalLineContent = modals.line.content;
+        }
+        if (modals.company.open) {
+          this.modalCompany.open();
+          this.modalCompanyContent = modals.company.content;
+        }
       }
     );
   }

@@ -25,7 +25,8 @@ export class ResultsTableComponent implements OnInit {
     this.expanded = this.results.map((_: any) => false);
   }
 
-  getLineInfo(name: string): void {
+  showLineInfoModal(name: string): void {
+    // TODO: Move this into api service
     this.apiService.getLineByName(name).subscribe(line => {
       combineLatest(
         [
@@ -49,9 +50,6 @@ export class ResultsTableComponent implements OnInit {
             destinationDepartment: destinationDepartment.name,
           };
           this.modalService.openModal('line', this.lineInfo);
-          // this.lineInfoModal = this.modalService.createModal(this.lineInfoTemplate);
-          // this.changeDetector.detectChanges();
-          // TODO: Destroy modal on close
         })
       });
     });

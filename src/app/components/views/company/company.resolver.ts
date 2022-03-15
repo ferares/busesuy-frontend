@@ -13,6 +13,7 @@ export class CompanyResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot): any {
     return new Promise((resolve, reject) => {
       const name = route.paramMap.get('name') || '';
+      // TODO: Move this into api service
       combineLatest([
         this.apiService.getCompanyByName(name),
         this.apiService.getLinesByCompany(name),

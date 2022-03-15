@@ -42,6 +42,7 @@ import { AccordionComponent } from './components/partials/accordion/accordion.co
 import { PopoverComponent } from './components/partials/popover/popover.component';
 import { AlertComponent } from './components/partials/alert/alert.component';
 import { LineDataComponent } from './components/partials/line-data/line-data.component';
+import { CompanyDataComponent } from './components/partials/company-data/company-data.component';
 
 import { environment } from '../environments/environment';
 
@@ -68,6 +69,7 @@ import { environment } from '../environments/environment';
     PopoverComponent,
     AlertComponent,
     LineDataComponent,
+    CompanyDataComponent,
   ],
   imports: [
     BrowserModule,

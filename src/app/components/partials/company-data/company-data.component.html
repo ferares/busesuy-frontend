@@ -1,0 +1,68 @@
+<div class="col-lg-4 mb-4">
+  <div class="card">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <b i18n>Nombre:</b> {{ data.company.name }}
+      </li>
+      <li *ngIf="data.company.phone" class="list-group-item">
+        <b i18n>Teléfono:</b>
+        <a href="tel:{{data.company.phone}}" target="_blank" rel="noreferrer">
+          {{ data.company.phone }}
+        </a>
+      </li>
+      <li *ngIf="data.company.email" class="list-group-item">
+        <b i18n>Correo electrónico:</b>
+        <a href="mailto:{{data.company.email}}" target="_blank" rel="noreferrer">
+          {{ data.company.email }}
+        </a>
+      </li>
+      <li *ngIf="data.company.web" class="list-group-item">
+        <b i18n>Sitio web:</b>
+        <a href="{{data.company.web}}" target="_blank" rel="noreferrer">
+          {{ data.company.web }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="col-lg-8">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title h3">
+        <b i18n>Líneas</b>
+      </h2>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col" i18n>
+                Nombre
+              </th>
+              <th scope="col" i18n>
+                Origen
+              </th>
+              <th scope="col" i18n>
+                Destino
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let line of data.lines">
+              <td>
+                <a [routerLink]="['/lineas', line.name]">
+                  {{ line.name }}
+                </a>
+              </td>
+              <td>
+                {{ line.origin.name }}, {{ line.origin.department }}
+              </td>
+              <td>
+                {{ line.destination.name }}, {{ line.destination.department }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

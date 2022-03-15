@@ -8,12 +8,12 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./company.component.scss']
 })
 export class CompanyComponent {
-  company: any = undefined as any;
-  lines: Array<any>;
+  data: any;
 
   constructor(private route: ActivatedRoute, private titleService: Title) {
-    this.company = route.snapshot.data['company'].company;
-    this.lines = route.snapshot.data['company'].lines;
-    this.titleService.setTitle(`${this.company.name} | BusesUY`);
+    this.data = {};
+    this.data.company = route.snapshot.data['company'].company;
+    this.data.lines = route.snapshot.data['company'].lines;
+    this.titleService.setTitle(`${this.data.company.name} | BusesUY`);
   }
 }

@@ -5,7 +5,7 @@
     </h2>
     <h3 class="card-subtitle mb-2 text-muted h6">
       <b i18n>Empresa:</b>&nbsp;
-      <a [routerLink]="['/empresas', data.line.company.name]">{{ data.line.company.name }}</a>
+      <button (click)="showCompanyInfoModal(data.line.company.name)">{{ data.line.company.name }}</button>
     </h3>
   </div>
   <ul class="list-group list-group-flush">
