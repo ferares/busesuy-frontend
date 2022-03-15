@@ -1,39 +1,28 @@
 <div class="card">
   <div class="card-body">
-    <h2 class="card-title h5">
-      <b i18n>Número de línea:</b> {{ data.line.name }}
-    </h2>
+    
+    <h2 class="card-title h5"><b i18n>Número de línea:</b> {{ data.line.name }}</h2>
+    
     <h3 class="card-subtitle mb-2 text-muted h6">
       <b i18n>Empresa:</b>&nbsp;
       <button (click)="showCompanyInfoModal(data.line.company.name)">{{ data.line.company.name }}</button>
     </h3>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-      <b i18n>Origen:</b> {{ data.origin }}, {{ data.originDepartment }}
-    </li>
-    <li class="list-group-item">
-      <b i18n>Destino:</b> {{ data.destination }}, {{ data.destinationDepartment }}
-    </li>
-    <li class="list-group-item">
-      <b i18n>Hora salida:</b> {{ data.line.startTime }} h
-    </li>
-    <li class="list-group-item">
-      <b i18n>Hora llegada:</b> {{ data.line.endTime }} h
-    </li>
-    <li class="list-group-item">
-      <b i18n>Ruta:</b> {{ data.line.route }}
-    </li>
-    <li class="list-group-item">
-      <b i18n>Frecuencia:</b> {{ data.line.frequency }}
-    </li>
+
+  <ul>
+    <li><strong i18n>Origen:</strong> {{ data.origin }}, {{ data.originDepartment }}</li>
+    <li><strong i18n>Destino:</strong> {{ data.destination }}, {{ data.destinationDepartment }}</li>
+    <li><strong i18n>Hora salida:</strong> {{ data.line.startTime }} h</li>
+    <li><strong i18n>Hora llegada:</strong> {{ data.line.endTime }} h</li>
+    <li><strong i18n>Ruta:</strong> {{ data.line.route }}</li>
+    <li><strong i18n>Frecuencia:</strong> {{ data.line.frequency }}</li>
   </ul>
 </div>
+
+
 <div class="card">
   <div class="card-body">
-    <h2 class="card-title h3">
-      <b i18n>Paradas</b>
-    </h2>
+    <h2 class="card-title h3" i18n>Paradas</h2>
     <div class="table-responsive">
       <table class="table table-hover">
         <thead>
