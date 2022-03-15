@@ -1,13 +1,19 @@
 /*Main Header*/
-.main-header{ position: fixed; width: 100%; height: 70px; background: rgba(255,255,255,0.8); top: 0; left: 0; z-index: 9999; }
+.main-header{ position: fixed; width: 100%; max-width: 1200px; left: 50%; transform: translateX(-600px); height: 70px; background: #FFF; top: 0; z-index: 9999; border-radius: 0 0 10px 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
 .main-header .content{ display: flex; justify-content: space-between; }
 
 .main-header .main-nav{ display: flex; }
 .main-header .main-nav figure{ width: 200px; min-width: 200px; position: relative; top: 12px; }
 .main-header .main-nav ul{ margin-left: 50px; }
 .main-header .main-nav ul li{ display: inline-block; }
-.main-header .main-nav ul li a{ text-decoration: none; font-weight: bold; color: #000; display: block; padding: 0 10px; line-height: 70px; }
+.main-header .main-nav ul li a{ text-decoration: none; font-weight: 700; color: #000; display: block; padding: 0 15px; line-height: 70px; font-family: "Maven Pro"; transition: all .3s; }
+.main-header .main-nav ul li a:hover{ background: #EEE; }
 
 .main-header .right-options{ display: flex; }
 .main-header .right-options .share-button{ border: none; font-size: 1.5em; }
 .main-header .right-options .language-button{ border: none; }
+
+.main-header .right-options .dropdown{ width: 170px; left: auto; right: 0; padding: 10px 10px 15px; }
+.main-header .right-options .dropdown li{ margin-bottom: 5px; }
+.main-header .right-options .dropdown li a{ text-decoration: none; color: #000; font-weight: 500; font-size: .9em; }
+.main-header .right-options .dropdown li a img{ position: relative; top: 4px; margin-right: 5px; }
