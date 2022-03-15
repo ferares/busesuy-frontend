@@ -18,3 +18,8 @@
 </app-message>
 
 <app-footer></app-footer>
+
+<app-modal #modalLine>
+  <app-line-data *ngIf="modalLineContent" [data]="modalLineContent">
+  </app-line-data>
+</app-modal>

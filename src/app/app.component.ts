@@ -1,21 +1,30 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
+
+import { Subscription } from 'rxjs';
+
+import { ModalService } from './services/modal.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+  @ViewChild('modalLine') modalLine!: any;
   public updateAvailable = false;
   langs: Array<any> = [];
   currentLang: any = undefined as any;
+  modalLineContent: any;
+  modalSubscription: Subscription = undefined as any;
+  swSubscription: Subscription = undefined as any;
 
   constructor(
     private swUpdate: SwUpdate,
     private route: ActivatedRoute,
     private router: Router,
+    private modalService: ModalService,
   ) {
     this.setBaseUrls();
     this.router.events.subscribe((event: any) => {
@@ -69,7 +78,18 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.swUpdate.available.subscribe(_ => this.updateAvailable = true);
+    this.swSubscription = this.swUpdate.available.subscribe(_ => this.updateAvailable = true);
+    this.modalSubscription = this.modalService.modals.subscribe(
+      (modals: any) => {
+        if (modals.line.open) this.modalLine.open();
+        this.modalLineContent = modals.line.content;
+      }
+    );
+  }
+
+  public ngOnDestroy(): void {
+    this.modalSubscription.unsubscribe();
+    this.swSubscription.unsubscribe();
   }
 
   public update(): void {

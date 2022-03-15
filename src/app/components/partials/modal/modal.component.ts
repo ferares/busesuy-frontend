@@ -8,17 +8,21 @@ import { Component } from '@angular/core';
 export class ModalComponent {
   show = false;
 
-  constructor() { }
-
-  close(): void {
-    this.show = false;
+  constructor() {
+    document.addEventListener('keydown', (event: any) => {
+      if (event.code === 'Escape') this.close();
+    });
   }
 
-  open(): void {
+  handleContentClick(event: any) {
+    event.stopPropagation();
+  }
+
+  open() {
     this.show = true;
   }
 
-  toggle(): void {
-    this.show = !this.show;
+  close() {
+    this.show = false;
   }
 }

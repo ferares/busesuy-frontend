@@ -8,12 +8,10 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./line.component.scss']
 })
 export class LineComponent {
-  @Input('data') data!: any;
+  data: any;
 
   constructor(private route: ActivatedRoute, private titleService: Title) {
-    if (this.route.snapshot.data['data'].line) {
-      this.data = this.route.snapshot.data['data'];
-      this.titleService.setTitle($localize `Línea ${this.data.line.name} | BusesUY`);
-    }
+    this.data = this.route.snapshot.data['data'];
+    this.titleService.setTitle($localize `Línea ${this.data.line.name} | BusesUY`);
   }
 }

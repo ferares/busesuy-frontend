@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { ApiService } from './services/api.service'
 import { CacheService } from './services/cache.service'
 import { ImagesService } from './services/images.service'
+import { ModalService } from './services/modal.service'
 
 import { HomeResolver } from './components/views/home/home.resolver';
 import { LineResolver } from './components/views/line/line.resolver';
@@ -40,6 +41,7 @@ import { DayInputComponent } from './components/partials/day-input/day-input.com
 import { AccordionComponent } from './components/partials/accordion/accordion.component';
 import { PopoverComponent } from './components/partials/popover/popover.component';
 import { AlertComponent } from './components/partials/alert/alert.component';
+import { LineDataComponent } from './components/partials/line-data/line-data.component';
 
 import { environment } from '../environments/environment';
 
@@ -65,6 +67,7 @@ import { environment } from '../environments/environment';
     AccordionComponent,
     PopoverComponent,
     AlertComponent,
+    LineDataComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,6 +92,7 @@ import { environment } from '../environments/environment';
     { provide: HTTP_INTERCEPTORS, useClass: CacheService, multi: true },
     ApiService,
     ImagesService,
+    ModalService,
     HomeResolver,
     LineResolver,
     CompanyResolver,
