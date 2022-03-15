@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { ApiService } from './services/api.service'
 import { CacheService } from './services/cache.service'
 import { ImagesService } from './services/images.service'
+import { ModalService } from './services/modal.service'
 
 import { HomeResolver } from './components/views/home/home.resolver';
 import { LineResolver } from './components/views/line/line.resolver';
@@ -89,6 +90,7 @@ import { environment } from '../environments/environment';
     { provide: HTTP_INTERCEPTORS, useClass: CacheService, multi: true },
     ApiService,
     ImagesService,
+    ModalService,
     HomeResolver,
     LineResolver,
     CompanyResolver,

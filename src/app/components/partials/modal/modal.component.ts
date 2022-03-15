@@ -6,19 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent {
-  show = false;
+  show = true;
 
-  constructor() { }
+  constructor() {
+    document.addEventListener('keydown', (event: any) => {
+      if (event.code === 'Escape') this.close();
+    });
+  }
 
-  close(): void {
+  handleContentClick(event: any) {
+    event.stopPropagation();
+  }
+
+  close() {
     this.show = false;
-  }
-
-  open(): void {
-    this.show = true;
-  }
-
-  toggle(): void {
-    this.show = !this.show;
   }
 }

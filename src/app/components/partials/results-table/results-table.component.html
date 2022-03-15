@@ -29,7 +29,10 @@
   </ul>
 </div>
 
-<app-modal #lineInfoModal>
-  <app-line *ngIf="lineInfo" [data]="lineInfo">
+{{ lineInfo ? 'true' : 'false' }}
+<ng-template *ngIf="lineInfo" #lineInfoTemplate>
+  {{ lineInfo ? 'true' : 'false' }}
+  HOLAAA
+  <app-line [data]="lineInfo">
   </app-line>
-</app-modal>
+</ng-template>

@@ -156,7 +156,7 @@
         <a class="btn btn-primary w-100 mb-2" href="{{background.picture}}" target="_blank" i18n>
           Ver foto
         </a>
-        <button type="button" class="btn btn-secondary w-100" (click)="backgroundsModal.open();backgroundPopover.close()" i18n>
+        <button type="button" class="btn btn-secondary w-100" (click)="backgroundPopover.close()" i18n>
           Compartí tus fotos
         </button>
       </app-popover>
@@ -166,21 +166,6 @@
       </button>
 
     </ng-container>
-
-
-    <!--Share Photos-->
-    <app-modal #backgroundsModal>
-      <div modal-heading>
-        <h4 id="backgrounds-modal-title" class="modal-title pull-left" i18n>
-          Compartí tus fotos
-        </h4>
-        <button type="button" class="btn-close close pull-right" aria-label="Cerrar" i18n-aria-label (click)="backgroundsModal.close()">
-          <span aria-hidden="true" class="visually-hidden">&times;</span>
-        </button>
-      </div>
-      <app-backgrounds>
-      </app-backgrounds>
-    </app-modal>
 
   </div>
 </section>

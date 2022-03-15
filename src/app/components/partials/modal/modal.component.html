@@ -1,13 +1,17 @@
-<div class="modal" [ngClass]="{ 'show': show }">
-  <div class="modal-header">
-    <ng-content select="[modal-heading]">
-    </ng-content>
+<ng-container>
+  <div class="modal" [ngClass]="{ 'show': show }" (click)="close()">
+    <div class="modal-content" (click)="handleContentClick($event)">
+      <div class="modal-header">
+        <ng-content select="[modal-heading]">
+        </ng-content>
+      </div>
+      <div class="modal-body">
+        <button type="button" class="modal-close" (click)="close()" i18n>
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <ng-content>
+        </ng-content>
+      </div>
+    </div>
   </div>
-  <div class="modal-content">
-    <button type="button" class="modal-close" (click)="close()" i18n>
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-    <ng-content>
-    </ng-content>
-  </div>
-</div>
+</ng-container>

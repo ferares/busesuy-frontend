@@ -1,6 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
+
+import { ModalService } from './services/modal.service'
 
 @Component({
   selector: 'app-root',
@@ -16,6 +18,8 @@ export class AppComponent implements OnInit {
     private swUpdate: SwUpdate,
     private route: ActivatedRoute,
     private router: Router,
+    private modalService: ModalService,
+    private viewContainerRef: ViewContainerRef,
   ) {
     this.setBaseUrls();
     this.router.events.subscribe((event: any) => {
@@ -24,6 +28,7 @@ export class AppComponent implements OnInit {
       }
     });
     this.route.queryParams.subscribe(() => this.updateHreflangs());
+    this.modalService.setRootViewContainerRef(this.viewContainerRef);
   }
 
   setBaseUrls(): void {
