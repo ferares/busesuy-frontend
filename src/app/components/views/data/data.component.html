@@ -5,11 +5,11 @@
 
       <div class="page-text">
           
-          <h4 i18n>BusesUY cuenta con datos de las siguientes zonas:</h4>
+          <p i18n><strong>BusesUY cuenta con datos de las siguientes zonas:</strong></p>
           
           <div class="table-responsive">
 
-            <table class="table table-hover">
+            <table class="table">
               <thead>
                 <tr>
                   <th scope="col" i18n>Zona</th>
@@ -20,7 +20,10 @@
               <tbody>
                 <tr *ngFor="let line of data">
                   <td>{{line.label}}</td>
-                  <td><img class="img-fluid me-1" width="20" height="20" src="assets/imgs/{{statuses[line.status].icon}}.svg" alt="">{{statuses[line.status].label}}</td>
+                  <td>
+                    <i class="{{statuses[line.status].icon}}"></i>
+                    {{statuses[line.status].label}}                    
+                  </td>
                   <td>{{line.source}}</td>
                 </tr>
               </tbody>

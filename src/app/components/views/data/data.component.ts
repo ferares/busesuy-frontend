@@ -10,23 +10,23 @@ export class DataComponent {
   statuses: any = {
     'no': {
       label: $localize `Sin datos`,
-      icon: 'cancel',
+      icon: 'fa-solid fa-ban',
     },
     'working': {
       label: $localize `En proceso de adquisición de datos`,
-      icon: 'arrow-double-black',
+      icon: 'fa-solid fa-arrows-rotate',
     },
     'soon': {
       label: $localize `Próximamente`,
-      icon: 'cone',
+      icon: 'fa-solid fa-hourglass-empty',
     },
     'outdated': {
       label: $localize `Datos desactualizados`,
-      icon: 'danger',
+      icon: 'fa-solid fa-thumbs-down',
     },
     'ok': {
       label: $localize `Datos actualizados`,
-      icon: 'check',
+      icon: 'fa-solid fa-thumbs-up',
     },
   };
   data: Array<any> = [
