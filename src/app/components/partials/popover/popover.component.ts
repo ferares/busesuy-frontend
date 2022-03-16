@@ -8,7 +8,11 @@ import { Component } from '@angular/core';
 export class PopoverComponent {
   show = false;
 
-  constructor() { }
+  constructor() {
+    document.addEventListener('keydown', (event: any) => {
+      if (event.code === 'Escape') this.close();
+    });
+  }
 
   close(): void {
     this.show = false;

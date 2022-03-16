@@ -1,4 +1,5 @@
 <div class="popover" [ngClass]="{ 'show': show }">
+  <div class="close-popover" (click)="close()"><i class="fa-solid fa-xmark"></i></div>
   <div class="popover-header">
     <ng-content select="[popover-heading]">
     </ng-content>
