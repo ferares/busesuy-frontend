@@ -57,6 +57,13 @@
 .table-responsive .bus-info .more-info i{ position: relative; top: 0; left: 1px; font-size: .9em; }
 .table-responsive .bus-info .more-info:hover{ background: transparent; color: #000; border-color: #000; }
 
+.table-responsive .bus-info .time{ padding-bottom: 5px; }
+.table-responsive .bus-info .time strong{ font-size: 1.2em; }
+.table-responsive .bus-info .time strong span{ font-size: .8em; }
+.table-responsive .bus-info .time .duration{ display: inline-block; padding: 0 20px; position: relative; top: -2px; }
+.table-responsive .bus-info .time .duration:before{ content: ""; display: block; width: calc(100% - 20px); height: 1px; background: #CCC; position: absolute; left: 0; top: 10px; margin: 0 10px; }
+.table-responsive .bus-info .time .duration strong{ background: #FFF; z-index: 10; position: relative; font-size: .85em; padding: 10px; color: #999; }
+
 /*No Results*/
 .no-results{ background: #FFF; padding: 20px; width: 100%; box-shadow: 0 0 6px rgba(0,0,0,0.2); display: flex; border-radius: 10px; align-items: center; }
 .no-results i{ margin-right: 15px; font-size: 1.4em; }
