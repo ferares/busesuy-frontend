@@ -102,13 +102,13 @@ button{ display: inline-block; padding: 10px; border: noen; background: none; fo
 /*Lines Info Modal*/
 .lines-info-modal{ display: flex; width: 100%; justify-content: space-between; }
 .lines-info-modal .left-column{ width: 40%; padding: 10px; }
-.lines-info-modal .right-column{ width: 50%; padding: 10px; }
+.lines-info-modal .right-column{ width: 60%; padding: 10px; }
 
-.lines-info-modal .stops-table .stops-table-head{ display: flex; }
-.lines-info-modal .stops-table .stops-table-content{ display: flex; }
+.lines-info-modal .stops-table .stops-table-head{ display: flex; width: 100%; justify-content: space-between; border-bottom: 1px solid #CCC; padding-bottom: 5px; margin-bottom: 5px; }
+.lines-info-modal .stops-table .stops-table-content{ display: flex; width: 100%; justify-content: space-between; border-bottom: 1px solid #CCC; padding-bottom: 5px; margin-bottom: 5px; }
 
 .lines-info-modal .stops-table .stops-table-head p,
-.lines-info-modal .stops-table .stops-table-content p{ width: 50%; margin-bottom: 5px; line-height: 1.4; }
+.lines-info-modal .stops-table .stops-table-content p{ line-height: 1.4; }
 
 .lines-info-modal .stops-table .stops-table-head p + p,
 .lines-info-modal .stops-table .stops-table-content p + p{ text-align: right;}
