@@ -6,6 +6,31 @@
       <div class="hero-bg" style="background-image:url('{{background?.picture}}')"></div>
 
       <div class="content">
+
+        <!--Background Info-->
+        <ng-container *ngIf="background">
+          <app-popover #backgroundPopover>
+            <h4 class="popover-title">Datos de la foto</h4>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fa-solid fa-circle-user"></i>
+                <a *ngIf="background.user.link" href="{{background.user.link}}" target="_blank" rel="noreferrer">{{background.user.name}}</a>
+                <span *ngIf="!background.user.link">{{background.user.name}}</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <span class="ms-1">{{background.location}}</span>
+              </li>
+            </ul>
+            <a class="btn" href="{{background.picture}}" target="_blank" (click)="backgroundPopover.close()" i18n>Ver foto</a>
+            <button class="btn" type="button" (click)="backgroundsModal.open();backgroundPopover.close()" i18n>Compartí tus fotos</button>
+          </app-popover>
+
+          <button type="button" class="camera-button" (click)="backgroundPopover.open()">
+            <i class="fa-solid fa-camera"></i>
+          </button>
+
+        </ng-container>
     
         <!--Search Form-->
         <div class="search-form">
@@ -149,30 +174,5 @@
       <app-backgrounds>
       </app-backgrounds>
     </app-modal>
-
-    <!--Background Info-->
-    <ng-container *ngIf="background">
-      <app-popover #backgroundPopover>
-        <h4 class="popover-title">Datos de la foto</h4>
-        <ul class="list-unstyled">
-          <li>
-            <i class="fa-solid fa-circle-user"></i>
-            <a *ngIf="background.user.link" href="{{background.user.link}}" target="_blank" rel="noreferrer">{{background.user.name}}</a>
-            <span *ngIf="!background.user.link">{{background.user.name}}</span>
-          </li>
-          <li>
-            <i class="fa-solid fa-location-dot"></i>
-            <span class="ms-1">{{background.location}}</span>
-          </li>
-        </ul>
-        <a class="btn" href="{{background.picture}}" target="_blank" (click)="backgroundPopover.close()" i18n>Ver foto</a>
-        <button class="btn" type="button" (click)="backgroundsModal.open();backgroundPopover.close()" i18n>Compartí tus fotos</button>
-      </app-popover>
-
-      <button type="button" class="camera-button" (click)="backgroundPopover.open()">
-        <i class="fa-solid fa-camera"></i>
-      </button>
-
-    </ng-container>
 
 </section>

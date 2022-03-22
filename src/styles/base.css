@@ -4,7 +4,7 @@ strong{ font-weight: bold; }
 h1, h2, h3, h4, h5, h6{ font-family: "Maven Pro", sans-serif; }
 
 /*Generics*/
-.content{ width: 100%; max-width: 1160px; margin: 0 auto; }
+.content{ width: 100%; max-width: 1160px; margin: 0 auto; position: relative; }
 
 .title-icon i{ margin-right: 10px; }
 
