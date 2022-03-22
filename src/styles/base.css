@@ -57,7 +57,6 @@ button{ display: inline-block; padding: 10px; border: noen; background: none; fo
 .alert .close:hover:before{ color: #000; }
 .alert .close span{ display: none; }
 
-
     /*Warning*/
     .alert-warning{  background: #FFF5F5; }
     .alert-warning i{ color: #F98A89; }
@@ -77,13 +76,13 @@ button{ display: inline-block; padding: 10px; border: noen; background: none; fo
 /*Modals*/
 .modal{ position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: rgba(0,0,0,0.6); z-index: 99999; opacity: 0; visibility: hidden; transition: all .3s; }
 .modal.show{ opacity: 1; visibility: visible; }
-.modal-content{ background: #FFF; position: absolute; width: 90%; max-width: 900px; height: 90%; max-height: 500px; top: 50%; left: 50%; transform: translateY(-50%) translateX(-50%); border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); padding: 30px; overflow-y: auto; }
+.modal-content{ background: #FFF; position: absolute; width: 90%; max-width: 1024px; height: auto; max-height: 90%; top: 50%; left: 50%; transform: translateY(-50%) translateX(-50%); border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); padding: 30px; overflow-y: auto; }
 .modal-close{ position: absolute; right: 15px; top: 15px; font-size: 1.6em; border: none; padding: 0; width: 40px; height: 40px; text-align: center; list-style: 40px; }
 
-.modal::-webkit-scrollbar{ width: 4px; height: 4px; }
-.modal::-webkit-scrollbar-track{ background-color: transparent; }
-.modal::-webkit-scrollbar-thumb{ background-color: #CCC; border: none; border-radius: 5px; }
-.modal::-webkit-scrollbar-thumb:hover{ background-color: #CCC; }
+.modal .modal-content::-webkit-scrollbar{ width: 4px; height: 4px; }
+.modal .modal-content::-webkit-scrollbar-track{ background-color: transparent; }
+.modal .modal-content::-webkit-scrollbar-thumb{ background-color: #CCC; border: none; border-radius: 5px; }
+.modal .modal-content::-webkit-scrollbar-thumb:hover{ background-color: #CCC; }
 
 /*Table*/
 .table{ width: 100%; }
@@ -99,3 +98,24 @@ button{ display: inline-block; padding: 10px; border: noen; background: none; fo
 .table tr th:last-child{ padding-right: 0; text-align: right; }
 
 .table tr td i{ margin-right: 10px; font-size: 1.2em; }
+
+/*Lines Info Modal*/
+.lines-info-modal{ display: flex; width: 100%; justify-content: space-between; }
+.lines-info-modal .left-column{ width: 40%; padding: 10px; }
+.lines-info-modal .right-column{ width: 50%; padding: 10px; }
+
+.lines-info-modal .stops-table .stops-table-head{ display: flex; }
+.lines-info-modal .stops-table .stops-table-content{ display: flex; }
+
+.lines-info-modal .stops-table .stops-table-head p,
+.lines-info-modal .stops-table .stops-table-content p{ width: 50%; margin-bottom: 5px; line-height: 1.4; }
+
+.lines-info-modal .stops-table .stops-table-head p + p,
+.lines-info-modal .stops-table .stops-table-content p + p{ text-align: right;}
+
+.lines-info-modal button{ border: none; padding: 0; margin-left: 5px; font-weight: 600; }
+
+.lines-info-modal .title{ font-size: 1.4em; display: flex; font-weight: 600; margin-bottom: 20px; }
+.lines-info-modal .title i{ font-size: 1em; margin-right: 10px; position: relative; top: 2px; }
+
+.lines-info-modal .left-column li{ margin-bottom: 5px; line-height: 1.3; }

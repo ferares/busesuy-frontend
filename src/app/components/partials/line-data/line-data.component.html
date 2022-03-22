@@ -1,51 +1,40 @@
-<div class="card">
-  <div class="card-body">
-    
-    <h2 class="card-title h5"><b i18n>Número de línea:</b> {{ data.line.name }}</h2>
-    
-    <h3 class="card-subtitle mb-2 text-muted h6">
-      <b i18n>Empresa:</b>&nbsp;
-      <button (click)="showCompanyInfoModal(data.line.company.name)">{{ data.line.company.name }}</button>
-    </h3>
+
+<div class="lines-info-modal">
+
+  <div class="left-column">
+
+    <h3 class="title"><i class="fa-solid fa-bus"></i> <p>Información de Omnibús</p></h3>
+
+    <ul>
+      <li><strong>Número de línea:</strong> {{ data.line.name }}</li>
+      <li><strong i18n>Empresa:</strong> <button (click)="showCompanyInfoModal(data.line.company.name)">{{ data.line.company.name }} <i class="fa-solid fa-arrow-right"></i></button></li>
+      <li><strong i18n>Origen:</strong> {{ data.origin }}, {{ data.originDepartment }}</li>
+      <li><strong i18n>Destino:</strong> {{ data.destination }}, {{ data.destinationDepartment }}</li>
+      <li><strong i18n>Hora salida:</strong> {{ data.line.startTime }} h</li>
+      <li><strong i18n>Hora llegada:</strong> {{ data.line.endTime }} h</li>
+      <li><strong i18n>Ruta:</strong> {{ data.line.route }}</li>
+      <li><strong i18n>Frecuencia:</strong> {{ data.line.frequency }}</li>
+    </ul>
+
   </div>
 
-  <ul>
-    <li><strong i18n>Origen:</strong> {{ data.origin }}, {{ data.originDepartment }}</li>
-    <li><strong i18n>Destino:</strong> {{ data.destination }}, {{ data.destinationDepartment }}</li>
-    <li><strong i18n>Hora salida:</strong> {{ data.line.startTime }} h</li>
-    <li><strong i18n>Hora llegada:</strong> {{ data.line.endTime }} h</li>
-    <li><strong i18n>Ruta:</strong> {{ data.line.route }}</li>
-    <li><strong i18n>Frecuencia:</strong> {{ data.line.frequency }}</li>
-  </ul>
-</div>
 
+  <div class="right-column">
 
-<div class="card">
-  <div class="card-body">
-    <h2 class="card-title h3" i18n>Paradas</h2>
-    <div class="table-responsive">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col" i18n>
-              Localidad
-            </th>
-            <th scope="col" i18n>
-              Hora
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let stop of data.line.stops">
-            <td>
-              {{ stop.nameLocation }}, {{ stop.nameDepartment }}
-            </td>
-            <td>
-              {{ stop.time }} h
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <h3 class="title"><i class="fa-solid fa-stopwatch"></i> <p>Paradas</p></h3>
+
+    <div class="stops-table">
+      <div class="stops-table-head">
+        <p i18n><strong>Localidad</strong></p>
+        <p i18n><strong>Hora</strong></p>
+      </div>
+
+      <div *ngFor="let stop of data.line.stops" class="stops-table-content">
+        <p>{{ stop.nameLocation }}, {{ stop.nameDepartment }}</p>
+        <p>{{ stop.time }} h</p>
+      </div>
     </div>
+
   </div>
+
 </div>
