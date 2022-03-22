@@ -1,130 +1,149 @@
-<section class="home-content" style="background-image:url('{{background?.picture}}')">
-  <div class="content">
+<section class="home-content">
+  
+    <!--Start Hero-->
+    <div class="hero">
+      
+      <div class="hero-bg" style="background-image:url('{{background?.picture}}')"></div>
 
-    <!--Search Form-->
-    <div class="search-form">
-      <h1 class="title-icon" i18n>
-        <i class="fa-solid fa-bus"></i>Buscador de líneas de ómnibus en Uruguay
-      </h1>
+      <div class="content">
+    
+        <!--Search Form-->
+        <div class="search-form">
+          <h1 class="title-icon" i18n>
+            <i class="fa-solid fa-bus"></i>Buscador de líneas de ómnibus en Uruguay
+          </h1>
 
-      <form class="row g-3 home__form" [ngClass]="{ 'was-validated': validated }" novalidate (submit)="search()">
+          <form class="row g-3 home__form" [ngClass]="{ 'was-validated': validated }" novalidate (submit)="search()">
 
-        <!--Origin-->
-        <div class="origin-box">
-          <label for="origin" i18n>Origen</label>
-          <app-location-input input-id="origin" name="origin" [options]="locations" [(ngModel)]="origin">
-          </app-location-input>
+            <!--Origin-->
+            <div class="origin-box">
+              <label for="origin" i18n>Origen</label>
+              <app-location-input input-id="origin" name="origin" [options]="locations" [(ngModel)]="origin">
+              </app-location-input>
+            </div>
+
+            <!--Switch Origin and Destiny-->
+            <button type="button" (click)="swapLocations()" class="swap-locations">
+              <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            </button>
+
+            <!--Destiny-->
+            <div class="destiny-box">
+              <label for="destination" i18n>Destino</label>
+              <app-location-input input-id="destination" name="destination" [options]="locations" [(ngModel)]="destination">
+              </app-location-input>
+            </div>
+
+            <!--Day-->
+            <div class="day-box">
+              <label for="date" class="form-label" i18n>Día</label>
+              <app-day-input name="date" [(ngModel)]="selectedDays">
+              </app-day-input>
+            </div>
+
+            <!--Search Button-->
+            <button type="submit" class="search-button" i18n>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+          </form>
         </div>
 
-        <!--Switch Origin and Destiny-->
-        <button type="button" (click)="swapLocations()" class="swap-locations">
-          <i class="fa-solid fa-arrows-rotate"></i>
-        </button>
+        <!--Covid-19 Message-->
+        <app-alert type="warning" class="covid-message" [dismissible]="true">
+          <i class="fa-solid fa-virus-covid"></i>
+          <p>Dada la situación sanitaria por COVID-19 estos datos están sujetos a cambios sin previo aviso.<br />Verifíquelos en cada caso con las compañías.</p>
+        </app-alert>
 
-        <!--Destiny-->
-        <div class="destiny-box">
-          <label for="destination" i18n>Destino</label>
-          <app-location-input input-id="destination" name="destination" [options]="locations" [(ngModel)]="destination">
-          </app-location-input>
-        </div>
-
-        <!--Day-->
-        <div class="day-box">
-          <label for="date" class="form-label" i18n>Día</label>
-          <app-day-input name="date" [(ngModel)]="selectedDays">
-          </app-day-input>
-        </div>
-
-        <!--Search Button-->
-        <button type="submit" class="search-button" i18n>
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-
-      </form>
-    </div>
-
-    <!--Covid-19 Message-->
-    <app-alert type="warning" class="covid-message" [dismissible]="true">
-      <i class="fa-solid fa-virus-covid"></i>
-      <p>Dada la situación sanitaria por COVID-19 estos datos están sujetos a cambios sin previo aviso.<br />Verifíquelos en cada caso con las compañías.</p>
-    </app-alert>
-
-    <!--Search Results-->
-    <div #resultsElement>
-
-      <div *ngIf="results" class="lines-results">
-          <h2 i18n>Líneas</h2>
-          <app-results-table [results]="results" [origin]="resultsOrigin" [destination]="resultsDestination"></app-results-table>
       </div>
 
-      <div *ngIf="results" class="transboard-results">
+    </div>
+    <!--End Hero-->
 
-        <div *ngIf="(!results || !results.length) && indirectResults">
-          <div class="card shadow">
-            <div class="card-body">
+    <!--Start Results Wrapper-->
+    <div class="search-results-wrapper">
+      <div class="content">
 
-              <h2 i18n>Transbordos</h2>
+        <!--Search Results-->
+        <div #resultsElement>
 
-              <div class="no-results" *ngIf="!indirectResults || !indirectResults.length" i18n>
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <p>No hay resultados</p>
+          <div *ngIf="results" class="lines-results">
+              <h2 i18n>Líneas</h2>
+              <app-results-table [results]="results" [origin]="resultsOrigin" [destination]="resultsDestination"></app-results-table>
+          </div>
+
+          <div *ngIf="results" class="transboard-results">
+
+            <div *ngIf="(!results || !results.length) && indirectResults">
+              <div class="card shadow">
+                <div class="card-body">
+
+                  <h2 i18n>Transbordos</h2>
+
+                  <div class="no-results" *ngIf="!indirectResults || !indirectResults.length" i18n>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <p>No hay resultados</p>
+                  </div>
+
+                  <ng-container *ngIf="indirectResults && indirectResults.length">
+                    <app-accordion *ngFor="let result of indirectResults">
+
+                      <button type="button" class="path-card" accordion-heading>
+
+                          <div class="pather">
+                            <span class="path-dot">{{result[0].origin}}, {{result[0].originDepartment}}</span>
+                            <span class="path-dot">{{result[0].destination}}, {{result[0].destinationDepartment}}</span>
+                            <span class="path-dot">{{result[1].destination}}, {{result[1].destinationDepartment}}</span>
+                          </div>
+
+                          <i class="fa-solid fa-angle-down collapse-arrow"></i>
+                      </button>
+
+                      <app-accordion>
+
+                        <button type="button" class="path-card expanded-card" accordion-heading>
+                          <div class="pather">
+                            <span class="path-dot">{{result[0].origin}}, {{result[0].originDepartment}}</span>
+                            <span class="path-dot">{{result[0].destination}}, {{result[0].destinationDepartment}}</span>
+                          </div>
+
+                          <i class="fa-solid fa-angle-down collapse-arrow"></i>
+                        </button>
+
+                        <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
+
+                        </app-results-table>
+                      </app-accordion>
+
+                      <app-accordion>
+
+                        <button type="button" class="path-card expanded-card" accordion-heading>
+
+                          <div class="pather">
+                            <span class="path-dot">{{result[1].origin}}, {{result[1].originDepartment}}</span>
+                            <span class="path-dot">{{result[1].destination}}, {{result[1].destinationDepartment}}</span>
+                          </div>
+
+                          <i class="fa-solid fa-angle-down collapse-arrow"></i>
+                        </button>
+
+                        <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment"></app-results-table>
+
+                      </app-accordion>
+
+                    </app-accordion>
+                  </ng-container>
+                </div>
               </div>
-
-              <ng-container *ngIf="indirectResults && indirectResults.length">
-                <app-accordion *ngFor="let result of indirectResults">
-
-                  <button type="button" class="path-card" accordion-heading>
-
-                      <div class="pather">
-                        <span class="path-dot">{{result[0].origin}}, {{result[0].originDepartment}}</span>
-                        <span class="path-dot">{{result[0].destination}}, {{result[0].destinationDepartment}}</span>
-                        <span class="path-dot">{{result[1].destination}}, {{result[1].destinationDepartment}}</span>
-                      </div>
-
-                      <i class="fa-solid fa-angle-down collapse-arrow"></i>
-                  </button>
-
-                  <app-accordion>
-
-                    <button type="button" class="path-card expanded-card" accordion-heading>
-                      <div class="pather">
-                        <span class="path-dot">{{result[0].origin}}, {{result[0].originDepartment}}</span>
-                        <span class="path-dot">{{result[0].destination}}, {{result[0].destinationDepartment}}</span>
-                      </div>
-
-                      <i class="fa-solid fa-angle-down collapse-arrow"></i>
-                    </button>
-
-                    <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
-
-                    </app-results-table>
-                  </app-accordion>
-
-                  <app-accordion>
-
-                    <button type="button" class="path-card expanded-card" accordion-heading>
-
-                      <div class="pather">
-                        <span class="path-dot">{{result[1].origin}}, {{result[1].originDepartment}}</span>
-                        <span class="path-dot">{{result[1].destination}}, {{result[1].destinationDepartment}}</span>
-                      </div>
-
-                      <i class="fa-solid fa-angle-down collapse-arrow"></i>
-                    </button>
-
-                    <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment"></app-results-table>
-
-                  </app-accordion>
-
-                </app-accordion>
-              </ng-container>
             </div>
           </div>
+
+
         </div>
+
       </div>
-
-
     </div>
+    <!--End Results Wrapper-->
 
     <app-modal #backgroundsModal>
       <app-backgrounds>
@@ -156,5 +175,4 @@
 
     </ng-container>
 
-  </div>
 </section>

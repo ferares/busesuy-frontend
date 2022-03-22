@@ -1,5 +1,5 @@
 /*Main Header*/
-.main-header{ position: fixed; width: 100%; max-width: 1200px; left: 50%; transform: translateX(-600px); height: 70px; background: #FFF; top: 0; z-index: 9999; border-radius: 0 0 10px 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+.main-header{ position: fixed; width: 100%; max-width: 1200px; left: 50%; transform: translateX(-600px); height: 70px; background: #FFF; top: 0; z-index: 9999; border-radius: 0 0 10px 10px; box-shadow: 0 0 6px rgba(0,0,0,0.2); }
 .main-header .content{ display: flex; justify-content: space-between; }
 
 .main-header .main-nav{ display: flex; }

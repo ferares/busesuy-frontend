@@ -47,3 +47,7 @@ table {
 *:before{ 
 	box-sizing: border-box; 
 }
+
+*:focus{
+	outline: none !important;
+}
