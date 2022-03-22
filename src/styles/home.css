@@ -1,6 +1,4 @@
-/*Home*/
-.home-content{ min-height: 100vh; }
-
+/*Hero*/
 .home-content .hero{ padding-top: 120px; background: #f1f2f6; padding-bottom: 20px; }
 .home-content .hero .hero-bg{ background-position: center; background-repeat: no-repeat; background-size: cover; width: 100%; height: 520px; position: absolute; top: 0; }
 
@@ -15,8 +13,8 @@
 .home-content .search-form .swap-locations{ border: none; padding: 0 20px; position: relative; top: 40px; }
 .home-content .search-form .swap-locations i{ transition: all 0.6s; font-size: 1.2em; }
 
-.home-content .search-form .search-button{ border-radius: 55px; border: none; background: #F2BD2A; border: 2px solid #F2BD2A; padding: 10px 30px; font-weight: bold; font-size: 1.1em; position: relative; top: 24px; } 
-.home-content .search-form .search-button:hover{ background: transparent; color: #000; border-color: #000; }
+.home-content .search-form .search-button{ border-radius: 55px; border: none; background: #145da0; border: 2px solid #145da0; padding: 10px 30px; font-weight: bold; font-size: 1.1em; position: relative; top: 24px; color: #FFF; } 
+.home-content .search-form .search-button:hover{ background: transparent; color: #145da0; border-color: #145da0; }
 
 /*Search Alert*/
 .home-content alert{ margin-bottom: 20px; display: block; }
@@ -26,15 +24,15 @@
 .camera-button:hover{ background: #000; }
 
 /*Results Wrapper*/
-.search-results-wrapper{ padding-bottom: 100px; margin-top: 40px; }
+.search-results-wrapper{ padding: 60px 0; }
 
 /*Lines*/
 .home-content .lines-results{ position: relative; z-index: 100; background: transparent; margin-bottom: 30px; }
-.home-content .lines-results h2{ font-weight: bold; font-size: 1.2em; margin-bottom: 20px; }
+.home-content .lines-results h2{ font-weight: bold; font-size: 1.6em; margin-bottom: 20px; }
 
 /*Transboard*/
 .home-content .transboard-results{ position: relative; z-index: 100; background: transparent; margin-bottom: 30px; }
-.home-content .transboard-results h2{ font-weight: bold; font-size: 1.2em; margin-bottom: 20px; }
+.home-content .transboard-results h2{ font-weight: bold; font-size: 1.6em; margin-bottom: 20px; }
 .home-content .transboard-results .table-responsive .bus-info{ width: 100%; }
 
 /*Bus Cards*/
