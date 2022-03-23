@@ -4,7 +4,7 @@
 
 /*Search Form*/
 .home-content .search-form{ position: relative; z-index: 5000; background: #FFF; padding: 30px; box-shadow: 0 0 6px rgba(0,0,0,0.2); margin-bottom: 30px; border-radius: 10px; margin-top: 300px; }
-.home-content .search-form h1{ font-weight: 600; font-size: 1.6em; margin-bottom: 30px; letter-spacing: -1px; }
+.home-content .search-form h1{ font-weight: 600; font-size: 1.5em; margin-bottom: 30px; }
 .home-content .search-form form{ display: flex; align-items: flex-start; justify-content: space-between; }
 .home-content .search-form form label{ font-weight: bold; margin-bottom: 10px; display: block; }
 .home-content .search-form form .origin-box{ position: relative; min-width: 28%; max-width: 28%; }
@@ -28,7 +28,7 @@
 
 /*Lines*/
 .home-content .lines-results{ position: relative; z-index: 100; background: transparent; margin-bottom: 30px; }
-.home-content .lines-results h2{ font-weight: bold; font-size: 1.6em; margin-bottom: 20px; }
+.home-content .lines-results h2{ font-weight: 600; font-size: 1.7em; margin-bottom: 30px; }
 
 /*Transboard*/
 .home-content .transboard-results{ position: relative; z-index: 100; background: transparent; margin-bottom: 30px; }
@@ -50,19 +50,20 @@
 .table-responsive ul{ display: flex; flex-wrap: wrap; justify-content: space-between; }
 .table-responsive ul li{ width: calc(50% - 10px); transition: all .3s; }
 .table-responsive .bus-info{ box-shadow: 0 0 6px rgba(0,0,0,0.2); margin-bottom: 20px; border-radius: 10px; background: #FFF; padding: 20px; position: relative; border-left: 10px solid #000; }
-.table-responsive .bus-info .company-name{ color: #000; text-decoration: none; margin-bottom: 10px; display: block; font-size: 1.3em; font-family: "Maven Pro"; font-weight: 600; letter-spacing: -1px; } 
-.table-responsive .bus-info .bus-info-times p{ margin-bottom: 5px; }
-.table-responsive .bus-info .bus-icon{ position: absolute; right: 82px; font-size: 1.5em; top: 55px; }
-.table-responsive .bus-info .more-info{ color: #000; text-decoration: none; display: inline-block; margin-top: 10px; font-weight: 600; position: absolute; right: 30px; top: 50%; margin-top: -20px; font-size: 1.4em; background: #F2BD2A; border-radius: 100%; width: 40px; height: 40px; transition: all .3s; border: 2px solid transparent; padding: 0; }
+.table-responsive .bus-info .company-name{ color: #000; text-decoration: none; margin-bottom: 15px; display: block; font-size: 1.2em; font-family: "Poppins"; font-weight: 600; } 
+.table-responsive .bus-info .bus-info-times p{ margin-bottom: 5px; font-size: .9em; }
+.table-responsive .bus-info .more-info{ color: #000; text-decoration: none; display: inline-block; font-weight: 600; position: absolute; right: 10px; top: 10px; font-size: 1.4em; width: 40px; height: 40px; transition: all .3s; border: none; padding: 0; }
 .table-responsive .bus-info .more-info i{ position: relative; top: 0; left: 1px; font-size: .9em; }
 .table-responsive .bus-info .more-info:hover{ background: transparent; color: #000; border-color: #000; }
 
-.table-responsive .bus-info .time{ padding-bottom: 5px; }
-.table-responsive .bus-info .time strong{ font-size: 1.2em; }
-.table-responsive .bus-info .time strong span{ font-size: .8em; }
-.table-responsive .bus-info .time .duration{ display: inline-block; padding: 0 20px; position: relative; top: -2px; }
-.table-responsive .bus-info .time .duration:before{ content: ""; display: block; width: calc(100% - 20px); height: 1px; background: #CCC; position: absolute; left: 0; top: 10px; margin: 0 10px; }
-.table-responsive .bus-info .time .duration strong{ background: #FFF; z-index: 10; position: relative; font-size: .85em; padding: 10px; color: #999; }
+.table-responsive .bus-info .time{ display: flex; margin-bottom: 5px; }
+.table-responsive .bus-info .time .value{ font-size: 1.4em; font-weight: 600; font-family: "Poppins"; }
+.table-responsive .bus-info .time .value small{ font-size: .6em; font-weight: 600; }
+.table-responsive .bus-info .time .small{ display: block; font-size: .85em; color: #666; margin-top: 2px; font-weight: 700; }
+
+.table-responsive .bus-info .time .duration{ position: relative; width: 120px; display: flex; align-items: center; justify-content: center; top: -7px; font-size: .9em; }
+.table-responsive .bus-info .time .duration:before{ content: ""; display: block; width: 90px; height: 1px; background: #CCC; position: absolute; top: 16px; }
+.table-responsive .bus-info .time .duration span{ background: #FFF; padding: 0 5px; position: relative; z-index: 10; display: inline-block; }
 
 /*No Results*/
 .no-results{ background: #FFF; padding: 20px; width: 100%; box-shadow: 0 0 6px rgba(0,0,0,0.2); display: flex; border-radius: 10px; align-items: center; }

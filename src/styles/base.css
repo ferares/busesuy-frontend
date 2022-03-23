@@ -9,15 +9,14 @@ Baby Blue     ---  #B1D4E0
 body{ font-family: "Nunito", sans-serif; font-size: 17px; color: #000; }
 strong{ font-weight: bold; }
 
-h1, h2, h3, h4, h5, h6{ font-family: "Maven Pro", sans-serif; }
+h1, h2, h3, h4, h5, h6{ font-family: "Poppins", sans-serif; }
 
 /*Generics*/
 .content{ width: 100%; max-width: 1160px; margin: 0 auto; position: relative; }
-
 .title-icon i{ margin-right: 10px; }
 
 /*Angular*/
-#main{ height: auto; min-height: calc(100vh - 120px); display: block !important; position: relative; z-index: 50; }
+#main{ height: auto; display: block !important; position: relative; z-index: 50; }
 
 /*Inputs*/
 input,
@@ -102,7 +101,7 @@ button{ display: inline-block; padding: 10px; border: noen; background: none; fo
 
 .table tr td,
 .table tr th{ padding: 10px; text-align: left; border-bottom: 1px solid #CCC; }
-.table tr th{ font-weight: bold; font-family: "Maven Pro"; }
+.table tr th{ font-weight: bold; font-family: "Poppins"; }
 
 .table tr td:first-child,
 .table tr th:first-child{ padding-left: 0; }
@@ -139,7 +138,7 @@ button{ display: inline-block; padding: 10px; border: noen; background: none; fo
 .guides-box ul li{ width: 33.3333%; padding: 30px; text-align: center; }
 .guides-box ul li figure{ width: 250px; margin: 0 auto; }
 .guides-box ul li figure img{}
-.guides-box ul li h4{ font-size: 2em; font-weight: 500; letter-spacing: -1px; margin-bottom: 20px; }
+.guides-box ul li h4{ font-size: 1.8em; font-weight: 500; letter-spacing: -1px; margin-bottom: 20px; }
 .guides-box ul li p{ line-height: 1.4; opacity: .7; }
 
 .guides-box .header{ text-align: center; }

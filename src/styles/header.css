@@ -6,7 +6,7 @@
 .main-header .main-nav figure{ width: 200px; min-width: 200px; position: relative; top: 12px; }
 .main-header .main-nav ul{ margin-left: 50px; }
 .main-header .main-nav ul li{ display: inline-block; }
-.main-header .main-nav ul li a{ text-decoration: none; font-weight: 700; color: #000; display: block; padding: 0 15px; line-height: 69px; font-family: "Maven Pro"; transition: all .3s; }
+.main-header .main-nav ul li a{ text-decoration: none; font-weight: 600; color: #000; display: block; padding: 0 15px; line-height: 69px; font-family: "Poppins"; transition: all .3s; font-size: .9em; }
 .main-header .main-nav ul li a:hover{ background: #EEE; }
 
 .main-header .right-options{ display: flex; }
