@@ -13,7 +13,7 @@ const API_URL = environment.apiURL;
   providedIn: 'root'
 })
 export class AuthService {
-  private refreshIntervalTime = 300000;
+  private refreshIntervalTime = 250000;
   private refreshInterval: any;
   // These are used to indicate changes in a user's logged in status
   private loggedIn = new Subject<boolean>();
