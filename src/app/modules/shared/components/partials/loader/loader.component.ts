@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
-import { ApiService } from '../../../../../services/api.service';
+import { LoaderService } from '../../../../../services/loader.service';
 
 @Component({
   selector: 'app-loader',
@@ -12,11 +12,11 @@ export class LoaderComponent implements OnInit, OnDestroy {
   active = false;
   subscription: Subscription = undefined as any;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private loaderService: LoaderService) { }
 
   public ngOnInit(): void {
-    // Subscribe to the loading state of the ApiService
-    this.subscription = this.apiService.loadingChange$.subscribe(
+    // Subscribe to the loading state of the LoaderService
+    this.subscription = this.loaderService.loadingChange$.subscribe(
       loading => this.active = loading // Update the "active" flag of the loader
     );
   }

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, Subject, throwError } from 'rxjs';
-import { finalize, catchError } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
+
+import { LoaderService } from './loader.service';
 
 import { environment } from '../../environments/environment';
 
@@ -12,67 +13,57 @@ const API_URL = environment.apiURL;
   providedIn: 'root'
 })
 export class ApiService {
-  // These are used to indicate if the service is waiting for data from the API
-  private loading = new Subject<boolean>();
-  public loadingChange$: Observable<boolean> = this.loading.asObservable();
-
-  constructor(private http: HttpClient) { }
-
-  /**
-   * Updates the value of the "loading" varaible
-   *
-   * @param state The new value of the variable
-   */
-  public setLoading(state: boolean): void {
-    this.loading.next(state);
-  }
+  constructor(
+    private http: HttpClient,
+    private loaderService: LoaderService,
+  ) { }
 
   getLocations() {
-    this.setLoading(true);
+    this.loaderService.setLoading(true);
     return this.http.get<any>(`${API_URL}/locations`).pipe(
-      finalize(() => this.setLoading(false)),
+      finalize(() => this.loaderService.setLoading(false)),
     );
   }
 
   getLineByName(name: string) {
-    this.setLoading(true);
+    this.loaderService.setLoading(true);
     return this.http.get<any>(`${API_URL}/lines/${name}`).pipe(
-      finalize(() => this.setLoading(false)),
+      finalize(() => this.loaderService.setLoading(false)),
     );
   }
 
   getLinesByCompany(name: string) {
-    this.setLoading(true);
+    this.loaderService.setLoading(true);
     return this.http.get<any>(`${API_URL}/companies/${name}/lines`).pipe(
-      finalize(() => this.setLoading(false)),
+      finalize(() => this.loaderService.setLoading(false)),
     );
   }
 
   getCompanyByName(name: string) {
-    this.setLoading(true);
+    this.loaderService.setLoading(true);
     return this.http.get<any>(`${API_URL}/companies/${name}`).pipe(
-      finalize(() => this.setLoading(false)),
+      finalize(() => this.loaderService.setLoading(false)),
     );
   }
 
   getDepartmentById(id: number) {
-    this.setLoading(true);
+    this.loaderService.setLoading(true);
     return this.http.get<any>(`${API_URL}/departments/${id}`).pipe(
-      finalize(() => this.setLoading(false)),
+      finalize(() => this.loaderService.setLoading(false)),
     );
   }
 
   getLocationById(id: number) {
-    this.setLoading(true);
+    this.loaderService.setLoading(true);
     return this.http.get<any>(`${API_URL}/locations/${id}`).pipe(
-      finalize(() => this.setLoading(false)),
+      finalize(() => this.loaderService.setLoading(false)),
     );
   }
 
   submitContact(data: any) {
-    this.setLoading(true);
+    this.loaderService.setLoading(true);
     return this.http.post<any>(`${API_URL}/contact`, data).pipe(
-      finalize(() => this.setLoading(false))
+      finalize(() => this.loaderService.setLoading(false))
     );
   }
 
@@ -83,7 +74,7 @@ export class ApiService {
     destinationDepartment: String,
     days: String,
   ) {
-    this.setLoading(true);
+    this.loaderService.setLoading(true);
     const params: any = {
       origin,
       originDepartment,
@@ -92,7 +83,7 @@ export class ApiService {
       days,
     };
     return this.http.get<any>(`${API_URL}/lines/search`, { params }).pipe(
-      finalize(() => this.setLoading(false)),
+      finalize(() => this.loaderService.setLoading(false)),
     );
   }
 }

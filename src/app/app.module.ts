@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import { ApiService } from './services/api.service';
 import { CacheService } from './services/cache.service';
 import { ModalService } from './services/modal.service';
+import { LoaderService } from './services/loader.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,6 +43,7 @@ import { ModalService } from './services/modal.service';
     { provide: HTTP_INTERCEPTORS, useClass: CacheService, multi: true },
     ApiService,
     ModalService,
+    LoaderService,
   ],
   bootstrap: [AppComponent],
 })
