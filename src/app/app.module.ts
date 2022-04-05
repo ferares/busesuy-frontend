@@ -5,8 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import localeEs from '@angular/common/locales/es-UY';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-import { NgHcaptchaModule } from 'ng-hcaptcha';
-
 import { AppRoutingModule } from './app-routing.module';
 
 import { SharedModule } from './modules/shared/shared.module';
@@ -31,10 +29,6 @@ import { LoaderService } from './services/loader.service';
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    }),
-    NgHcaptchaModule.forRoot({
-      siteKey: environment.hcaptchaSiteKey,
-      languageCode: 'es',
     }),
     SharedModule,
   ],
