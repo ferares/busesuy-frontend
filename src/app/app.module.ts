@@ -8,6 +8,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgHcaptchaModule } from 'ng-hcaptcha';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { SharedModule } from './modules/shared/shared.module';
+
 import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
@@ -32,6 +35,7 @@ import { ModalService } from './services/modal.service';
       siteKey: environment.hcaptchaSiteKey,
       languageCode: 'es',
     }),
+    SharedModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-uy' },

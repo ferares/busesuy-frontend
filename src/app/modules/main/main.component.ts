@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { SwUpdate } from '@angular/service-worker';
 
 import { Subscription } from 'rxjs';
 
@@ -13,16 +12,13 @@ import { ModalService } from '../../services/modal.service'
 export class MainComponent implements OnInit, OnDestroy {
   @ViewChild('modalLine') modalLine!: any;
   @ViewChild('modalCompany') modalCompany!: any;
-  public updateAvailable = false;
   langs: Array<any> = [];
   currentLang: any = undefined as any;
   modalLineContent: any;
   modalCompanyContent: any;
   modalSubscription: Subscription = undefined as any;
-  swSubscription: Subscription = undefined as any;
 
   constructor(
-    private swUpdate: SwUpdate,
     private route: ActivatedRoute,
     private router: Router,
     private modalService: ModalService,
@@ -79,7 +75,6 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.swSubscription = this.swUpdate.available.subscribe(_ => this.updateAvailable = true);
     this.modalSubscription = this.modalService.modals.subscribe(
       (modals: any) => {
         if (modals.line.open) {
@@ -100,12 +95,5 @@ export class MainComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.modalSubscription.unsubscribe();
-    this.swSubscription.unsubscribe();
-  }
-
-  public update(): void {
-    this.swUpdate.activateUpdate().then(
-      _ => document.location.reload()
-    );
   }
 }
