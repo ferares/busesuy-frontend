@@ -5,7 +5,6 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-line',
   templateUrl: './line.component.html',
-  styleUrls: ['./line.component.scss']
 })
 export class LineComponent {
   data: any;

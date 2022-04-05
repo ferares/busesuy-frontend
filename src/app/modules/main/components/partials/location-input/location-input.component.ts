@@ -10,7 +10,6 @@ import { getLocationString } from '../../../utils';
 @Component({
   selector: 'app-location-input',
   templateUrl: './location-input.component.html',
-  styleUrls: ['./location-input.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     multi: true,

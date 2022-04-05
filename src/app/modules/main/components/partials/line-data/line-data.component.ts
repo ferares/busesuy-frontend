@@ -8,7 +8,6 @@ import { ModalService } from '../../../services/modal.service';
 @Component({
   selector: 'app-line-data',
   templateUrl: './line-data.component.html',
-  styleUrls: ['./line-data.component.scss']
 })
 export class LineDataComponent {
   @Input('data') data!: any;

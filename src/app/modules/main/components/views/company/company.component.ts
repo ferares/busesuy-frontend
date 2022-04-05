@@ -5,7 +5,6 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
-  styleUrls: ['./company.component.scss']
 })
 export class CompanyComponent {
   data: any;

@@ -4,7 +4,6 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 @Component({
   selector: 'app-day-input',
   templateUrl: './day-input.component.html',
-  styleUrls: ['./day-input.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     multi: true,

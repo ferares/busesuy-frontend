@@ -10,7 +10,6 @@ import { ApiService } from '../../../services/api.service';
 @Component({
   selector: 'app-results-table',
   templateUrl: './results-table.component.html',
-  styleUrls: ['./results-table.component.scss']
 })
 export class ResultsTableComponent implements OnInit {
   @Input() results: Array<any> = undefined as any;
