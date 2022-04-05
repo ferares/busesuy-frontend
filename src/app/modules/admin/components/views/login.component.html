@@ -1,0 +1,14 @@
+<form [formGroup]="form" novalidate [ngClass]="{ 'was-validated': validated}">
+  <fieldset [disabled]="sending">
+    <input formControlName="email" type="email" name="" value="" required>
+    <div class="invalid-feedback" i18n>Ingrese un correo electrónico.</div>
+    <input formControlName="password" type="password" name="" value="" required>
+    <div class="invalid-feedback" i18n>Ingrese una contraseña.</div>
+    <p i18n>
+      Este formulario está protegido por hCaptcha y su
+      <a class="link-dark" href="https://hcaptcha.com/privacy" target="_blank" rel="noreferrer">política de privacidad</a> y
+      <a class="link-dark" href="https://hcaptcha.com/terms" target="_blank" rel="noreferrer">términos de servicio</a> aplican.
+    </p>
+    <button type="button" class="btn btn-primary w-100" ngHcaptchaInvisibleButton (click)="onClickSubmit()" (verify)="submit($event)" (expired)="onCaptchaError()" (error)="onCaptchaError()" i18n>Enviar</button>
+  </fieldset>
+</form>
