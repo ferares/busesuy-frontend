@@ -65,7 +65,7 @@ export class BackgroundsComponent {
     })
   }
 
-  async submit(captcha: string) {
+  async submit(captcha: any) {
     this.validated = true;
     let totalSuccess = 0;
     if (this.validForm()) {

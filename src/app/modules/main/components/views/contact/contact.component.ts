@@ -36,7 +36,7 @@ export class ContactComponent {
     this.error = $localize `Error de verificación de captcha`;
   }
 
-  submit(token: string): void {
+  submit(token: any): void {
     if (!this.form.valid) this.validated = true;
     else {
       const data = this.form.getRawValue();

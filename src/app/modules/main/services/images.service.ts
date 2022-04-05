@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 const IMAGES_URL = environment.imagesURL;
 
