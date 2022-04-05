@@ -3,7 +3,7 @@ import { Resolve } from '@angular/router';
 
 import { combineLatest } from 'rxjs';
 
-import { ApiService } from '../../../services/api.service';
+import { ApiService } from '../../../../../services/api.service';
 import { ImagesService } from '../../../services/images.service';
 
 @Injectable()

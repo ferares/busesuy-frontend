@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 
-import { ApiService } from './services/api.service'
-import { CacheService } from './services/cache.service'
-import { ImagesService } from './services/images.service'
-import { ModalService } from './services/modal.service'
+import { ImagesService } from './services/images.service';
 
 import { HomeResolver } from './components/views/home/home.resolver';
 import { LineResolver } from './components/views/line/line.resolver';
@@ -71,10 +67,7 @@ import { CompanyDataComponent } from './components/partials/company-data/company
     MainRoutingModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: CacheService, multi: true },
-    ApiService,
     ImagesService,
-    ModalService,
     HomeResolver,
     LineResolver,
     CompanyResolver,

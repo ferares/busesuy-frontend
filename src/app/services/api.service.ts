@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { finalize, catchError } from 'rxjs/operators';
 
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../environments/environment';
 
 const API_URL = environment.apiURL;
 

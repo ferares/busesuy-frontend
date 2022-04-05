@@ -4,7 +4,7 @@ import { SwUpdate } from '@angular/service-worker';
 
 import { Subscription } from 'rxjs';
 
-import { ModalService } from './services/modal.service'
+import { ModalService } from '../../services/modal.service'
 
 @Component({
   selector: 'main-root',

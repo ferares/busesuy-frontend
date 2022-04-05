@@ -4,8 +4,8 @@ import { combineLatest } from 'rxjs';
 
 import { LineComponent } from '../../views/line/line.component';
 
-import { ModalService } from '../../../services/modal.service';
-import { ApiService } from '../../../services/api.service';
+import { ModalService } from '../../../../../services/modal.service';
+import { ApiService } from '../../../../../services/api.service';
 
 @Component({
   selector: 'app-results-table',
