@@ -19,12 +19,12 @@
 
 <app-footer></app-footer>
 
-<app-modal #modalLine>
+<app-modal #modalLine (closeEvent)="modalClosed('line')">
   <app-line-data *ngIf="modalLineContent" [data]="modalLineContent">
   </app-line-data>
 </app-modal>
 
-<app-modal #modalCompany>
+<app-modal #modalCompany (closeEvent)="modalClosed('company')">
   <app-company-data *ngIf="modalCompanyContent" [data]="modalCompanyContent">
   </app-company-data>
 </app-modal>

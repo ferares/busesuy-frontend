@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent {
+  @Output() closeEvent = new EventEmitter<boolean>();
   show = false;
 
   constructor() {
@@ -24,5 +25,6 @@ export class ModalComponent {
 
   close() {
     this.show = false;
+    this.closeEvent.emit(true);
   }
 }

@@ -95,6 +95,10 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
 
+  public modalClosed(name: string): void {
+    this.modalService.closeModal(name);
+  }
+
   public ngOnDestroy(): void {
     this.modalSubscription.unsubscribe();
     this.swSubscription.unsubscribe();

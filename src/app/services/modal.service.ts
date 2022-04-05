@@ -8,6 +8,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ModalService {
   modals: BehaviorSubject<any> = new BehaviorSubject({ line: {}, company: {} } as any);
 
+  closeModal(name: string): void {
+    this.modals.next({
+      ...this.modals.value,
+      [name]: {
+        ...this.modals.value[name],
+        open: false,
+      },
+    });
+  }
+
   openModal(name: string, content: any): void {
     this.modals.next({
       ...this.modals.value,
