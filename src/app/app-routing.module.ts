@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { MainComponent } from './components/layouts/main/main.component';
+
 import { HomeComponent } from './components/views/home/home.component';
 import { HomeResolver } from './components/views/home/home.resolver';
 
@@ -19,31 +21,37 @@ import { DataComponent } from './components/views/data/data.component';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    component: HomeComponent,
-    resolve: { data: HomeResolver },
-  },
-  {
-    path: 'lineas/:name',
-    component: LineComponent,
-    resolve: { data: LineResolver },
-  },
-  {
-    path: 'empresas/:name',
-    component: CompanyComponent,
-    resolve: { company: CompanyResolver },
-  },
-  {
-    path: 'contacto',
-    component: ContactComponent,
-  },
-  {
-    path: 'proyecto',
-    component: AboutComponent,
-  },
-  {
-    path: 'datos',
-    component: DataComponent,
+    component: MainComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: HomeComponent,
+        resolve: { data: HomeResolver },
+      },
+      {
+        path: 'lineas/:name',
+        component: LineComponent,
+        resolve: { data: LineResolver },
+      },
+      {
+        path: 'empresas/:name',
+        component: CompanyComponent,
+        resolve: { company: CompanyResolver },
+      },
+      {
+        path: 'contacto',
+        component: ContactComponent,
+      },
+      {
+        path: 'proyecto',
+        component: AboutComponent,
+      },
+      {
+        path: 'datos',
+        component: DataComponent,
+      },
+    ],
   },
 ];
 

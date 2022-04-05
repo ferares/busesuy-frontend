@@ -17,6 +17,8 @@ import { CacheService } from './services/cache.service'
 import { ImagesService } from './services/images.service'
 import { ModalService } from './services/modal.service'
 
+import { MainComponent } from './components/layouts/main/main.component';
+
 import { HomeResolver } from './components/views/home/home.resolver';
 import { LineResolver } from './components/views/line/line.resolver';
 import { CompanyResolver } from './components/views/company/company.resolver';
@@ -49,6 +51,7 @@ import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
+    MainComponent,
     HomeComponent,
     LineComponent,
     CompanyComponent,
