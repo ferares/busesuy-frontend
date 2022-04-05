@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +16,15 @@ export class LoginComponent {
   success = false;
   sending = false;
 
-  constructor(private authService: AuthService, private titleService: Title) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private titleService: Title,
+  ) {
     this.titleService.setTitle($localize `Ingresar | BusesUY`);
     this.form = new FormGroup({
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      email: new FormControl('admin@buses.uy', Validators.required),
+      password: new FormControl('testing', Validators.required),
     })
   }
 
@@ -43,7 +48,7 @@ export class LoginComponent {
         (res: any) => {
           this.success = res?.success;
           if (!this.success) this.error = $localize `Error interno, intente nuevamente más tarde`;
-          else this.form.reset();
+          else this.router.navigate(['admin']);
         },
         (err: any) => {
           this.error = $localize `Error interno, intente nuevamente más tarde`;

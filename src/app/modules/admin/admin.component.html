@@ -1,5 +1,7 @@
 <app-loader></app-loader>
 
+<button *ngIf="loggedIn" type="button" (click)="logout()">Logout</button>
+
 <main id="main" tabindex="-1">
   <router-outlet></router-outlet>
 </main>

@@ -9,6 +9,7 @@
       <a class="link-dark" href="https://hcaptcha.com/privacy" target="_blank" rel="noreferrer">política de privacidad</a> y
       <a class="link-dark" href="https://hcaptcha.com/terms" target="_blank" rel="noreferrer">términos de servicio</a> aplican.
     </p>
+    <button type="button" (click)="submit('')" i18n>Enviar</button>
     <button type="button" class="btn btn-primary w-100" ngHcaptchaInvisibleButton (click)="onClickSubmit()" (verify)="submit($event)" (expired)="onCaptchaError()" (error)="onCaptchaError()" i18n>Enviar</button>
   </fieldset>
 </form>
