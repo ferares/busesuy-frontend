@@ -20,6 +20,7 @@ import { getLocationString } from '../../../utils';
 export class LocationInputComponent implements ControlValueAccessor, OnInit {
   @Input('input-id') id = '';
   @Input('name') name = '';
+  @Input('placeholder') placeholder = '';
   @Input('options') options: any = [];
   @ViewChildren('locationBtns') locationBtns!: QueryList<any>;
   locations: any;
