@@ -10,7 +10,7 @@ import { DashboardComponent } from './components/views/dashboard/dashboard.compo
 import { SharedModule } from '../shared/shared.module';
 
 import { AuthService } from './services/auth.service';
-import { SecureApiService } from './services/secure-api.service';
+import { AdminApiService } from './services/admin-api.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { SecureApiService } from './services/secure-api.service';
   ],
   providers: [
     AuthService,
-    SecureApiService,
+    AdminApiService,
   ],
 })
 export class AdminModule { }

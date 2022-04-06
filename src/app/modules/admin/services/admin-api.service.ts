@@ -12,7 +12,7 @@ const API_URL = environment.apiURL;
 @Injectable({
   providedIn: 'root'
 })
-export class SecureApiService {
+export class AdminApiService {
   constructor(
     private http: HttpClient,
     private loaderService: LoaderService,
