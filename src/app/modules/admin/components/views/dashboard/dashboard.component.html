@@ -1,1 +1,11 @@
-Dashboard works!
+<p *ngIf="!companies.length">
+  No hay compañías asociadas al usuario
+</p>
+
+<ul *ngIf="companies.length">
+  <li *ngFor="let company of companies">
+    <a [routerLink]="['empresas', company.id]">
+      {{ company.name }}
+    </a>
+  </li>
+</ul>

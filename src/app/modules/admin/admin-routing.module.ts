@@ -5,6 +5,8 @@ import { AdminComponent } from './admin.component';
 import { LoginComponent } from './components/views/login/login.component';
 import { DashboardComponent } from './components/views/dashboard/dashboard.component';
 
+import { DashboardResolver } from './components/views/dashboard/dashboard.resolver';
+
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -16,6 +18,7 @@ const routes: Routes = [
       {
         path: '',
         component: DashboardComponent,
+        resolve: { companies: DashboardResolver },
       },
       {
         path: 'login',
