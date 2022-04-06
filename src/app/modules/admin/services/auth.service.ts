@@ -18,6 +18,7 @@ export class AuthService {
   // These are used to indicate changes in a user's logged in status
   private loggedIn = new Subject<boolean>();
   public loggedInChange$: Observable<boolean> = this.loggedIn.asObservable();
+  options = { withCredentials: true, observe: 'response' as 'response' };
 
   constructor(
     private http: HttpClient,
@@ -28,14 +29,15 @@ export class AuthService {
    * Saves user data to local storage
    */
   private storeUser(data: any) {
-    localStorage['user'] = data;
+    localStorage['user'] = JSON.stringify(data);
   }
 
   /**
    * Gets user data from local storage
    */
   public getUser() {
-    return localStorage['user'];
+    if (!localStorage['user']) return undefined;
+    return JSON.parse(localStorage['user']);
   }
 
   /**
@@ -60,12 +62,7 @@ export class AuthService {
    */
   public login(data: any): Observable<any> {
     this.loaderService.setLoading(true);
-    const options = {
-      withCredentials: true,
-      observe: 'response' as 'response'
-    };
-
-    return this.http.post<any>(`${API_URL}/users/login`, data, options).pipe(
+    return this.http.post<any>(`${API_URL}/users/login`, data, this.options).pipe(
       tap((res: any) => {
         // Logout on login failure just in case
         if (!res.body.success) return this.logout();
@@ -117,11 +114,7 @@ export class AuthService {
    * Refersh user credentials
    */
   public refreshLogin(): Observable<any> {
-    const options = {
-      withCredentials: true,
-      observe: 'response' as 'response'
-    };
-    return this.http.post<any>(`${API_URL}/users/refresh`, {}, options).pipe(
+    return this.http.post<any>(`${API_URL}/users/refresh`, {}, this.options).pipe(
       tap((res: any) => {
         if (res.body.success) {
           // Update the user's login data
