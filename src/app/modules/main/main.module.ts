@@ -29,8 +29,6 @@ import { LocationInputComponent } from './components/partials/location-input/loc
 import { DayInputComponent } from './components/partials/day-input/day-input.component';
 import { AccordionComponent } from './components/partials/accordion/accordion.component';
 import { PopoverComponent } from './components/partials/popover/popover.component';
-import { LineDataComponent } from './components/partials/line-data/line-data.component';
-import { CompanyDataComponent } from './components/partials/company-data/company-data.component';
 
 
 @NgModule({
@@ -52,8 +50,6 @@ import { CompanyDataComponent } from './components/partials/company-data/company
     DayInputComponent,
     AccordionComponent,
     PopoverComponent,
-    LineDataComponent,
-    CompanyDataComponent,
   ],
   imports: [
     CommonModule,
