@@ -24,32 +24,37 @@ export class ResultsTableComponent implements OnInit {
     this.expanded = this.results.map((_: any) => false);
   }
 
-  showLineInfoModal(name: string): void {
+  showCompanyInfoModal(id: string): void {
     // TODO: Move this into api service
-    this.apiService.getLineByName(name).subscribe(line => {
+    combineLatest([
+      this.apiService.getCompanyById(id),
+      this.apiService.getLinesByCompany(id),
+    ]).subscribe((data: Array<any>) => {
+      const [company, lines] = data;
+      this.modalService.openModal('company', { company, lines });
+    });
+  }
+
+  showLineInfoModal(id: string): void {
+    // TODO: Move this into api service
+    this.apiService.getLineById(id).subscribe(line => {
       combineLatest(
         [
-          this.apiService.getLocationById(line.origin),
-          this.apiService.getLocationById(line.destination),
+          this.apiService.getCompanyById(line.companyId),
+          this.apiService.getLocationById(line.originId),
+          this.apiService.getLocationById(line.destinationId),
+          this.apiService.getStopsByLine(line.id),
         ]
-      ).subscribe(locations => {
-        const [origin, destination] = locations
-        combineLatest(
-          [
-            this.apiService.getDepartmentById(origin.department),
-            this.apiService.getDepartmentById(destination.department),
-          ]
-        ).subscribe(departments => {
-          const [originDepartment, destinationDepartment] = departments
-          this.lineInfo = {
-            line: { ...line },
-            origin: origin.name,
-            originDepartment: originDepartment.name,
-            destination: destination.name,
-            destinationDepartment: destinationDepartment.name,
-          };
-          this.modalService.openModal('line', this.lineInfo);
-        })
+      ).subscribe(data => {
+        const [company, origin, destination, stops] = data
+        this.lineInfo = {
+          line,
+          company,
+          origin,
+          destination,
+          stops,
+        };
+        this.modalService.openModal('line', this.lineInfo);
       });
     });
   }

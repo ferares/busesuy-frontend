@@ -25,9 +25,16 @@ export class ApiService {
     );
   }
 
-  getLineByName(name: string) {
+  getLineById(id: string) {
     this.loaderService.setLoading(true);
-    return this.http.get<any>(`${API_URL}/lines/${name}`).pipe(
+    return this.http.get<any>(`${API_URL}/lines/${id}`).pipe(
+      finalize(() => this.loaderService.setLoading(false)),
+    );
+  }
+
+  getStopsByLine(id: string) {
+    this.loaderService.setLoading(true);
+    return this.http.get<any>(`${API_URL}/lines/${id}/stops`).pipe(
       finalize(() => this.loaderService.setLoading(false)),
     );
   }
@@ -39,9 +46,9 @@ export class ApiService {
     );
   }
 
-  getCompanyByName(name: string) {
+  getCompanyById(id: string) {
     this.loaderService.setLoading(true);
-    return this.http.get<any>(`${API_URL}/companies/${name}`).pipe(
+    return this.http.get<any>(`${API_URL}/companies/${id}`).pipe(
       finalize(() => this.loaderService.setLoading(false)),
     );
   }

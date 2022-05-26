@@ -49,15 +49,15 @@
           <tbody>
             <tr *ngFor="let line of data.lines">
               <td>
-                <a [routerLink]="['/lineas', line.name]">
+                <a [routerLink]="['/lineas', line.id]">
                   {{ line.name }}
                 </a>
               </td>
               <td>
-                {{ line.origin.name }}, {{ line.origin.department }}
+                {{ line.origin.name }}, {{ line.origin.department.name }}
               </td>
               <td>
-                {{ line.destination.name }}, {{ line.destination.department }}
+                {{ line.destination.name }}, {{ line.destination.department.name }}
               </td>
             </tr>
           </tbody>
