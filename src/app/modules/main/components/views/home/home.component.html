@@ -92,14 +92,14 @@
         <!--Search Results-->
         <div #resultsElement>
 
-          <div *ngIf="results" class="lines-results">
+          <div *ngIf="results && results.length" class="lines-results">
               <h2 i18n>Líneas</h2>
               <app-results-table [results]="results" [origin]="resultsOrigin" [destination]="resultsDestination"></app-results-table>
           </div>
 
-          <div *ngIf="results" class="transboard-results">
+          <div *ngIf="!results || !results.length" class="transboard-results">
 
-            <div *ngIf="(!results || !results.length) && indirectResults">
+            <div *ngIf="indirectResults">
               <div class="card shadow">
                 <div class="card-body">
 
@@ -116,44 +116,29 @@
                       <button type="button" class="path-card" accordion-heading>
 
                           <div class="pather">
-                            <span class="path-dot">{{result[0].origin}}, {{result[0].originDepartment}}</span>
-                            <span class="path-dot">{{result[0].destination}}, {{result[0].destinationDepartment}}</span>
-                            <span class="path-dot">{{result[1].destination}}, {{result[1].destinationDepartment}}</span>
+                            <ng-container *ngFor="let scale of result; let last = last">
+                              <span class="path-dot">{{scale.origin.name}}, {{scale.origin.department?.name}}</span>
+                              <span *ngIf="last" class="path-dot">{{scale.destination.name}}, {{scale.destination.department?.name}}</span>
+                            </ng-container>
                           </div>
 
                           <i class="fa-solid fa-angle-down collapse-arrow"></i>
                       </button>
 
-                      <app-accordion>
+                      <app-accordion *ngFor="let scale of result">
 
                         <button type="button" class="path-card expanded-card" accordion-heading>
                           <div class="pather">
-                            <span class="path-dot">{{result[0].origin}}, {{result[0].originDepartment}}</span>
-                            <span class="path-dot">{{result[0].destination}}, {{result[0].destinationDepartment}}</span>
+                            <span class="path-dot">{{scale.origin.name}}, {{scale.origin.department?.name}}</span>
+                            <span class="path-dot">{{scale.destination.name}}, {{scale.destination.department?.name}}</span>
                           </div>
 
                           <i class="fa-solid fa-angle-down collapse-arrow"></i>
                         </button>
 
-                        <app-results-table [results]="result[0].lines" [origin]="result[0].origin + ', ' + result[0].originDepartment" [destination]="result[0].destination + ', ' + result[0].destinationDepartment">
+                        <app-results-table [results]="scale.connections" [origin]="scale.origin.name + ', ' + scale.origin.department?.name" [destination]="scale.destination.name + ', ' + scale.destination.department?.name">
 
                         </app-results-table>
-                      </app-accordion>
-
-                      <app-accordion>
-
-                        <button type="button" class="path-card expanded-card" accordion-heading>
-
-                          <div class="pather">
-                            <span class="path-dot">{{result[1].origin}}, {{result[1].originDepartment}}</span>
-                            <span class="path-dot">{{result[1].destination}}, {{result[1].destinationDepartment}}</span>
-                          </div>
-
-                          <i class="fa-solid fa-angle-down collapse-arrow"></i>
-                        </button>
-
-                        <app-results-table [results]="result[1].lines" [origin]="result[1].origin + ', ' + result[1].originDepartment" [destination]="result[1].destination + ', ' + result[1].destinationDepartment"></app-results-table>
-
                       </app-accordion>
 
                     </app-accordion>

@@ -1,8 +1,6 @@
-import { Component, Input, OnInit, AfterViewInit, ViewChildren, ChangeDetectorRef, TemplateRef } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { combineLatest } from 'rxjs';
-
-import { LineComponent } from '../../views/line/line.component';
 
 import { ModalService } from '../../../../../services/modal.service';
 import { ApiService } from '../../../../../services/api.service';
@@ -11,18 +9,13 @@ import { ApiService } from '../../../../../services/api.service';
   selector: 'app-results-table',
   templateUrl: './results-table.component.html',
 })
-export class ResultsTableComponent implements OnInit {
+export class ResultsTableComponent {
   @Input() results: Array<any> = undefined as any;
   @Input() origin = '';
   @Input() destination = '';
   lineInfo: any = undefined as any;
-  expanded: Array<Boolean> = [];
 
   constructor(private apiService: ApiService, private modalService: ModalService) { }
-
-  ngOnInit(): void {
-    this.expanded = this.results.map((_: any) => false);
-  }
 
   showCompanyInfoModal(id: string): void {
     // TODO: Move this into api service
