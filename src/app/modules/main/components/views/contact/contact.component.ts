@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
 import { ApiService } from '../../../../../services/api.service';
@@ -9,7 +9,7 @@ import { ApiService } from '../../../../../services/api.service';
   templateUrl: './contact.component.html',
 })
 export class ContactComponent {
-  form: FormGroup;
+  form: UntypedFormGroup;
   validated = false;
   error: string = '';
   success = false;
@@ -17,10 +17,10 @@ export class ContactComponent {
 
   constructor(private apiService: ApiService, private titleService: Title) {
     this.titleService.setTitle($localize `Contacto | BusesUY`);
-    this.form = new FormGroup({
-      name: new FormControl(''),
-      email: new FormControl('', Validators.required),
-      message: new FormControl('', Validators.required),
+    this.form = new UntypedFormGroup({
+      name: new UntypedFormControl(''),
+      email: new UntypedFormControl('', Validators.required),
+      message: new UntypedFormControl('', Validators.required),
     })
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  form: FormGroup;
+  form: UntypedFormGroup;
   validated = false;
   error: string = '';
   success = false;
@@ -22,9 +22,9 @@ export class LoginComponent {
     private titleService: Title,
   ) {
     this.titleService.setTitle($localize `Ingresar | BusesUY`);
-    this.form = new FormGroup({
-      email: new FormControl('admin@buses.uy', Validators.required),
-      password: new FormControl('testing', Validators.required),
+    this.form = new UntypedFormGroup({
+      email: new UntypedFormControl('admin@buses.uy', Validators.required),
+      password: new UntypedFormControl('testing', Validators.required),
     })
   }
 
