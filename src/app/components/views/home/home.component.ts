@@ -245,10 +245,10 @@ export class HomeComponent implements AfterContentInit, AfterViewInit {
       ).subscribe(
         (results: Array<any>) => {
           this.results = results.filter(
-            (result: any) => !(Array.isArray(result))
-          );
+            (result: any) => (result.length === 1)
+          ).map((result) => result[0])[0]?.connections;
           this.indirectResults = results.filter(
-            (result: any) => Array.isArray(result)
+            (result: any) => (result.length > 1)
           );
           this.resultsOrigin = this.origin;
           this.resultsDestination = this.destination;

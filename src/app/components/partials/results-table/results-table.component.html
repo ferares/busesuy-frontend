@@ -8,7 +8,7 @@
         <div class="row g-0">
           <div class="col-12 col-md-3 result__company-wraper">
             <h2 class="result__company h5">
-              <a [routerLink]="['/empresas', result.company.name]">
+              <a [routerLink]="['/empresas', result.company.id]">
                 {{ result.company.name }}
               </a>
             </h2>
@@ -40,7 +40,7 @@
                 </p>
               </div>
               <div class="result__body__item">
-                <a [routerLink]="['/lineas', result.line.name]" i18n>
+                <a [routerLink]="['/lineas', result.line.id]" i18n>
                   + Info
                 </a>
               </div>
@@ -81,7 +81,7 @@
                   </p>
                 </div>
                 <div class="result__body__item">
-                  <a [routerLink]="['/lineas', result.line.name]" i18n>
+                  <a [routerLink]="['/lineas', result.line.id]" i18n>
                     + Info
                   </a>
                 </div>

@@ -3,38 +3,38 @@
     <div class="row">
       <div class="col-12">
         <h1 class="display-1 mb-4" i18n>
-          Línea {{line.name}}
+          Línea {{data.line.name}}
         </h1>
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card">
           <div class="card-body">
             <h2 class="card-title h5">
-              <b i18n>Número de línea:</b> {{ line.name }}
+              <b i18n>Número de línea:</b> {{ data.line.name }}
             </h2>
             <h3 class="card-subtitle mb-2 text-muted h6">
               <b i18n>Empresa:</b>&nbsp;
-              <a [routerLink]="['/empresas', line.company.name]">{{ line.company.name }}</a>
+              <a [routerLink]="['/empresas', data.company.id]">{{ data.company.name }}</a>
             </h3>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <b i18n>Origen:</b> {{ line.origin }}, {{ line.originDepartment }}
+              <b i18n>Origen:</b> {{ data.origin.name }}, {{ data.origin.department.name }}
             </li>
             <li class="list-group-item">
-              <b i18n>Destino:</b> {{ line.destination }}, {{ line.destinationDepartment }}
+              <b i18n>Destino:</b> {{ data.destination.name }}, {{ data.destination.department.name }}
             </li>
             <li class="list-group-item">
-              <b i18n>Hora salida:</b> {{ line.startTime }} h
+              <b i18n>Hora salida:</b> {{ data.line.startTime }} h
             </li>
             <li class="list-group-item">
-              <b i18n>Hora llegada:</b> {{ line.endTime }} h
+              <b i18n>Hora llegada:</b> {{ data.line.endTime }} h
             </li>
             <li class="list-group-item">
-              <b i18n>Ruta:</b> {{ line.route }}
+              <b i18n>Ruta:</b> {{ data.line.route }}
             </li>
             <li class="list-group-item">
-              <b i18n>Frecuencia:</b> {{ line.frequency }}
+              <b i18n>Frecuencia:</b> {{ data.line.frequency }}
             </li>
           </ul>
         </div>
@@ -58,9 +58,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let stop of line.stops">
+                  <tr *ngFor="let stop of data.stops">
                     <td>
-                      {{ stop.nameLocation }}, {{ stop.nameDepartment }}
+                      {{ stop.location.name }}, {{ stop.location.department.name }}
                     </td>
                     <td>
                       {{ stop.time }} h

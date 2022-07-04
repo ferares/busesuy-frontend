@@ -12,31 +12,23 @@ export class LineResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot): any {
     return new Promise((resolve, reject) => {
-      const name = route.paramMap.get('name') || '';
-      this.apiService.getLineByName(name).subscribe(line => {
-        combineLatest(
-          [
-            this.apiService.getLocationById(line.origin),
-            this.apiService.getLocationById(line.destination),
-          ]
-        ).subscribe(locations => {
-          const [origin, destination] = locations
-          combineLatest(
-            [
-              this.apiService.getDepartmentById(origin.department),
-              this.apiService.getDepartmentById(destination.department),
-            ]
-          ).subscribe(departments => {
-            const [originDepartment, destinationDepartment] = departments
-            resolve({
-              line: { ...line },
-              origin: origin.name,
-              originDepartment: originDepartment.name,
-              destination: destination.name,
-              destinationDepartment: destinationDepartment.name,
-            })
+      const id = route.paramMap.get('id') || '';
+      this.apiService.getLineById(id).subscribe(line => {
+        combineLatest([
+          this.apiService.getCompanyById(line.companyId),
+          this.apiService.getLocationById(line.originId),
+          this.apiService.getLocationById(line.destinationId),
+          this.apiService.getStopsByLine(line.id),
+        ]).subscribe(data => {
+          const [company, origin, destination, stops] = data
+          resolve({
+            line: line,
+            company: company,
+            origin: origin,
+            destination: destination,
+            stops: stops,
           })
-        });
+        })
       });
     });
   }

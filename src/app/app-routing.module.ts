@@ -24,12 +24,12 @@ const routes: Routes = [
     resolve: { data: HomeResolver },
   },
   {
-    path: 'lineas/:name',
+    path: 'lineas/:id',
     component: LineComponent,
     resolve: { data: LineResolver },
   },
   {
-    path: 'empresas/:name',
+    path: 'empresas/:id',
     component: CompanyComponent,
     resolve: { company: CompanyResolver },
   },
