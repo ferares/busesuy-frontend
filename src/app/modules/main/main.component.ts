@@ -37,7 +37,7 @@ export class MainComponent implements OnInit, OnDestroy {
     const hostnameParts = hostname.split('.');
     let host = `${hostname}`;
     let current = 'es';
-    if (hostnameParts.length === 3) {
+    if (hostnameParts[0].length === 2) {
       host = `${hostnameParts[1]}.${hostnameParts[2]}`;
       current = hostnameParts[0];
     }
