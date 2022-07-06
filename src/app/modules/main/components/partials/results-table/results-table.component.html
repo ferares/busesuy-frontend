@@ -30,7 +30,7 @@
               </div>
 
               <p><strong>Recorrido:</strong> {{ result.line.route }}</p>
-              <p><strong>Frecuencia:</strong> {{ result.line.frequency }}</p>
+              <p><strong>Frecuencia:</strong><app-frequency [frequency]="result.line.frequency"></app-frequency></p>
             </div>
 
             <button type="button" class="more-info" (click)="showLineInfoModal(result.line.id)" i18n>

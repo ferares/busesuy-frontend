@@ -10,6 +10,7 @@ import { AlertComponent } from './components/partials/alert/alert.component';
 import { LineDataComponent } from './components/partials/line-data/line-data.component';
 import { CompanyDataComponent } from './components/partials/company-data/company-data.component';
 import { LocationName } from './components/partials/location-name/location-name.component';
+import { Frequency } from './components/partials/frequency/frequency.component';
 
 import { environment } from '../../../environments/environment';
 
@@ -20,6 +21,7 @@ import { environment } from '../../../environments/environment';
     LineDataComponent,
     CompanyDataComponent,
     LocationName,
+    Frequency,
   ],
   exports: [
     LoaderComponent,
@@ -27,6 +29,7 @@ import { environment } from '../../../environments/environment';
     LineDataComponent,
     CompanyDataComponent,
     LocationName,
+    Frequency,
     FormsModule,
     ReactiveFormsModule,
     NgHcaptchaModule,

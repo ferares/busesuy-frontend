@@ -13,7 +13,7 @@
       <li><strong i18n>Hora salida:</strong> {{ data.line.startTime }} h</li>
       <li><strong i18n>Hora llegada:</strong> {{ data.line.endTime }} h</li>
       <li><strong i18n>Ruta:</strong> {{ data.line.route }}</li>
-      <li><strong i18n>Frecuencia:</strong> {{ data.line.frequency }}</li>
+      <li><strong i18n>Frecuencia:</strong><app-frequency [frequency]="data.line.frequency"></app-frequency></li>
     </ul>
 
   </div>
