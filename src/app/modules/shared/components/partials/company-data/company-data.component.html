@@ -54,10 +54,10 @@
                 </a>
               </td>
               <td>
-                {{ line.origin.name }}, {{ line.origin.department.name }}
+                <app-location-name [location]="line.origin"></app-location-name>
               </td>
               <td>
-                {{ line.destination.name }}, {{ line.destination.department.name }}
+                <app-location-name [location]="line.destination"></app-location-name>
               </td>
             </tr>
           </tbody>

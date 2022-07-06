@@ -11,8 +11,6 @@ import { ApiService } from '../../../../../services/api.service';
 })
 export class ResultsTableComponent {
   @Input() results: Array<any> = undefined as any;
-  @Input() origin = '';
-  @Input() destination = '';
   lineInfo: any = undefined as any;
 
   constructor(private apiService: ApiService, private modalService: ModalService) { }

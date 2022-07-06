@@ -94,7 +94,7 @@
 
           <div *ngIf="results && results.length" class="lines-results">
               <h2 i18n>Líneas</h2>
-              <app-results-table [results]="results" [origin]="resultsOrigin" [destination]="resultsDestination"></app-results-table>
+              <app-results-table [results]="results"></app-results-table>
           </div>
 
           <div *ngIf="!results || !results.length" class="transboard-results">
@@ -117,8 +117,8 @@
 
                           <div class="pather">
                             <ng-container *ngFor="let scale of result; let last = last">
-                              <span class="path-dot">{{scale.origin.name}}, {{scale.origin.department?.name}}</span>
-                              <span *ngIf="last" class="path-dot">{{scale.destination.name}}, {{scale.destination.department?.name}}</span>
+                              <span class="path-dot"><app-location-name [location]="scale.origin"></app-location-name></span>
+                              <span *ngIf="last" class="path-dot"><app-location-name [location]="scale.destination"></app-location-name></span>
                             </ng-container>
                           </div>
 
@@ -129,16 +129,14 @@
 
                         <button type="button" class="path-card expanded-card" accordion-heading>
                           <div class="pather">
-                            <span class="path-dot">{{scale.origin.name}}, {{scale.origin.department?.name}}</span>
-                            <span class="path-dot">{{scale.destination.name}}, {{scale.destination.department?.name}}</span>
+                            <span class="path-dot"><app-location-name [location]="scale.origin"></app-location-name></span>
+                            <span class="path-dot"><app-location-name [location]="scale.destination"></app-location-name></span>
                           </div>
 
                           <i class="fa-solid fa-angle-down collapse-arrow"></i>
                         </button>
 
-                        <app-results-table [results]="scale.connections" [origin]="scale.origin.name + ', ' + scale.origin.department?.name" [destination]="scale.destination.name + ', ' + scale.destination.department?.name">
-
-                        </app-results-table>
+                        <app-results-table [results]="scale.connections"></app-results-table>
                       </app-accordion>
 
                     </app-accordion>

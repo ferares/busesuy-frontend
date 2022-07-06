@@ -9,6 +9,7 @@ import { LoaderComponent } from './components/partials/loader/loader.component';
 import { AlertComponent } from './components/partials/alert/alert.component';
 import { LineDataComponent } from './components/partials/line-data/line-data.component';
 import { CompanyDataComponent } from './components/partials/company-data/company-data.component';
+import { LocationName } from './components/partials/location-name/location-name.component';
 
 import { environment } from '../../../environments/environment';
 
@@ -18,12 +19,14 @@ import { environment } from '../../../environments/environment';
     AlertComponent,
     LineDataComponent,
     CompanyDataComponent,
+    LocationName,
   ],
   exports: [
     LoaderComponent,
     AlertComponent,
     LineDataComponent,
     CompanyDataComponent,
+    LocationName,
     FormsModule,
     ReactiveFormsModule,
     NgHcaptchaModule,

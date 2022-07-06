@@ -8,8 +8,8 @@
     <ul>
       <li><strong>Número de línea:</strong> {{ data.line.name }}</li>
       <li><strong i18n>Empresa:</strong> <button (click)="showCompanyInfoModal(data.company.id)">{{ data.company.name }} <i class="fa-solid fa-arrow-right"></i></button></li>
-      <li><strong i18n>Origen:</strong> {{ data.origin.name }}, {{ data.origin.department.name }}</li>
-      <li><strong i18n>Destino:</strong> {{ data.destination.name }}, {{ data.destination.department.name }}</li>
+      <li><strong i18n>Origen:</strong><app-location-name [location]="data.origin"></app-location-name></li>
+      <li><strong i18n>Destino:</strong><app-location-name [location]="data.destination"></app-location-name></li>
       <li><strong i18n>Hora salida:</strong> {{ data.line.startTime }} h</li>
       <li><strong i18n>Hora llegada:</strong> {{ data.line.endTime }} h</li>
       <li><strong i18n>Ruta:</strong> {{ data.line.route }}</li>
@@ -30,7 +30,7 @@
       </div>
 
       <div *ngFor="let stop of data.stops" class="stops-table-content">
-        <p>{{ stop.location.name }}, {{ stop.location.department.name }}</p>
+        <p><app-location-name [location]="stop.location"></app-location-name></p>
         <p>{{ stop.time }} h</p>
       </div>
     </div>
