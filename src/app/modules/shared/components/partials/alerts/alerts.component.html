@@ -1,0 +1,5 @@
+<div *ngFor="let alert of alerts">
+  <app-alert-template [type]="alert.type" [dismissible]="true" (closeEvent)="removeAlert(alert)">
+    {{ alert.message }}
+  </app-alert-template>
+</div>

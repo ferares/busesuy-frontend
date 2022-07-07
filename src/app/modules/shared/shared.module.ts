@@ -6,7 +6,8 @@ import { RouterModule } from '@angular/router';
 import { NgHcaptchaModule } from 'ng-hcaptcha';
 
 import { LoaderComponent } from './components/partials/loader/loader.component';
-import { AlertComponent } from './components/partials/alert/alert.component';
+import { AlertTemplateComponent } from './components/partials/alert-template/alert-template.component';
+import { AlertsComponent } from './components/partials/alerts/alerts.component';
 import { LineDataComponent } from './components/partials/line-data/line-data.component';
 import { CompanyDataComponent } from './components/partials/company-data/company-data.component';
 import { LocationName } from './components/partials/location-name/location-name.component';
@@ -17,7 +18,8 @@ import { environment } from '../../../environments/environment';
 @NgModule({
   declarations: [
     LoaderComponent,
-    AlertComponent,
+    AlertTemplateComponent,
+    AlertsComponent,
     LineDataComponent,
     CompanyDataComponent,
     LocationName,
@@ -25,7 +27,8 @@ import { environment } from '../../../environments/environment';
   ],
   exports: [
     LoaderComponent,
-    AlertComponent,
+    AlertTemplateComponent,
+    AlertsComponent,
     LineDataComponent,
     CompanyDataComponent,
     LocationName,

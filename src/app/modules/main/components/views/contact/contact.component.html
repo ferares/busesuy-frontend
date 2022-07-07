@@ -24,18 +24,18 @@
               <div class="invalid-feedback" i18n>Ingrese un mensaje.</div>
             </div>
             <div class="col-12">
-              <app-alert *ngIf="error" type="danger" class="mb-0">
+              <app-alert-template *ngIf="error" type="danger" class="mb-0">
                 <div class="d-flex align-items-center">
                   <img src="assets/imgs/danger.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="">
                   <span>{{error}}</span>
                 </div>
-              </app-alert>
-              <app-alert *ngIf="success" type="success" class="mb-0">
+              </app-alert-template>
+              <app-alert-template *ngIf="success" type="success" class="mb-0">
                 <div class="d-flex align-items-center">
                   <img src="assets/imgs/check.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="" i18n>
                   <span i18n>Gracias, mensaje enviado con éxito.</span>
                 </div>
-              </app-alert>
+              </app-alert-template>
             </div>
             <div class="col-12">
               <p i18n>

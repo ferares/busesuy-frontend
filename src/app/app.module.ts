@@ -17,6 +17,8 @@ import { ApiService } from './services/api.service';
 import { CacheService } from './services/cache.service';
 import { ModalService } from './services/modal.service';
 import { LoaderService } from './services/loader.service';
+import { ErrorInterceptor } from './services/error.interceptor';
+import { AlertService } from './services/alert.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +37,8 @@ import { LoaderService } from './services/loader.service';
   providers: [
     { provide: LOCALE_ID, useValue: 'es-uy' },
     { provide: HTTP_INTERCEPTORS, useClass: CacheService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    AlertService,
     ApiService,
     ModalService,
     LoaderService,

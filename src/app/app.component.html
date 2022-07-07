@@ -1,7 +1,7 @@
 <router-outlet></router-outlet>
 
 <div *ngIf="updateAvailable" class="message">
-  <app-alert type="info">
+  <app-alert-template type="info">
     <div class="d-flex align-items-center justify-content-center">
       <span class="me-2" i18n>
         Nueva versión disponible
@@ -10,5 +10,7 @@
         Actualizar
       </button>
     </div>
-  </app-alert>
+  </app-alert-template>
 </div>
+
+<app-alerts></app-alerts>

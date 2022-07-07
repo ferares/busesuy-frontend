@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { finalize } from 'rxjs/operators';
-
-import { LoaderService } from './loader.service';
+import { Observable, of } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
+
+import { AlertSettings } from '../models/alert-settings.model';
+
+import { LoaderService } from './loader.service';
+import { AlertService } from './alert.service';
 
 const API_URL = environment.apiURL;
 
@@ -16,62 +20,60 @@ export class ApiService {
   constructor(
     private http: HttpClient,
     private loaderService: LoaderService,
+    private alertService: AlertService,
   ) { }
 
-  getLocations() {
+  private handleError(error: HttpErrorResponse) {
+    console.log(error);
+    this.alertService.alert(AlertSettings.ERROR, error.message, true)
+    return of(undefined)
+  }
+
+  private callAPI(method: string, url: string, body: any = undefined): Observable<any> {
     this.loaderService.setLoading(true);
-    return this.http.get<any>(`${API_URL}/locations`).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
+    let call
+    if (method === 'post') {
+      call = this.http.post<any>(url, body);
+    } else {
+      call = this.http.get<any>(url, body);
+    }
+   
+    return call.pipe(
+      catchError(this.handleError.bind(this)),
+      finalize(() => this.loaderService.setLoading(false))
     );
+  }
+
+  getLocations() {
+    return this.callAPI('get', `${API_URL}/locations`);
   }
 
   getLineById(id: string) {
-    this.loaderService.setLoading(true);
-    return this.http.get<any>(`${API_URL}/lines/${id}`).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('get', `${API_URL}/lines/${id}`);
   }
 
   getStopsByLine(id: string) {
-    this.loaderService.setLoading(true);
-    return this.http.get<any>(`${API_URL}/lines/${id}/stops`).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('get', `${API_URL}/lines/${id}/stops`);
   }
 
   getLinesByCompany(name: string) {
-    this.loaderService.setLoading(true);
-    return this.http.get<any>(`${API_URL}/companies/${name}/lines`).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('get', `${API_URL}/companies/${name}/lines`);
   }
 
   getCompanyById(id: string) {
-    this.loaderService.setLoading(true);
-    return this.http.get<any>(`${API_URL}/companies/${id}`).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('get', `${API_URL}/companies/${id}`);
   }
 
   getDepartmentById(id: number) {
-    this.loaderService.setLoading(true);
-    return this.http.get<any>(`${API_URL}/departments/${id}`).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('get', `${API_URL}/departments/${id}`);
   }
 
   getLocationById(id: number) {
-    this.loaderService.setLoading(true);
-    return this.http.get<any>(`${API_URL}/locations/${id}`).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('get', `${API_URL}/locations/${id}`);
   }
 
   submitContact(data: any) {
-    this.loaderService.setLoading(true);
-    return this.http.post<any>(`${API_URL}/contact`, data).pipe(
-      finalize(() => this.loaderService.setLoading(false))
-    );
+    return this.callAPI('post', `${API_URL}/contact`, data);
   }
 
   findRoutes(
@@ -89,8 +91,6 @@ export class ApiService {
       destinationDepartment,
       days,
     };
-    return this.http.get<any>(`${API_URL}/lines/search`, { params }).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('get', `${API_URL}/lines/search`, { params });
   }
 }
