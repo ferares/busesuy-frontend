@@ -29,9 +29,10 @@ export class ApiService {
     return of(undefined)
   }
 
-  private callAPI(method: string, url: string, body: any = undefined): Observable<any> {
+  private callAPI(method: string, path: string, body: any = undefined): Observable<any> {
     this.loaderService.setLoading(true);
     let call
+    const url = `${API_URL}/${path}`
     if (method === 'post') {
       call = this.http.post<any>(url, body);
     } else {
@@ -45,35 +46,35 @@ export class ApiService {
   }
 
   getLocations() {
-    return this.callAPI('get', `${API_URL}/locations`);
+    return this.callAPI('get', 'locations');
   }
 
   getLineById(id: string) {
-    return this.callAPI('get', `${API_URL}/lines/${id}`);
+    return this.callAPI('get', `lines/${id}`);
   }
 
   getStopsByLine(id: string) {
-    return this.callAPI('get', `${API_URL}/lines/${id}/stops`);
+    return this.callAPI('get', `lines/${id}/stops`);
   }
 
   getLinesByCompany(name: string) {
-    return this.callAPI('get', `${API_URL}/companies/${name}/lines`);
+    return this.callAPI('get', `companies/${name}/lines`);
   }
 
   getCompanyById(id: string) {
-    return this.callAPI('get', `${API_URL}/companies/${id}`);
+    return this.callAPI('get', `companies/${id}`);
   }
 
   getDepartmentById(id: number) {
-    return this.callAPI('get', `${API_URL}/departments/${id}`);
+    return this.callAPI('get', `departments/${id}`);
   }
 
   getLocationById(id: number) {
-    return this.callAPI('get', `${API_URL}/locations/${id}`);
+    return this.callAPI('get', `locations/${id}`);
   }
 
   submitContact(data: any) {
-    return this.callAPI('post', `${API_URL}/contact`, data);
+    return this.callAPI('post', 'contact', data);
   }
 
   findRoutes(
