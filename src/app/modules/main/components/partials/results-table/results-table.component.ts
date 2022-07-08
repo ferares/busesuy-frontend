@@ -15,7 +15,7 @@ export class ResultsTableComponent {
 
   constructor(private apiService: ApiService, private modalService: ModalService) { }
 
-  showCompanyInfoModal(id: string): void {
+  showCompanyInfoModal(id: number): void {
     // TODO: Move this into api service
     combineLatest([
       this.apiService.getCompanyById(id),
@@ -26,7 +26,7 @@ export class ResultsTableComponent {
     });
   }
 
-  showLineInfoModal(id: string): void {
+  showLineInfoModal(id: number): void {
     // TODO: Move this into api service
     this.apiService.getLineById(id).subscribe(line => {
       combineLatest(

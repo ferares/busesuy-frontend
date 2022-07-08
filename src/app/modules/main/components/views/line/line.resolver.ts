@@ -12,7 +12,7 @@ export class LineResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot): any {
     return new Promise((resolve, reject) => {
-      const id = route.paramMap.get('id') || '';
+      const id = Number(route.paramMap.get('id'));
       // TODO: Move this into api service
       this.apiService.getLineById(id).subscribe(line => {
         combineLatest(
@@ -24,13 +24,7 @@ export class LineResolver implements Resolve<any> {
           ]
         ).subscribe(data => {
           const [company, origin, destination, stops] = data
-          resolve({
-            line: line,
-            company: company,
-            origin: origin,
-            destination: destination,
-            stops: stops,
-          })
+          resolve({ line, company, origin, destination, stops })
         });
       });
     });

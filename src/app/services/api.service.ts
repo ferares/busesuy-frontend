@@ -7,9 +7,15 @@ import { catchError, finalize } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 import { AlertSettings } from '../models/alert-settings.model';
+import { Location } from '../models/location.model';
+import { Department } from '../models/department.model';
+import { Company } from '../models/company.model';
+import { Stop } from '../models/stop.model';
+import { Line } from '../models/line.model';
 
 import { LoaderService } from './loader.service';
 import { AlertService } from './alert.service';
+import { Result } from '../models/result.model';
 
 const API_URL = environment.apiURL;
 
@@ -45,35 +51,35 @@ export class ApiService {
     );
   }
 
-  getLocations() {
+  getLocations(): Observable<Array<Location>> {
     return this.callAPI('get', 'locations');
   }
 
-  getLineById(id: string) {
+  getLineById(id: number): Observable<Line> {
     return this.callAPI('get', `lines/${id}`);
   }
 
-  getStopsByLine(id: string) {
+  getStopsByLine(id: number): Observable<Array<Stop>> {
     return this.callAPI('get', `lines/${id}/stops`);
   }
 
-  getLinesByCompany(name: string) {
-    return this.callAPI('get', `companies/${name}/lines`);
+  getLinesByCompany(id: number): Observable<Array<Line>> {
+    return this.callAPI('get', `companies/${id}/lines`);
   }
 
-  getCompanyById(id: string) {
+  getCompanyById(id: number): Observable<Company> {
     return this.callAPI('get', `companies/${id}`);
   }
 
-  getDepartmentById(id: number) {
+  getDepartmentById(id: number): Observable<Department> {
     return this.callAPI('get', `departments/${id}`);
   }
 
-  getLocationById(id: number) {
+  getLocationById(id: number): Observable<Location> {
     return this.callAPI('get', `locations/${id}`);
   }
 
-  submitContact(data: any) {
+  submitContact(data: any): Observable<any> {
     return this.callAPI('post', 'contact', data);
   }
 
@@ -83,7 +89,7 @@ export class ApiService {
     destination: String,
     destinationDepartment: String,
     days: String,
-  ) {
+  ): Observable<Array<Array<Result>>> {
     this.loaderService.setLoading(true);
     const params: any = {
       origin,
@@ -92,6 +98,6 @@ export class ApiService {
       destinationDepartment,
       days,
     };
-    return this.callAPI('get', `${API_URL}/lines/search`, { params });
+    return this.callAPI('get', 'lines/search', { params });
   }
 }

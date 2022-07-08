@@ -13,7 +13,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 export class DayInputComponent implements ControlValueAccessor {
   @ViewChildren('dayBtns') dayBtns!: QueryList<any>;
   show = false;
-  focusingOut: any;
+  focusingOut!: ReturnType<typeof setTimeout>;
   selectedDays: Array<string> = [];
   days = [
     {

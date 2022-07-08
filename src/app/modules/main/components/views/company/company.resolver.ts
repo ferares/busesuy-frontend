@@ -12,12 +12,12 @@ export class CompanyResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot): any {
     return new Promise((resolve, reject) => {
-      const id = route.paramMap.get('id') || '';
+      const id = Number(route.paramMap.get('id'));
       // TODO: Move this into api service
       combineLatest([
         this.apiService.getCompanyById(id),
         this.apiService.getLinesByCompany(id),
-      ]).subscribe((data: Array<any>) => {
+      ]).subscribe(data => {
         const [company, lines] = data;
         resolve({ company, lines });
       });
