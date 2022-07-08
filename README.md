@@ -15,8 +15,6 @@ Se utilizan [Node.js](https://nodejs.org/en/) y [npm](https://www.npmjs.com/) pa
 ### Dependencias notables
 
 - [Angular](https://angular.io/)
-- [Angular Bootstrap](https://valor-software.com/ngx-bootstrap/#/)
-- [Bootstrap](https://getbootstrap.com/)
 
 ## Configuración inicial
 
