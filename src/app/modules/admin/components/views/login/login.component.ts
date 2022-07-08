@@ -37,6 +37,7 @@ export class LoginComponent {
 
   onCaptchaError(): void {
     this.error = $localize `Error de verificación de captcha`;
+    this.sending = false;
   }
 
   submit(token: any): void {
