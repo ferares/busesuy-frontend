@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { combineLatest } from 'rxjs';
-
+import { CompanyData } from 'src/app/models/company-data.model';
 import { Company } from 'src/app/models/company.model';
 import { Line } from 'src/app/models/line.model';
 import { Stop } from 'src/app/models/stop.model';
@@ -26,13 +25,8 @@ export class LineDataComponent {
   constructor(private apiService: ApiService, private modalService: ModalService) {}
 
   showCompanyInfoModal(id: number): void {
-    // TODO: Move this into api service
-    combineLatest([
-      this.apiService.getCompanyById(id),
-      this.apiService.getLinesByCompany(id),
-    ]).subscribe((data: Array<any>) => {
-      const [company, lines] = data;
-      this.modalService.openModal('company', { company, lines });
+    this.apiService.getCompanyDataById(id).subscribe((companyData: CompanyData) => {
+      this.modalService.openModal('company', companyData);
     });
   }
 }
