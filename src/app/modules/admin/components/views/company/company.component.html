@@ -1,11 +1,24 @@
-<p *ngIf="!lines.length">
+<p *ngIf="!lineLists.length">
   No hay líneas asociadas a la compañía
 </p>
 
-<ul *ngIf="lines.length">
-  <li *ngFor="let line of lines">
-    <a [routerLink]="['/admin/lineas', line.id]">
-      {{ line.name }}
-    </a>
+<ul *ngIf="lineLists.length">
+  <li *ngFor="let lineList of lineLists">
+    <h2>
+      <app-location-name [location]="lineList.origin"></app-location-name>
+      ->
+      <app-location-name [location]="lineList.destination"></app-location-name>
+    </h2>
+    <ol>
+      <li *ngFor="let line of lineList.lines">
+        <a [routerLink]="['/admin/lineas', line.id]">
+          {{ line.name }}) {{ line.frequency }} / {{ line.route }}
+        </a>
+      </li>
+    </ol>
   </li>
 </ul>
+
+<a href="/admin/lineas/nueva">
+  +
+</a>

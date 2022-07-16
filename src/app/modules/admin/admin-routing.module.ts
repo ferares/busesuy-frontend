@@ -25,14 +25,18 @@ const routes: Routes = [
         resolve: { companies: DashboardResolver },
       },
       {
+        path: 'lineas/nueva',
+        component: LineComponent,
+      },
+      {
         path: 'lineas/:id',
         component: LineComponent,
-        resolve: { lines: LineResolver }
+        resolve: { line: LineResolver },
       },
       {
         path: 'empresas/:id',
         component: CompanyComponent,
-        resolve: { lines: CompanyResolver }
+        resolve: { lines: CompanyResolver },
       },
       {
         path: 'login',
