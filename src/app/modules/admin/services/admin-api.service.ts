@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { finalize } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
 
 import { LoaderService } from '../../../services/loader.service';
+import { AlertService } from '../../../services/alert.service';
+
+import { AlertSettings } from '../../../models/alert-settings.model';
 
 import { environment } from '../../../../environments/environment';
 
@@ -18,124 +22,100 @@ export class AdminApiService {
   constructor(
     private http: HttpClient,
     private loaderService: LoaderService,
+    private alertService: AlertService,
   ) { }
 
-  getUsers() {
+  private handleError(error: HttpErrorResponse) {
+    console.log('errrrrorrrr', error);
+    this.alertService.alert(AlertSettings.ERROR, error.message, true)
+    return of(undefined)
+  }
+
+  private callAPI(method: string, path: string, body: any = undefined): Observable<any> {
     this.loaderService.setLoading(true);
-    return this.http.get<any>(`${API_URL}/users`, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
+    let call
+    const url = `${API_URL}/${path}`
+    if (method === 'post') {
+      call = this.http.post<any>(url, body, this.options);
+    } else if (method === 'put') {
+      call = this.http.put<any>(url, body, this.options);
+    } else if (method === 'delete') {
+      call = this.http.delete<any>(url, this.options);
+    } else {
+      call = this.http.get<any>(url, this.options);
+    }
+   
+    return call.pipe(
+      catchError(this.handleError.bind(this)),
+      finalize(() => this.loaderService.setLoading(false))
     );
+  }
+
+  getUsers() {
+    return this.callAPI('get', `users`);
   }
 
   getUserCompanies(id: number) {
-    this.loaderService.setLoading(true);
-    return this.http.get<any>(`${API_URL}/users/${id}/companies`, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('get', `users/${id}/companies`);
   }
 
   createUser(data: any) {
-    this.loaderService.setLoading(true);
-    return this.http.post<any>(`${API_URL}/users`, data, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('post', `users`, data);
   }
 
   updateUser(id: number, data: any) {
-    this.loaderService.setLoading(true);
-    return this.http.put<any>(`${API_URL}/users/${id}`, data, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('put', `users/${id}`, data);
   }
 
   updateSelf(data: any) {
-    this.loaderService.setLoading(true);
-    return this.http.put<any>(`${API_URL}/users`, data, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('put', `users`, data);
   }
 
   createDepartment(data: any) {
-    this.loaderService.setLoading(true);
-    return this.http.post<any>(`${API_URL}/departments`, data, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('post', `departments`, data);
   }
 
   updateDepartment(id: number, data: any) {
-    this.loaderService.setLoading(true);
-    return this.http.put<any>(`${API_URL}/departments/${id}`, data, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('put', `departments/${id}`, data);
   }
 
   deleteDepartment(id: number) {
-    this.loaderService.setLoading(true);
-    return this.http.delete<any>(`${API_URL}/departments/${id}`, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('delete', `departments/${id}`);
   }
 
   createLocation(data: any) {
-    this.loaderService.setLoading(true);
-    return this.http.post<any>(`${API_URL}/locations`, data, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('post', `locations`, data);
   }
 
   updateLocation(id: number, data: any) {
-    this.loaderService.setLoading(true);
-    return this.http.put<any>(`${API_URL}/locations/${id}`, data, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('put', `locations/${id}`, data);
   }
 
   deleteLocation(id: number) {
-    this.loaderService.setLoading(true);
-    return this.http.delete<any>(`${API_URL}/locations/${id}`, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('delete', `locations/${id}`);
   }
 
   createCompany(data: any) {
-    this.loaderService.setLoading(true);
-    return this.http.post<any>(`${API_URL}/companies`, data, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('post', `companies`, data);
   }
 
   updateCompany(id: number, data: any) {
-    this.loaderService.setLoading(true);
-    return this.http.put<any>(`${API_URL}/companies/${id}`, data, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('put', `companies/${id}`, data);
   }
 
   deleteCompany(id: number) {
-    this.loaderService.setLoading(true);
-    return this.http.delete<any>(`${API_URL}/companies/${id}`, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('delete', `companies/${id}`);
   }
 
   createLine(data: any) {
-    this.loaderService.setLoading(true);
-    return this.http.post<any>(`${API_URL}/lines`, data, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('post', `lines`, data);
   }
 
   updateLine(id: number, data: any) {
-    this.loaderService.setLoading(true);
-    return this.http.put<any>(`${API_URL}/lines/${id}`, data, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('put', `lines/${id}`, data);
   }
 
   deleteLine(id: number) {
-    this.loaderService.setLoading(true);
-    return this.http.delete<any>(`${API_URL}/lines/${id}`, this.options).pipe(
-      finalize(() => this.loaderService.setLoading(false)),
-    );
+    return this.callAPI('delete', `lines/${id}`);
   }
 }

@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../../services/auth.service';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
+    private alertService: AlertService,
     private router: Router,
     private titleService: Title,
   ) {
@@ -48,11 +50,14 @@ export class LoginComponent {
       this.authService.login(data).subscribe(
         (res: any) => {
           this.success = res?.success;
-          if (!this.success) this.error = $localize `Error interno, intente nuevamente más tarde`;
-          else this.router.navigate(['admin']);
+          if (this.success) return this.router.navigate(['admin']);
+          const message = $localize `Error interno, intente nuevamente más tarde`;
+          return this.alertService.alert('error', message, true);
         },
-        (err: any) => {
-          this.error = $localize `Error interno, intente nuevamente más tarde`;
+        (error: any) => {
+          let message = $localize `Error interno, intente nuevamente más tarde`;
+          if (error.status === 403) message = $localize `Correo electrónico o contraseña incorrectos`
+          this.alertService.alert('error', message, true);
         },
       )
     }

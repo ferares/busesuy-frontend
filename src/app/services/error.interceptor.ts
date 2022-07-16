@@ -30,7 +30,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       }
     }
     // Return an observable with a user-facing error message.
-    return throwError(() => new Error(message));
+    return throwError(() => error);
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
