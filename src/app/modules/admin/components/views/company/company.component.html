@@ -1,0 +1,11 @@
+<p *ngIf="!lines.length">
+  No hay líneas asociadas a la compañía
+</p>
+
+<ul *ngIf="lines.length">
+  <li *ngFor="let line of lines">
+    <a [routerLink]="['/admin/lineas', line.id]">
+      {{ line.name }}
+    </a>
+  </li>
+</ul>

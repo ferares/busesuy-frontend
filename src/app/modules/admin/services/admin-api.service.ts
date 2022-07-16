@@ -26,7 +26,6 @@ export class AdminApiService {
   ) { }
 
   private handleError(error: HttpErrorResponse) {
-    console.log('errrrrorrrr', error);
     this.alertService.alert(AlertSettings.ERROR, error.message, true)
     return of(undefined)
   }
@@ -55,8 +54,8 @@ export class AdminApiService {
     return this.callAPI('get', `users`);
   }
 
-  getUserCompanies(id: number) {
-    return this.callAPI('get', `users/${id}/companies`);
+  getUserCompanies() {
+    return this.callAPI('get', `users/companies`);
   }
 
   createUser(data: any) {

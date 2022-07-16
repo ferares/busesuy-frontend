@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { Company } from 'src/app/models/company.model';
+import { Line } from 'src/app/models/line.model';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
+  selector: 'app-company',
+  templateUrl: './company.component.html',
 })
-export class DashboardComponent {
-  companies: Array<Company> = [];
+export class CompanyComponent {
+  lines: Array<Line> = [];
 
   constructor(private titleService: Title, private route: ActivatedRoute) {
     this.titleService.setTitle($localize `Admin | BusesUY`);
-    this.companies = route.snapshot.data['companies'];
+    this.lines = route.snapshot.data['lines'];
   }
 }
