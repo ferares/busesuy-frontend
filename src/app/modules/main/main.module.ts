@@ -25,7 +25,6 @@ import { FooterComponent } from './components/partials/footer/footer.component';
 import { BackgroundsComponent } from './components/partials/backgrounds/backgrounds.component';
 import { ModalComponent } from './components/partials/modal/modal.component';
 import { DropdownComponent } from './components/partials/dropdown/dropdown.component';
-import { LocationInputComponent } from './components/partials/location-input/location-input.component';
 import { DayInputComponent } from './components/partials/day-input/day-input.component';
 import { AccordionComponent } from './components/partials/accordion/accordion.component';
 import { PopoverComponent } from './components/partials/popover/popover.component';
@@ -46,7 +45,6 @@ import { PopoverComponent } from './components/partials/popover/popover.componen
     BackgroundsComponent,
     ModalComponent,
     DropdownComponent,
-    LocationInputComponent,
     DayInputComponent,
     AccordionComponent,
     PopoverComponent,

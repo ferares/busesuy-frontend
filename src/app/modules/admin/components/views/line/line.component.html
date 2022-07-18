@@ -1,1 +1,26 @@
-{{ line?.id }}
+<form [formGroup]="form" novalidate>
+  <label for="origin">Origen</label>
+  <app-location-input input-id="origin" [options]="locations" formControlName="origin">
+  </app-location-input>
+  <label for="destination">Destino</label>
+  <app-location-input input-id="destination" [options]="locations" formControlName="destination">
+  </app-location-input>
+  <label for="startTime">Hora de salida</label>
+  <input type="text" id="startTime" formControlName="startTime">
+  <label for="endTime">Hora de llegada</label>
+  <input type="text" id="endTime" formControlName="endTime">
+  <label for="route">Recorrido</label>
+  <input type="text" id="route" formControlName="route">
+  <label for="frequency">Frecuencia</label>
+  <input type="text" id="frequency" formControlName="frequency">
+  <div *ngFor="let stop of formStops.controls;let i = index">
+    <hr>
+    <label for="stop-{{ i }}-location">Localidad</label>
+    <app-location-input input-id="stop-{{ i }}-location" name="stop-{{ i }}-location" [options]="locations" [formControl]="stop.controls.location">
+    </app-location-input>
+    <label for="stop-{{ i }}-time">Hora de pasada</label>
+    <input type="text" id="stop-{{ i }}-time" [formControl]="stop.controls.time">
+  </div>
+  <button type="button" (click)="addStop()">Agregar parada</button>
+  <button type="submit" (click)="saveLine()">Guardar</button>
+</form>

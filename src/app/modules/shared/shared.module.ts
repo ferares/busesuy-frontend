@@ -12,6 +12,7 @@ import { LineDataComponent } from './components/partials/line-data/line-data.com
 import { CompanyDataComponent } from './components/partials/company-data/company-data.component';
 import { LocationName } from './components/partials/location-name/location-name.component';
 import { Frequency } from './components/partials/frequency/frequency.component';
+import { LocationInputComponent } from './components/partials/location-input/location-input.component';
 
 import { environment } from '../../../environments/environment';
 
@@ -23,6 +24,7 @@ import { environment } from '../../../environments/environment';
     LineDataComponent,
     CompanyDataComponent,
     LocationName,
+    LocationInputComponent,
     Frequency,
   ],
   exports: [
@@ -32,6 +34,7 @@ import { environment } from '../../../environments/environment';
     LineDataComponent,
     CompanyDataComponent,
     LocationName,
+    LocationInputComponent,
     Frequency,
     FormsModule,
     ReactiveFormsModule,
@@ -41,6 +44,7 @@ import { environment } from '../../../environments/environment';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     NgHcaptchaModule.forRoot({
       siteKey: environment.hcaptchaSiteKey,
       languageCode: 'es',

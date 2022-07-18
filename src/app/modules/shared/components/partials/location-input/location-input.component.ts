@@ -5,7 +5,7 @@ import { latinMap } from './latin-map';
 
 import { go, highlight, prepare } from 'fuzzysort';
 
-import { getLocationString } from '../../../utils';
+import { getLocationString } from '../../../../main/utils';
 
 @Component({
   selector: 'app-location-input',

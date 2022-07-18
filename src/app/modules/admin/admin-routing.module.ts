@@ -31,7 +31,7 @@ const routes: Routes = [
       {
         path: 'lineas/:id',
         component: LineComponent,
-        resolve: { line: LineResolver },
+        resolve: { data: LineResolver },
       },
       {
         path: 'empresas/:id',
