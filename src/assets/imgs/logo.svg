@@ -1,57 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   width="15mm"
-   height="15mm"
-   viewBox="0 0 15 15"
-   version="1.1"
-   id="svg5"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
-   sodipodi:docname="logo.svg"
-   inkscape:export-filename="/home/fermin/Desktop/busesuy/busesuy-frontend/src/assets/icons/icon-512x512.png"
-   inkscape:export-xdpi="866.98999"
-   inkscape:export-ydpi="866.98999"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview7"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
-     showgrid="false"
-     inkscape:zoom="2.9967587"
-     inkscape:cx="-71.744181"
-     inkscape:cy="13.014061"
-     inkscape:window-width="1920"
-     inkscape:window-height="1015"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
-  <defs
-     id="defs2" />
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(-61.16626,-106.26836)">
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="61.591328"
-       y="117.34551"
-       id="text1310"><tspan
-         sodipodi:role="line"
-         id="tspan1308"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Chivo;-inkscape-font-specification:Chivo;stroke-width:0.264583"
-         x="61.591328"
-         y="117.34551">BU</tspan></text>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg5" inkscape:export-filename="/home/fermin/Desktop/busesuy/busesuy-frontend/src/assets/icons/icon-512x512.png" inkscape:export-xdpi="866.98999" inkscape:export-ydpi="866.98999" sodipodi:docname="logo.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 42.5 42.5"
+	 style="enable-background:new 0 0 42.5 42.5;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#145DA0;}
+</style>
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1.0" id="namedview7" inkscape:current-layer="layer1" inkscape:cx="-71.744181" inkscape:cy="13.014061" inkscape:document-units="mm" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:window-height="1015" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="0" inkscape:zoom="2.9967587" pagecolor="#ffffff" showgrid="false">
+	</sodipodi:namedview>
+<g>
+	<path class="st0" d="M21.3,1c-11.1,0-20,9-20,20s9,20,20,20s20-9,20-20C41.3,9.9,32.3,1,21.3,1z M34.2,16.7c0,0.6-0.5,1.1-1.1,1.1
+		c-0.6,0-1.1-0.5-1.1-1.1v-1.6h-0.8v15.1c0,1.2-1,2.2-2.2,2.2h-1.2v1.3c0,0.6-0.5,1.1-1.1,1.1c-0.6,0-1.1-0.5-1.1-1.1v-1.3h-8.9v1.3
+		c-0.1,0.6-0.5,1.1-1.1,1.1c-0.6,0-1.1-0.5-1.1-1.1v-1.3h-1.2c-1.2,0-2.2-1-2.2-2.2V15.1h-0.8v1.6c0,0.5-0.5,1-1,1
+		c-0.6,0-1.1-0.5-1.1-1.1V14c0-0.6,0.5-1.1,1.1-1.1h1.8v-1.7c0-1.2,1-2.2,2.2-2.2h15.6c1.2,0,2.2,1,2.2,2.2v1.7h1.8
+		c0.6,0,1.1,0.5,1,1.1L34.2,16.7L34.2,16.7z"/>
+	<polygon class="st0" points="13.5,22.4 29.2,22.4 29.2,11.2 13.5,11.2 	"/>
+	<path class="st0" d="M13.5,24.5v5.9h15.7l-0.1-5.9H13.5z M17.2,28.8h-0.9c-0.6,0-1.1-0.5-1.1-1.1c0-0.6,0.5-1.1,1.1-1.1h0.9
+		c0.6,0,1.1,0.5,1.1,1.1C18.3,28.4,17.8,28.8,17.2,28.8z M26.2,28.8h-0.9c-0.6,0-1.1-0.5-1.1-1.1c0-0.6,0.5-1.1,1.1-1.1h0.9
+		c0.6,0,1.1,0.5,1.1,1.1C27.4,28.4,26.8,28.8,26.2,28.8z"/>
+</g>
 </svg>
