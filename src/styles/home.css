@@ -44,6 +44,10 @@
 .path-card .pather:before{ content: ""; display: block; position: absolute; width: 2px; height: calc(100% - 10px); background: #000; top: 3px; left: 5px; }
 .path-card .pather .path-dot:last-child{ margin-bottom: 0; }
 
+.path-card .pather .path-dot .location{}
+.path-card .pather .path-dot .location .location-name{}
+.path-card .pather .path-dot .location .location-department{ font-size: .8em; font-weight: 600; color: #666; }
+
 .path-card.expanded-card{ border-left: 10px solid #F2BD2A; width: 100% }
 
 /*Table Responsive*/
