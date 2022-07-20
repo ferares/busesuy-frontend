@@ -1,13 +1,16 @@
 /*Main Header*/
-.main-header{ position: relative; width: 100%; height: 70px; background: #FFF; z-index: 9999; border-bottom: 1px solid #CCC; }
+.main-header{ position: relative; width: 100%; height: 70px; background: #FFF; z-index: 9999; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
 .main-header .content{ display: flex; justify-content: space-between; }
 
 .main-header .main-nav{ display: flex; }
-.main-header .main-nav figure{ width: 200px; min-width: 200px; position: relative; top: 12px; }
+.main-header .main-nav figure{ width: 200px; min-width: 200px; position: relative; top: 9px; }
 .main-header .main-nav ul{ margin-left: 50px; }
-.main-header .main-nav ul li{ display: inline-block; }
-.main-header .main-nav ul li a{ text-decoration: none; font-weight: 600; color: #000; display: block; padding: 0 15px; line-height: 69px; font-family: "Poppins"; transition: all .3s; font-size: .9em; }
-.main-header .main-nav ul li a:hover{ background: #EEE; }
+.main-header .main-nav ul li{ display: inline-block; margin: 0 15px; }
+.main-header .main-nav ul li a{ text-decoration: none; font-weight: 600; color: #000; display: block; padding: 0; line-height: 69px; font-family: "Poppins"; transition: all .3s; font-size: .9em; position: relative; }
+.main-header .main-nav ul li a:hover{ color: #145da0; }
+
+.main-header .main-nav ul li a:after{ content: ""; width: 0; height: 2px; display: block; background: #145da0; transition: all .3s; position: absolute; bottom: -1px; left: 0; }
+.main-header .main-nav ul li a:hover:after{ content: ""; width: 100%; height: 4px; display: block; background: #145da0; }
 
 .main-header .right-options{ display: flex; }
 .main-header .right-options .share-button{ border: none; font-size: 1.5em; }
