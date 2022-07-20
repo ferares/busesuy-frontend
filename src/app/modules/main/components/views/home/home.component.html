@@ -11,7 +11,7 @@
         <ng-container *ngIf="background">
           <app-popover #backgroundPopover>
             <h4 class="popover-title">Datos de la foto</h4>
-            <ul class="list-unstyled">
+            <ul class="photo-info">
               <li>
                 <i class="fa-solid fa-circle-user"></i>
                 <a *ngIf="background.user.link" href="{{background.user.link}}" target="_blank" rel="noreferrer">{{background.user.name}}</a>
