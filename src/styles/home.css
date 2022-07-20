@@ -23,17 +23,15 @@
 .camera-button{ border: none; border-radius: 100%; color: #FFF; background: rgba(0,0,0,0.6); width: 40px; height: 40px; position: absolute; top: -100px; right: 20px; }
 .camera-button:hover{ background: #000; }
 
-/*Results Wrapper*/
-.search-results-wrapper{ padding: 60px 0; }
-
 /*Lines*/
-.home-content .lines-results{ position: relative; z-index: 100; background: transparent; margin-bottom: 30px; }
+.home-content .lines-results{ position: relative; z-index: 100; background: transparent; margin-bottom: 30px; margin-top: 60px; }
 .home-content .lines-results h2{ font-weight: 600; font-size: 1.7em; margin-bottom: 30px; }
 
 /*Transboard*/
-.home-content .transboard-results{ position: relative; z-index: 100; background: transparent; margin-bottom: 30px; }
-.home-content .transboard-results h2{ font-weight: bold; font-size: 1.6em; margin-bottom: 20px; }
+.home-content .transboard-results{ position: relative; z-index: 100; background: transparent; }
+.home-content .transboard-results h2{ font-weight: bold; font-size: 1.6em; margin-bottom: 20px; margin-top: 60px; }
 .home-content .transboard-results .table-responsive .bus-info{ width: 100%; }
+.home-content .transboard-results .transboard-results-spacer{ margin-bottom: 60px; }
 
 /*Bus Cards*/
 .path-card{ width: 100%; box-shadow: 0 0 6px rgba(0,0,0,0.2); margin-bottom: 20px; border-radius: 10px; background: #FFF; border: none; padding: 20px; position: relative; }
@@ -51,14 +49,14 @@
 .path-card.expanded-card{ border-left: 10px solid #F2BD2A; width: 100% }
 
 /*Table Responsive*/
-.table-responsive ul{ display: flex; flex-wrap: wrap; justify-content: space-between; }
+.table-responsive ul{ display: flex; flex-wrap: wrap; justify-content: space-between; margin-bottom: 60px; }
 .table-responsive ul li{ width: calc(50% - 10px); transition: all .3s; }
 .table-responsive .bus-info{ box-shadow: 0 0 6px rgba(0,0,0,0.2); margin-bottom: 20px; border-radius: 10px; background: #FFF; padding: 20px; position: relative; border-left: 10px solid #000; }
 .table-responsive .bus-info .company-name{ color: #000; text-decoration: none; margin-bottom: 15px; display: block; font-size: 1.2em; font-family: "Poppins"; font-weight: 600; }
 .table-responsive .bus-info .bus-info-times p{ margin-bottom: 5px; font-size: .9em; }
 .table-responsive .bus-info .more-info{ color: #000; text-decoration: none; display: inline-block; font-weight: 600; position: absolute; right: 10px; top: 10px; font-size: 1.4em; width: 40px; height: 40px; transition: all .3s; border: none; padding: 0; }
 .table-responsive .bus-info .more-info i{ position: relative; top: 0; left: 1px; font-size: .9em; }
-.table-responsive .bus-info .more-info:hover{ background: transparent; color: #000; border-color: #000; }
+.table-responsive .bus-info .more-info:hover{ background: transparent; color: #000; border-color: #000; right: 5px; }
 
 .table-responsive .bus-info .time{ display: flex; margin-bottom: 5px; }
 .table-responsive .bus-info .time .value{ font-size: 1.4em; font-weight: 600; font-family: "Poppins"; }

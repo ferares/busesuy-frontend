@@ -1,8 +1,12 @@
 /*Main Footer*/
-.main-footer{ background: #0C2D48; padding: 0; z-index: 100; height: auto; position: relative; color: #000; width: 100; padding: 50px 0; }
+.main-footer{ background: #0C2D48; padding: 0; z-index: 100; height: auto; position: relative; color: #000; width: 100; padding: 70px 0; }
+.main-footer .content{ display: flex; justify-content: space-between; }
 
-.main-footer .columns{ display: flex; justify-content: space-between; }
-.main-footer .columns > li{ width: 33.3333%; display: flex; flex-direction: column; }
+.main-footer .logo{ width: 200px; margin-bottom: 40px; position: relative; top: -10px; }
+
+.main-footer .columns{ display: flex; justify-content: space-between; width: 700px; }
+.main-footer .columns > li{ width: 50%; display: flex; flex-direction: column; }
 .main-footer .columns > li a{ color: #FFF; display: inline-block; padding: 10px 0; text-decoration: none; }
+.main-footer .columns > li a:hover{ text-decoration: underline; }
 
 .post-footer{ background: #0C2D48; font-weight: bold; font-size: .9em; color: #FFF; border-top: 1px solid #1c3a52; padding: 25px 0; }
