@@ -6,48 +6,45 @@
       <div class="page-text">
 
         <form [formGroup]="form" novalidate [ngClass]="{ 'was-validated': validated}">
+
           <fieldset [disabled]="sending">
-            <div class="row g-3 mb-3">
-              <div class="col-sm-6">
-                <label for="name" class="form-label" i18n>Nombre</label>
-                <input type="name" formControlName="name" class="form-control" id="name">
-              </div>
-              <div class="col-sm-6">
-                <label for="email" class="form-label" i18n>Correo electrónico (requerido)</label>
-                <input type="email" formControlName="email" class="form-control" id="email" required>
-                <div class="invalid-feedback" i18n>Ingrese un correo electrónico.</div>
-              </div>
+
+            <div class="input-field-row">
+              <label for="name" i18n>Nombre</label>
+              <input type="name" formControlName="name" id="name">
             </div>
-            <div class="mb-3">
-              <label for="message" class="form-label" i18n>Mensaje (requerido)</label>
-              <textarea formControlName="message" class="form-control" id="message" rows="6" required></textarea>
+
+            <div class="input-field-row">
+              <label for="email" i18n>Correo electrónico (requerido)</label>
+              <input type="email" formControlName="email" id="email" required>
+              <div class="invalid-feedback" i18n>Ingrese un correo electrónico.</div>
+            </div>
+
+            <div class="input-field-row">
+              <label for="message" i18n>Mensaje (requerido)</label>
+              <textarea formControlName="message" id="message" rows="6" required></textarea>
               <div class="invalid-feedback" i18n>Ingrese un mensaje.</div>
             </div>
-            <div class="col-12">
-              <app-alert-template *ngIf="error" type="danger" class="mb-0">
-                <div class="d-flex align-items-center">
-                  <img src="assets/imgs/danger.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="">
-                  <span>{{error}}</span>
-                </div>
-              </app-alert-template>
-              <app-alert-template *ngIf="success" type="success" class="mb-0">
-                <div class="d-flex align-items-center">
-                  <img src="assets/imgs/check.svg" width="32" height="32" class="flex-shrink-0 me-2" alt="" i18n>
-                  <span i18n>Gracias, mensaje enviado con éxito.</span>
-                </div>
-              </app-alert-template>
-            </div>
-            <div class="col-12">
-              <p i18n>
-                Este formulario está protegido por hCaptcha y su
-                <a class="link-dark" href="https://hcaptcha.com/privacy" target="_blank" rel="noreferrer">política de privacidad</a> y
-                <a class="link-dark" href="https://hcaptcha.com/terms" target="_blank" rel="noreferrer">términos de servicio</a> aplican.
-              </p>
-            </div>
-            <div class="col-lg-4 offset-lg-4">
-              <button type="button" class="btn btn-primary w-100" ngHcaptchaInvisibleButton (click)="onClickSubmit()" (verify)="submit($event)" (expired)="onCaptchaError()" (error)="onCaptchaError()" i18n>Enviar</button>
-          </div>
+
+            <app-alert-template *ngIf="error" type="danger">
+                <span>{{error}}</span>
+            </app-alert-template>
+
+            <app-alert-template *ngIf="success" type="success">
+                <span i18n>Gracias, mensaje enviado con éxito.</span>
+            </app-alert-template>
+
+            <p class="legal" i18n>
+              Este formulario está protegido por hCaptcha y su
+              <a class="link-dark" href="https://hcaptcha.com/privacy" target="_blank" rel="noreferrer">política de privacidad</a> y
+              <a class="link-dark" href="https://hcaptcha.com/terms" target="_blank" rel="noreferrer">términos de servicio</a> aplican.
+            </p>
+
+
+            <button type="button" class="btn btn-primary" ngHcaptchaInvisibleButton (click)="onClickSubmit()" (verify)="submit($event)" (expired)="onCaptchaError()" (error)="onCaptchaError()" i18n>Enviar</button>
+
           </fieldset>
+
         </form>
 
 
