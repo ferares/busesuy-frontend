@@ -1,28 +1,15 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-
-import { Subscription } from 'rxjs';
-
-import { ModalService } from '../../services/modal.service'
 
 @Component({
   selector: 'main-root',
   templateUrl: './main.component.html',
 })
-export class MainComponent implements OnInit, OnDestroy {
-  @ViewChild('modalLine') modalLine!: any;
-  @ViewChild('modalCompany') modalCompany!: any;
+export class MainComponent {
   langs: Array<any> = [];
   currentLang: any = undefined as any;
-  modalLineContent: any;
-  modalCompanyContent: any;
-  modalSubscription: Subscription = undefined as any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private modalService: ModalService,
-  ) {
+  constructor(private route: ActivatedRoute, private router: Router) {
     this.setBaseUrls();
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
@@ -72,28 +59,5 @@ export class MainComponent implements OnInit, OnDestroy {
       linkElement.setAttribute('href', `${url}${pathname}${search}`);
       document.head.appendChild(linkElement);
     }
-  }
-
-  public ngOnInit(): void {
-    this.modalSubscription = this.modalService.modals.subscribe(
-      (modals: any) => {
-        if (modals.line.open) {
-          this.modalLine.open();
-          this.modalLineContent = modals.line.content;
-        }
-        if (modals.company.open) {
-          this.modalCompany.open();
-          this.modalCompanyContent = modals.company.content;
-        }
-      }
-    );
-  }
-
-  public modalClosed(name: string): void {
-    this.modalService.closeModal(name);
-  }
-
-  public ngOnDestroy(): void {
-    this.modalSubscription.unsubscribe();
   }
 }

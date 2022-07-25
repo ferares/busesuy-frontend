@@ -13,8 +13,6 @@ import { ApiService } from '../../../../../services/api.service';
 export class HomeComponent implements AfterContentInit, AfterViewInit {
   @ViewChild('resultsElement') private resultsElement: any;
   @ViewChild('originElement') private originElement: any;
-  @ViewChild('originOptions') private originOptions: any;
-  @ViewChild('destinationOptions') private destinationOptions: any;
   background: any = undefined as any;
   validated = false;
   locations: any;

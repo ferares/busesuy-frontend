@@ -5,7 +5,7 @@
       <h3 class="title"><i class="fa-solid fa-bus"></i> <p>Información de Omnibús</p></h3>
       <ul>
         <li><strong>Número de línea: </strong>{{ data.line.name }}</li>
-        <li><strong i18n>Empresa: </strong><button (click)="showCompanyInfoModal(data.company.id)">{{ data.company.name }}</button></li>
+        <li><strong i18n>Empresa: </strong><a [routerLink]="['/empresas', data.company.id]">{{ data.company.name }}</a></li>
         <li><strong i18n>Origen: </strong><app-location-name [location]="data.origin"></app-location-name></li>
         <li><strong i18n>Destino: </strong><app-location-name [location]="data.destination"></app-location-name></li>
       </ul>

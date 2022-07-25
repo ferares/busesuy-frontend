@@ -33,7 +33,7 @@
               <p><app-frequency [frequency]="result.line.frequency"></app-frequency></p>
             </div>
 
-            <button type="button" class="more-info" (click)="showLineInfoModal(result.line.id)" i18n>
+            <button type="button" class="more-info" (click)="loadLineInfoModal(result.line.id)" i18n>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
 
@@ -42,3 +42,8 @@
     </li>
   </ul>
 </div>
+
+<app-modal #modalLine [show]="showLineInfoModal" (closeEvent)="lineInfoModalClose()">
+  <app-line-data *ngIf="lineData" [data]="lineData">
+  </app-line-data>
+</app-modal>

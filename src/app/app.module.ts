@@ -15,7 +15,6 @@ import { environment } from '../environments/environment';
 
 import { ApiService } from './services/api.service';
 import { CacheService } from './services/cache.service';
-import { ModalService } from './services/modal.service';
 import { LoaderService } from './services/loader.service';
 import { ErrorInterceptor } from './services/error.interceptor';
 import { AlertService } from './services/alert.service';
@@ -40,7 +39,6 @@ import { AlertService } from './services/alert.service';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     AlertService,
     ApiService,
-    ModalService,
     LoaderService,
   ],
   bootstrap: [AppComponent],
